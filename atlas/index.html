@@ -9,56 +9,62 @@
 </head>
 <body>
   <nav class="top-nav" aria-label="Primary navigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-item">Home</a>
-
-    <div class="nav-group">
-      <button class="nav-item nav-button" aria-haspopup="true">Dogs</button>
-      <div class="nav-menu">
-        <a href="/atlas/">Atlas</a>
+    <div class="nav-inner">
+      <a href="/" class="nav-item">Home</a>
+      <div class="nav-group">
+        <button class="nav-item nav-button" aria-haspopup="true">Dogs</button>
+        <div class="nav-menu"><a href="/atlas/">Atlas</a></div>
       </div>
+      <a href="/gallery/" class="nav-item">Gallery</a>
+      <a href="/about/" class="nav-item">About</a>
+      <a href="/contact/" class="nav-item">Contact</a>
     </div>
-
-    <a href="/gallery/" class="nav-item">Gallery</a>
-    <a href="/about/" class="nav-item">About</a>
-    <a href="/contact/" class="nav-item">Contact</a>
-  </div>
-</nav>
+  </nav>
 
   <main class="atlas-page">
-    <section class="atlas-hero">
-      <p class="archive-label">NOCTARIS</p>
-      <h1>MADE IN SPAIN ATLAS</h1>
-      <p class="atlas-subtitle">Black Miniature Schnauzer</p>
+    <section class="atlas-gallery" aria-label="Atlas photo gallery">
+      <div class="gallery-strip">
+        <a href="#photo-1" class="gallery-tile gallery-placeholder"><span>WDS Photo 01</span></a>
+        <a href="#photo-2" class="gallery-tile gallery-placeholder"><span>WDS Photo 02</span></a>
+        <a href="#photo-3" class="gallery-tile gallery-placeholder"><span>WDS Photo 03</span></a>
+      </div>
+    </section>
+
+    <section class="atlas-identity">
+      <h1 class="atlas-brand">NOCTARIS</h1>
+      <h2 class="atlas-name">MADE IN SPAIN ATLAS</h2>
+      <p class="atlas-breed">Black Miniature Schnauzer</p>
+      <p class="registry-line">JR 79591 Pš · LOE 2745202</p>
 
       <div class="title-grid" aria-label="Titles">
-        <span>J.SRB.26</span>
-        <span>J.MNE.26</span>
-        <span>J.BIH.26</span>
-        <span>C.I.B.-J.26</span>
+        <span>J.SRB.26</span><span>J.MNE.26</span><span>J.BIH.26</span><span>C.I.B.-J.26</span>
+      </div>
+
+      <p class="dob-line">DOB&nbsp;&nbsp;26 March 2025</p>
+
+      <div class="parents-block">
+        <span class="micro-label">Parents</span>
+        <p class="parent-name">♂ Made In Spain Basha</p>
+        <p class="parent-name">♀ Made In Spain You And Me II</p>
       </div>
     </section>
 
     <section class="identity-card" aria-label="Identity">
-      <div><span>DOB</span><strong>26 March 2025</strong></div>
       <div><span>Breeder</span><strong>Angel Pons Ariño</strong></div>
-      <div><span>Kennel</span><strong>Made In Spain</strong></div>
       <div><span>Owners</span><strong>Denis &amp; Anna Cavdarevic</strong></div>
+      <div><span>Kennel</span><strong>Made In Spain</strong></div>
+      <div><span>Contact</span><strong>contact@noctarisone.com</strong></div>
+      <div><span>Location</span><strong>Madrid, Spain</strong></div>
       <div><span>Location</span><strong>Belgrade, Serbia</strong></div>
-      <div><span>Registry</span><strong>LOE 2745202 · JR 79591 Pš</strong></div>
     </section>
 
     <section class="pedigree-section">
       <p class="archive-label">Bloodline</p>
       <h2>Pedigree</h2>
-
       <a class="pedigree-frame" href="/assets/pedigree.pdf" target="_blank" rel="noopener">
         <img src="/assets/pedigree.png" alt="Pedigree diagram of Made In Spain Atlas" />
       </a>
-
-      <a class="primary-cta" href="/assets/pedigree.pdf" target="_blank" rel="noopener">
-        Open Full Pedigree
-      </a>
+      <a class="primary-cta" href="/assets/pedigree.pdf" target="_blank" rel="noopener">Open Full Pedigree</a>
     </section>
 
     <footer class="site-footer">
@@ -66,5 +72,9 @@
       <a href="mailto:contact@noctarisone.com?subject=%5BNOCTARIS%20Inquiry%5D">contact@noctarisone.com</a>
     </footer>
   </main>
+
+  <section id="photo-1" class="lightbox"><a href="#" class="lightbox-close">Close</a><div class="lightbox-content">WDS Photo 01</div></section>
+  <section id="photo-2" class="lightbox"><a href="#" class="lightbox-close">Close</a><div class="lightbox-content">WDS Photo 02</div></section>
+  <section id="photo-3" class="lightbox"><a href="#" class="lightbox-close">Close</a><div class="lightbox-content">WDS Photo 03</div></section>
 </body>
 </html>

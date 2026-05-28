@@ -21,7 +21,7 @@
 
     <a href="/gallery/" class="nav-item">Gallery</a>
     <a href="/about/" class="nav-item">About</a>
-    <a href="mailto:contact@noctarisone.com?subject=%5BNOCTARIS%20Inquiry%5D" class="nav-item">Contact</a>
+    <a href="/contact/" class="nav-item">Contact</a>
   </div>
 </nav>
 

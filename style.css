@@ -334,3 +334,57 @@ body {
     text-align: center;
   }
 }
+
+
+/* CONTACT */
+
+.contact-screen {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 92px 22px 48px;
+}
+
+.contact-card {
+  width: min(100%, 620px);
+  text-align: center;
+}
+
+.contact-card h1 {
+  margin: 0 0 42px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(42px, 10vw, 82px);
+  letter-spacing: 0.12em;
+  text-indent: 0.12em;
+}
+
+.contact-lines {
+  display: grid;
+  gap: 22px;
+}
+
+.contact-lines div {
+  border-top: 1px solid var(--line);
+  padding: 22px 0 0;
+}
+
+.contact-lines span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 10px;
+}
+
+.contact-lines a {
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: clamp(16px, 4vw, 22px);
+  letter-spacing: 0.04em;
+}
+
+.contact-lines a:hover {
+  color: #ffffff;
+}

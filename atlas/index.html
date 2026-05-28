@@ -72,9 +72,9 @@
     <section class="photo-section" id="photos" aria-label="Atlas photographs">
       <p class="archive-label">Photographs</p>
       <div class="photo-grid">
-        <a href="#photo-1" class="photo-item"><img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas photo 1"></a>
-        <a href="#photo-2" class="photo-item"><img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas photo 2"></a>
-        <a href="#photo-3" class="photo-item"><img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas photo 3"></a>
+        <button class="photo-item" data-index="0"><img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas photo 1"></button>
+        <button class="photo-item" data-index="1"><img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas photo 2"></button>
+        <button class="photo-item" data-index="2"><img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas photo 3"></button>
       </div>
     </section>
 
@@ -84,26 +84,85 @@
     </footer>
   </main>
 
-  <section id="photo-1" class="lightbox"><a href="#" class="lightbox-close">Close</a><img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas full photo 1"></section>
-  <section id="photo-2" class="lightbox"><a href="#" class="lightbox-close">Close</a><img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas full photo 2"></section>
-  <section id="photo-3" class="lightbox"><a href="#" class="lightbox-close">Close</a><img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas full photo 3"></section>
+  <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
+    <button class="gallery-close" id="gallery-close">Close</button>
+    <button class="gallery-arrow gallery-prev" id="gallery-prev" aria-label="Previous photo">‹</button>
+    <img id="gallery-full" alt="Made In Spain Atlas fullscreen photo">
+    <button class="gallery-arrow gallery-next" id="gallery-next" aria-label="Next photo">›</button>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const section = document.getElementById("photos");
       const items = Array.from(document.querySelectorAll(".photo-item"));
+      const modal = document.getElementById("gallery-modal");
+      const full = document.getElementById("gallery-full");
+      const close = document.getElementById("gallery-close");
+      const prev = document.getElementById("gallery-prev");
+      const next = document.getElementById("gallery-next");
+      let visible = [];
+      let current = 0;
+      let touchStartX = 0;
 
       items.forEach(item => {
         const img = item.querySelector("img");
-
         img.addEventListener("load", () => {
           item.classList.add("is-visible");
           section.classList.add("has-images");
+          visible = Array.from(document.querySelectorAll(".photo-item.is-visible"));
         });
+        img.addEventListener("error", () => item.remove());
+        item.addEventListener("click", () => {
+          visible = Array.from(document.querySelectorAll(".photo-item.is-visible"));
+          current = visible.indexOf(item);
+          openGallery(current);
+        });
+      });
 
-        img.addEventListener("error", () => {
-          item.remove();
-        });
+      function openGallery(index) {
+        if (!visible.length) return;
+        current = index;
+        full.src = visible[current].querySelector("img").src;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function show(delta) {
+        if (!visible.length) return;
+        current = (current + delta + visible.length) % visible.length;
+        full.src = visible[current].querySelector("img").src;
+      }
+
+      function closeGallery() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        full.removeAttribute("src");
+        document.body.style.overflow = "";
+        section.scrollIntoView({ behavior: "instant", block: "start" });
+      }
+
+      close.addEventListener("click", closeGallery);
+      prev.addEventListener("click", () => show(-1));
+      next.addEventListener("click", () => show(1));
+
+      modal.addEventListener("touchstart", e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      modal.addEventListener("touchend", e => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 45) {
+          show(diff < 0 ? 1 : -1);
+        }
+      }, { passive: true });
+
+      document.addEventListener("keydown", e => {
+        if (!modal.classList.contains("is-open")) return;
+        if (e.key === "Escape") closeGallery();
+        if (e.key === "ArrowLeft") show(-1);
+        if (e.key === "ArrowRight") show(1);
       });
     });
   </script>

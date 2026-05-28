@@ -22,15 +22,9 @@
   </nav>
 
   <main class="atlas-page">
-    <section class="atlas-gallery" id="atlas-gallery" aria-label="Atlas photo gallery">
-      <div class="gallery-strip">
-        <a href="#photo-1" class="gallery-tile"><img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas photo 1"></a>
-        <a href="#photo-2" class="gallery-tile"><img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas photo 2"></a>
-        <a href="#photo-3" class="gallery-tile"><img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas photo 3"></a>
-      </div>
-    </section>
-
     <section class="atlas-identity">
+      <a class="photo-jump" href="#photos">View Photos</a>
+
       <h1 class="atlas-brand">NOCTARIS</h1>
       <h2 class="atlas-name">MADE IN SPAIN ATLAS</h2>
       <p class="atlas-breed">Black Miniature Schnauzer</p>
@@ -59,7 +53,6 @@
         <div><span>Kennel</span><strong>Made In Spain</strong></div>
         <div><span>Location</span><strong>Madrid, Spain</strong></div>
       </div>
-
       <div class="identity-column">
         <div><span>Owners</span><strong>Denis &amp; Anna Cavdarevic</strong></div>
         <div><span>Contact</span><strong>contact@noctarisone.com</strong></div>
@@ -76,6 +69,15 @@
       <a class="primary-cta" href="/assets/pedigree.pdf" target="_blank" rel="noopener">Open Full Pedigree</a>
     </section>
 
+    <section class="photo-section" id="photos" aria-label="Atlas photographs">
+      <p class="archive-label">Photographs</p>
+      <div class="photo-grid">
+        <a href="#photo-1" class="photo-item"><img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas photo 1"></a>
+        <a href="#photo-2" class="photo-item"><img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas photo 2"></a>
+        <a href="#photo-3" class="photo-item"><img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas photo 3"></a>
+      </div>
+    </section>
+
     <footer class="site-footer">
       <span>NOCTARIS</span>
       <a href="mailto:contact@noctarisone.com?subject=%5BNOCTARIS%20Inquiry%5D">contact@noctarisone.com</a>
@@ -88,18 +90,19 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const gallery = document.getElementById("atlas-gallery");
-      const tiles = Array.from(document.querySelectorAll(".gallery-tile"));
+      const section = document.getElementById("photos");
+      const items = Array.from(document.querySelectorAll(".photo-item"));
 
-      tiles.forEach(tile => {
-        const img = tile.querySelector("img");
+      items.forEach(item => {
+        const img = item.querySelector("img");
+
         img.addEventListener("load", () => {
-          tile.classList.add("is-visible");
-          gallery.classList.add("has-images");
+          item.classList.add("is-visible");
+          section.classList.add("has-images");
         });
 
         img.addEventListener("error", () => {
-          tile.remove();
+          item.remove();
         });
       });
     });

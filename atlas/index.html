@@ -21,21 +21,16 @@
     </div>
   </nav>
 
-  <main class="atlas-page">
+  <main class="atlas-page" id="top">
     <section class="atlas-identity">
       <a class="photo-jump" href="#photos">View Photos</a>
-
       <h1 class="atlas-brand">NOCTARIS</h1>
       <h2 class="atlas-name">MADE IN SPAIN ATLAS</h2>
       <p class="atlas-breed">Black Miniature Schnauzer</p>
-
       <p class="registry-line">JR 79591 Pš · LOE 2745202</p>
 
       <div class="title-grid" aria-label="Titles">
-        <span>J.SRB.26</span>
-        <span>J.MNE.26</span>
-        <span>J.BIH.26</span>
-        <span>C.I.B.-J.26</span>
+        <span>J.SRB.26</span><span>J.MNE.26</span><span>J.BIH.26</span><span>C.I.B.-J.26</span>
       </div>
 
       <p class="dob-line">DOB&nbsp;&nbsp;26 March 2025</p>
@@ -72,11 +67,15 @@
     <section class="photo-section" id="photos" aria-label="Atlas photographs">
       <p class="archive-label">Photographs</p>
       <div class="photo-grid">
-        <button class="photo-item" data-index="0"><img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas photo 1"></button>
-        <button class="photo-item" data-index="1"><img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas photo 2"></button>
-        <button class="photo-item" data-index="2"><img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas photo 3"></button>
+        <button class="photo-item" type="button" data-index="0"><img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas photo 1"></button>
+        <button class="photo-item" type="button" data-index="1"><img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas photo 2"></button>
+        <button class="photo-item" type="button" data-index="2"><img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas photo 3"></button>
       </div>
     </section>
+
+    <div class="bottom-actions">
+      <a class="back-to-top" href="#top">Back To Top</a>
+    </div>
 
     <footer class="site-footer">
       <span>NOCTARIS</span>
@@ -85,10 +84,10 @@
   </main>
 
   <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
-    <button class="gallery-close" id="gallery-close">Close</button>
-    <button class="gallery-arrow gallery-prev" id="gallery-prev" aria-label="Previous photo">‹</button>
+    <button class="gallery-close" id="gallery-close" type="button">Close</button>
+    <button class="gallery-arrow gallery-prev" id="gallery-prev" type="button" aria-label="Previous photo">‹</button>
     <img id="gallery-full" alt="Made In Spain Atlas fullscreen photo">
-    <button class="gallery-arrow gallery-next" id="gallery-next" aria-label="Next photo">›</button>
+    <button class="gallery-arrow gallery-next" id="gallery-next" type="button" aria-label="Next photo">›</button>
   </div>
 
   <script>
@@ -106,13 +105,19 @@
 
       items.forEach(item => {
         const img = item.querySelector("img");
-        img.addEventListener("load", () => {
+
+        img.addEventListener("load", function () {
           item.classList.add("is-visible");
           section.classList.add("has-images");
           visible = Array.from(document.querySelectorAll(".photo-item.is-visible"));
         });
-        img.addEventListener("error", () => item.remove());
-        item.addEventListener("click", () => {
+
+        img.addEventListener("error", function () {
+          item.remove();
+          visible = Array.from(document.querySelectorAll(".photo-item.is-visible"));
+        });
+
+        item.addEventListener("click", function () {
           visible = Array.from(document.querySelectorAll(".photo-item.is-visible"));
           current = visible.indexOf(item);
           openGallery(current);
@@ -120,7 +125,7 @@
       });
 
       function openGallery(index) {
-        if (!visible.length) return;
+        if (!visible.length || index < 0) return;
         current = index;
         full.src = visible[current].querySelector("img").src;
         modal.classList.add("is-open");
@@ -139,7 +144,7 @@
         modal.setAttribute("aria-hidden", "true");
         full.removeAttribute("src");
         document.body.style.overflow = "";
-        section.scrollIntoView({ behavior: "instant", block: "start" });
+        setTimeout(() => section.scrollIntoView({ behavior: "smooth", block: "start" }), 30);
       }
 
       close.addEventListener("click", closeGallery);
@@ -151,11 +156,8 @@
       }, { passive: true });
 
       modal.addEventListener("touchend", e => {
-        const touchEndX = e.changedTouches[0].screenX;
-        const diff = touchEndX - touchStartX;
-        if (Math.abs(diff) > 45) {
-          show(diff < 0 ? 1 : -1);
-        }
+        const diff = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(diff) > 45) show(diff < 0 ? 1 : -1);
       }, { passive: true });
 
       document.addEventListener("keydown", e => {

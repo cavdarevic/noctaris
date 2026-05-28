@@ -1,107 +1,49 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-<meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title>NOCTARIS — Atlas</title>
-<link rel='stylesheet' href='/style.css'>
-</head>
-<body>
-<main class='atlas-page' id='top'>
-<div class='utility-row'>
-<a href='#photos' class='utility-link'>View Photos</a>
-<a href='#pedigree' class='utility-link'>View Pedigree</a>
-</div>
-
-<section id='pedigree'><h2>Pedigree</h2></section>
-
-<section id='photos'>
-<div class='photo-grid'>
-<button class='photo-item is-visible'><img src='/assets/atlas/atlas-01.webp'></button>
-<button class='photo-item is-visible'><img src='/assets/atlas/atlas-02.webp'></button>
-<button class='photo-item is-visible'><img src='/assets/atlas/atlas-03.webp'></button>
-</div>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>NOCTARIS — Atlas</title><link rel="stylesheet" href="/style.css"></head>
+<body><nav class="top-nav" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-item">Home</a>
+    <div class="nav-group">
+      <button class="nav-item nav-button" aria-haspopup="true">Dogs</button>
+      <div class="nav-menu"><a href="/atlas/">Atlas</a></div>
+    </div>
+    <a href="/gallery/" class="nav-item">Gallery</a>
+    <a href="/about/" class="nav-item">About</a>
+    <a href="/contact/" class="nav-item">Contact</a>
+  </div>
+</nav>
+<main class="atlas-page" id="top">
+<div class="utility-row"><a href="#photos" class="utility-link">View Photos</a><a href="#pedigree" class="utility-link">View Pedigree</a></div>
+<section class="atlas-identity">
+<h1 class="atlas-brand">NOCTARIS</h1><h2 class="atlas-name">MADE IN SPAIN ATLAS</h2><p class="atlas-breed">Black Miniature Schnauzer</p><p class="registry-line">JR 79591 Pš · LOE 2745202</p>
+<div class="title-grid"><span>J.SRB.26</span><span>J.MNE.26</span><span>J.BIH.26</span><span>C.I.B.-J.26</span></div>
+<p class="dob-line">DOB&nbsp;&nbsp;26 March 2025</p>
+<div class="parents-block"><span class="micro-label">Parents</span><p class="parent-name">♂ Made In Spain Basha</p><p class="parent-name">♀ Made In Spain You And Me II</p></div>
 </section>
-
-<div class='bottom-actions'>
-<a href='#top' class='utility-link'>Back To Top</a>
-</div>
+<section class="identity-card">
+<div class="identity-column"><div><span>Breeder</span><strong>Angel Pons Ariño</strong></div><div><span>Kennel</span><strong>Made In Spain</strong></div><div><span>Location</span><strong>Madrid, Spain</strong></div></div>
+<div class="identity-column"><div><span>Owners</span><strong>Denis &amp; Anna Cavdarevic</strong></div><div><span>Contact</span><strong>contact@noctarisone.com</strong></div><div><span>Location</span><strong>Belgrade, Serbia</strong></div></div>
+</section>
+<section class="pedigree-section" id="pedigree"><p class="archive-label">Bloodline</p><h2>Pedigree</h2><a class="pedigree-frame" href="/assets/pedigree.pdf" target="_blank" rel="noopener"><img src="/assets/pedigree.png" alt="Pedigree diagram"></a><a class="primary-cta" href="/assets/pedigree.pdf" target="_blank" rel="noopener">Open Full Pedigree</a></section>
+<section class="photo-section" id="photos"><p class="archive-label">Photographs</p><div class="photo-grid"><button class="photo-item" type="button" data-index="0"><img src="/assets/atlas/atlas-01.webp" alt="Atlas photo 1"></button><button class="photo-item" type="button" data-index="1"><img src="/assets/atlas/atlas-02.webp" alt="Atlas photo 2"></button><button class="photo-item" type="button" data-index="2"><img src="/assets/atlas/atlas-03.webp" alt="Atlas photo 3"></button></div></section>
+<div class="bottom-actions"><a class="back-to-top" href="#top">Back To Top</a></div>
+<footer class="site-footer"><span>NOCTARIS</span><a href="mailto:contact@noctarisone.com?subject=%5BNOCTARIS%20Inquiry%5D">contact@noctarisone.com</a></footer>
 </main>
-
-<div class='gallery-modal' id='gallery'>
-<button class='gallery-close' id='closeBtn'>Close</button>
-<button class='gallery-arrow gallery-prev' id='prevBtn'>‹</button>
-<img class='gallery-image' id='galleryImage'>
-<button class='gallery-arrow gallery-next' id='nextBtn'>›</button>
-</div>
-
+<div class="gallery-modal" id="gallery-modal" aria-hidden="true"><div class="gallery-stage"><button class="gallery-close" id="gallery-close" type="button">Close</button><button class="gallery-arrow gallery-prev" id="gallery-prev" type="button">‹</button><img class="gallery-image" id="gallery-full" alt="Atlas fullscreen photo"><button class="gallery-arrow gallery-next" id="gallery-next" type="button">›</button></div></div>
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-const modal=document.getElementById('gallery');
-const img=document.getElementById('galleryImage');
-const items=[...document.querySelectorAll('.photo-item')];
-const closeBtn=document.getElementById('closeBtn');
-const prevBtn=document.getElementById('prevBtn');
-const nextBtn=document.getElementById('nextBtn');
-let current=0;
-let scale=1;
-let startX=0;
-let lastTap=0;
-
-function openGallery(index){
-current=index;
-scale=1;
-img.style.transform='scale(1)';
-img.src=items[current].querySelector('img').src;
-modal.classList.add('is-open');
-document.body.style.overflow='hidden';
-}
-
-function closeGallery(){
-modal.classList.remove('is-open');
-document.body.style.overflow='';
-document.getElementById('photos').scrollIntoView({behavior:'smooth'});
-}
-
-function show(delta){
-current=(current+delta+items.length)%items.length;
-scale=1;
-img.style.transform='scale(1)';
-img.src=items[current].querySelector('img').src;
-}
-
-items.forEach((item,index)=>{
-item.addEventListener('click',()=>openGallery(index));
-});
-
-closeBtn.addEventListener('click',closeGallery);
-prevBtn.addEventListener('click',()=>show(-1));
-nextBtn.addEventListener('click',()=>show(1));
-
-modal.addEventListener('touchstart',e=>{
-startX=e.touches[0].clientX;
-});
-
-modal.addEventListener('touchend',e=>{
-const diff=e.changedTouches[0].clientX-startX;
-const now=Date.now();
-if(now-lastTap<280){
-scale=scale===1?1.5:1;
-img.style.transform=`scale(${scale})`;
-}
-lastTap=now;
-if(scale===1&&Math.abs(diff)>45){
-show(diff<0?1:-1);
-}
-});
-
-img.addEventListener('wheel',e=>{
-e.preventDefault();
-scale+=e.deltaY*-0.001;
-scale=Math.min(Math.max(1,scale),4);
-img.style.transform=`scale(${scale})`;
-});
+document.addEventListener("DOMContentLoaded",function(){
+const section=document.getElementById("photos"),items=[...document.querySelectorAll(".photo-item")],modal=document.getElementById("gallery-modal"),full=document.getElementById("gallery-full"),close=document.getElementById("gallery-close"),prev=document.getElementById("gallery-prev"),next=document.getElementById("gallery-next");
+let visible=[],current=0,scale=1,startX=0,lastTap=0;
+items.forEach(item=>{const img=item.querySelector("img");img.addEventListener("load",()=>{item.classList.add("is-visible");section.classList.add("has-images");visible=[...document.querySelectorAll(".photo-item.is-visible")];});img.addEventListener("error",()=>item.remove());item.addEventListener("click",()=>{visible=[...document.querySelectorAll(".photo-item.is-visible")];current=visible.indexOf(item);openGallery(current);});});
+function openGallery(i){if(!visible.length||i<0)return;current=i;scale=1;full.style.transform="scale(1)";full.src=visible[current].querySelector("img").src;modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";}
+function show(d){if(!visible.length)return;current=(current+d+visible.length)%visible.length;scale=1;full.style.transform="scale(1)";full.src=visible[current].querySelector("img").src;}
+function closeGallery(){modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");full.removeAttribute("src");document.body.style.overflow="";setTimeout(()=>section.scrollIntoView({behavior:"smooth",block:"start"}),30);}
+close.addEventListener("click",closeGallery);prev.addEventListener("click",()=>show(-1));next.addEventListener("click",()=>show(1));
+modal.addEventListener("touchstart",e=>{startX=e.changedTouches[0].screenX;},{passive:true});
+modal.addEventListener("touchend",e=>{const diff=e.changedTouches[0].screenX-startX;const now=Date.now();if(now-lastTap<280){scale=scale===1?1.5:1;full.style.transform=`scale(${scale})`;}lastTap=now;if(scale===1&&Math.abs(diff)>45)show(diff<0?1:-1);},{passive:true});
+full.addEventListener("wheel",e=>{e.preventDefault();scale+=e.deltaY*-0.001;scale=Math.min(Math.max(1,scale),4);full.style.transform=`scale(${scale})`;});
+document.addEventListener("keydown",e=>{if(!modal.classList.contains("is-open"))return;if(e.key==="Escape")closeGallery();if(e.key==="ArrowLeft")show(-1);if(e.key==="ArrowRight")show(1);});
 });
 </script>
-</body>
-</html>
+</body></html>

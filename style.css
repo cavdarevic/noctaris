@@ -1,4 +1,4 @@
-/* NOCTARIS — Full Repair Package */
+/* NOCTARIS — Full Style + Pointer Viewer Patch */
 :root{--bg:#000;--text:#f2f2f2;--muted:#8a8a8a;--soft:#b7b7b7;--line:rgba(255,255,255,.12);--line-strong:rgba(255,255,255,.22);--nav-bg:rgba(0,0,0,.38)}
 *{box-sizing:border-box}
 html{background:var(--bg);scroll-behavior:smooth}
@@ -25,11 +25,12 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Hel
 /* CONTACT */
 .contact-screen{min-height:100svh;display:grid;place-items:center;padding:92px 22px 48px}
 .contact-card{width:min(100%,620px);text-align:center}
+.contact-card .contact-brand{margin:0 0 42px;color:var(--soft);font-family:Georgia,"Times New Roman",serif;font-size:clamp(16px,2.2vw,22px);line-height:1;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;font-weight:400}
 .contact-card h1{margin:0 0 42px;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(42px,10vw,82px);letter-spacing:.12em;text-indent:.12em}
 .contact-lines{display:grid;gap:22px}
 .contact-lines div{border-top:1px solid var(--line);padding:22px 0 0}
 .contact-lines span{display:block;margin-bottom:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.26em;font-size:10px}
-.contact-lines a{color:#f4f4f4;text-decoration:none;font-size:clamp(16px,4vw,22px);letter-spacing:.04em}
+.contact-lines a,.contact-lines strong{color:#f4f4f4;text-decoration:none;font-size:clamp(16px,4vw,22px);letter-spacing:.04em;font-weight:400}
 
 /* ATLAS */
 .atlas-page{width:min(100%,1040px);margin:0 auto;padding:96px 18px 42px}
@@ -68,11 +69,12 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Hel
 .site-footer{border-top:1px solid var(--line);padding:22px 0 0;display:flex;justify-content:space-between;gap:18px;color:var(--muted);font-size:12px}
 .site-footer a{color:var(--soft);text-decoration:none}
 
-/* FULLSCREEN GALLERY */
-.gallery-modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.97);z-index:4000;overflow:hidden}
-.gallery-modal.is-open{display:grid}
-.gallery-stage{position:relative;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}
-.gallery-image{max-width:100%;max-height:92svh;object-fit:contain;touch-action:none;transform-origin:center center;transition:transform .08s linear;user-select:none;-webkit-user-select:none}
+/* FULLSCREEN POINTER VIEWER */
+.gallery-modal{position:fixed;inset:0;display:none;background:rgba(0,0,0,.975);z-index:4000;overflow:hidden;touch-action:none;overscroll-behavior:contain}
+.gallery-modal.is-open{display:block}
+.gallery-stage{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab}
+.gallery-stage.is-dragging{cursor:grabbing}
+.gallery-image{position:absolute;left:50%;top:50%;max-width:100%;max-height:92svh;object-fit:contain;transform:translate(-50%,-50%) scale(1);transform-origin:center center;will-change:transform;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;touch-action:none}
 .gallery-close{position:fixed;top:20px;right:22px;background:transparent;border:0;color:#fff;text-transform:uppercase;letter-spacing:.22em;font-size:11px;opacity:.82;z-index:4010;cursor:pointer}
 .gallery-arrow{position:fixed;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:44px;opacity:.18;z-index:4010;cursor:pointer}
 .gallery-arrow:hover{opacity:.55}
@@ -87,7 +89,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Hel
 @media(max-width:520px){
 .nav-inner{gap:11px;padding:0 10px}
 .nav-item{font-size:8.5px;letter-spacing:.13em}
-.atlas-brand{font-size:15px;letter-spacing:.26em;text-indent:.26em}
+.atlas-brand,.contact-card .contact-brand{font-size:15px;letter-spacing:.26em;text-indent:.26em}
 .atlas-page{padding-left:14px;padding-right:14px}
 .site-footer{flex-direction:column;align-items:center;text-align:center}
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOCTARIS — Coming Soon</title>
+  <meta name="description" content="NOCTARIS — section coming soon." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="top-nav" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-item">Home</a>
+
+    <div class="nav-group">
+      <button class="nav-item nav-button" aria-haspopup="true">Dogs</button>
+      <div class="nav-menu">
+        <a href="/atlas/">Atlas</a>
+      </div>
+    </div>
+
+    <a href="/gallery/" class="nav-item">Gallery</a>
+    <a href="/about/" class="nav-item">About</a>
+    <a href="/contact/" class="nav-item">Contact</a>
+  </div>
+</nav>
+
+  <main class="home-screen">
+    <section class="home-mark">
+      <h1>NOCTARIS</h1>
+      <p class="line-one">Coming Soon</p>
+      <p class="line-two">This section is being prepared</p>
+    </section>
+  </main>
+</body>
+</html>

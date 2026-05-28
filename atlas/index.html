@@ -35,6 +35,8 @@
       <h2 class="atlas-name">MADE IN SPAIN ATLAS</h2>
       <p class="atlas-breed">Black Miniature Schnauzer</p>
 
+      <p class="registry-line">JR 79591 Pš · LOE 2745202</p>
+
       <div class="title-grid" aria-label="Titles">
         <span>J.SRB.26</span>
         <span>J.MNE.26</span>
@@ -42,7 +44,6 @@
         <span>C.I.B.-J.26</span>
       </div>
 
-      <p class="registry-line">JR 79591 Pš · LOE 2745202</p>
       <p class="dob-line">DOB&nbsp;&nbsp;26 March 2025</p>
 
       <div class="parents-block">
@@ -84,13 +85,11 @@
     document.addEventListener("DOMContentLoaded", function () {
       const gallery = document.getElementById("atlas-gallery");
       const tiles = Array.from(document.querySelectorAll(".gallery-tile"));
-      let visibleCount = 0;
 
       tiles.forEach(tile => {
         const img = tile.querySelector("img");
         img.addEventListener("load", () => {
           tile.classList.add("is-visible");
-          visibleCount++;
           gallery.classList.add("has-images");
         });
 

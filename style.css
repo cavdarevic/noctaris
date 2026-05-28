@@ -46,15 +46,22 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Hel
 .atlas-brand{
   margin:0;
   color:var(--soft);
-  font-family:Inter,Arial,Helvetica,sans-serif;
-  font-size:12px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(16px,2.2vw,22px);
   line-height:1;
   letter-spacing:.34em;
   text-indent:.34em;
   text-transform:uppercase;
   font-weight:400;
 }
-.atlas-name{margin:54px 0 0;font-size:clamp(30px,7vw,58px);line-height:1.08;letter-spacing:.08em;font-weight:500;text-align:center}
+.atlas-name{
+  margin:54px 0 0;
+  font-size:clamp(26px,5.2vw,42px);
+  line-height:1.08;
+  letter-spacing:.08em;
+  font-weight:500;
+  text-align:center;
+}
 .atlas-breed{margin:18px 0 0;color:var(--soft);text-transform:uppercase;letter-spacing:.25em;font-size:12px;text-align:center}
 .registry-line{margin:34px 0 0;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:11px;text-align:center}
 .title-grid{margin:26px auto 0;width:min(100%,600px);display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
@@ -94,7 +101,17 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Hel
 @media(max-width:520px){
   .nav-inner{gap:11px;padding:0 10px}
   .nav-item{font-size:8.5px;letter-spacing:.13em}
-  .atlas-brand{font-size:10px;letter-spacing:.26em;text-indent:.26em}
+  .atlas-brand{
+  margin:0;
+  color:var(--soft);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(16px,2.2vw,22px);
+  line-height:1;
+  letter-spacing:.34em;
+  text-indent:.34em;
+  text-transform:uppercase;
+  font-weight:400;
+}
   .atlas-page{padding-left:14px;padding-right:14px}
   .site-footer{flex-direction:column;align-items:center;text-align:center}
 }

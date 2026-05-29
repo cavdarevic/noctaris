@@ -207,3 +207,68 @@
   }
 }
 
+
+/* =========================
+   NOCTARIS V8.3 — Links + Spacing Refinement
+   Scope: Atlas admin UX only
+   ========================= */
+
+/* Fine-tune Parents -> Admin spacing */
+.atlas-identity{
+  padding-bottom: clamp(24px, 4.4vw, 36px);
+}
+
+/* Thin, quiet link underline */
+.identity-card .identity-link{
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: .5px;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(255,255,255,.42);
+}
+
+.identity-card .identity-link:hover,
+.identity-card .identity-link:focus{
+  text-decoration-color: rgba(255,255,255,.72);
+}
+
+/* Prevent contact/whatsapp link from becoming visually louder than the rest */
+.identity-card strong .identity-link{
+  font-weight: 400;
+}
+
+/* WhatsApp stays one clean line */
+.identity-card .identity-whatsapp .identity-link{
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* Slightly reduce vertical drop of the Owner column lower blocks */
+.identity-column:nth-child(2){
+  gap: clamp(22px, 4vw, 32px);
+}
+
+@media(max-width: 760px){
+  .atlas-identity{
+    padding-bottom: 24px;
+  }
+
+  .identity-card{
+    padding-top: 24px;
+  }
+
+  .identity-card::before{
+    top: 24px;
+  }
+
+  .identity-column:nth-child(2){
+    gap: 23px;
+  }
+
+  .identity-card .identity-link{
+    text-decoration-thickness: .5px;
+    text-underline-offset: 4px;
+  }
+}
+

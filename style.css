@@ -17,3 +17,15 @@
 @media(max-width:760px){.gallery-arrow{display:none}.bloodline-svg{border-color:rgba(195,153,73,.26)}.bl-role{font-size:11px}.bl-name{font-size:16px}.bl-name-small{font-size:12px}.bl-meta{font-size:10.5px}.bl-title{font-size:9.5px}}
 @media(min-width:760px){.identity-card{grid-template-columns:repeat(2,1fr);gap:42px}.identity-column{gap:24px}.title-grid{grid-template-columns:repeat(4,1fr)}.photo-grid{grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}}
 @media(max-width:520px){.nav-inner{gap:11px;padding:0 10px}.nav-item{font-size:8.5px;letter-spacing:.13em}.atlas-brand,.contact-card .contact-brand{font-size:15px;letter-spacing:.26em;text-indent:.26em}.atlas-page{padding-left:14px;padding-right:14px}.site-footer{flex-direction:column;align-items:center;text-align:center}}
+
+
+/* V5 PATCH - mobile identity two-column tuning */
+.identity-card{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:22px !important;}
+.identity-column{gap:16px !important;}
+@media(max-width:520px){
+  .identity-card{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px !important;padding:38px 0 28px !important;}
+  .identity-column{gap:12px !important;}
+  .identity-column>div{padding-bottom:10px !important;}
+  .identity-card span{font-size:8px !important;letter-spacing:.18em !important;margin-bottom:4px !important;}
+  .identity-card strong{font-size:12px !important;line-height:1.28 !important;}
+}

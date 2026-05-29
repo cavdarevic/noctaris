@@ -19,13 +19,282 @@
 @media(max-width:520px){.nav-inner{gap:11px;padding:0 10px}.nav-item{font-size:8.5px;letter-spacing:.13em}.atlas-brand,.contact-card .contact-brand{font-size:15px;letter-spacing:.26em;text-indent:.26em}.atlas-page{padding-left:14px;padding-right:14px}.site-footer{flex-direction:column;align-items:center;text-align:center}}
 
 
-/* V5 PATCH - mobile identity two-column tuning */
-.identity-card{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:22px !important;}
-.identity-column{gap:16px !important;}
-@media(max-width:520px){
-  .identity-card{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px !important;padding:38px 0 28px !important;}
-  .identity-column{gap:12px !important;}
-  .identity-column>div{padding-bottom:10px !important;}
-  .identity-card span{font-size:8px !important;letter-spacing:.18em !important;margin-bottom:4px !important;}
-  .identity-card strong{font-size:12px !important;line-height:1.28 !important;}
+
+/* =========================
+   NOCTARIS V7 PEDIGREE SYSTEM
+   ========================= */
+
+.identity-card{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:34px;
 }
+.identity-column{
+  display:grid;
+  gap:18px;
+}
+.identity-column>div{
+  border-bottom:1px solid var(--line);
+  padding-bottom:13px;
+}
+.identity-card span{
+  display:block;
+  margin-bottom:5px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.24em;
+  font-size:10px;
+}
+.identity-card strong{
+  display:block;
+  color:#f6f6f6;
+  font-size:16px;
+  font-weight:400;
+}
+
+@media(min-width:760px){
+  .identity-card{grid-template-columns:repeat(2,1fr);gap:42px;}
+}
+@media(max-width:759px){
+  .identity-card{grid-template-columns:repeat(2,1fr);gap:18px;}
+  .identity-column{gap:14px;}
+  .identity-card span{font-size:8px;letter-spacing:.18em;}
+  .identity-card strong{font-size:12px;line-height:1.35;}
+}
+
+.pedigree-ornament{
+  width:128px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(195,153,73,.78),transparent);
+  margin:-14px auto 28px;
+  position:relative;
+}
+.pedigree-ornament:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:6px;
+  height:6px;
+  background:rgba(195,153,73,.78);
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+
+.v7-bloodline{
+  width:100%;
+  margin:0 auto;
+}
+.v7-bloodline-open{
+  width:100%;
+  display:block;
+  border:1px solid rgba(195,153,73,.34);
+  padding:24px 18px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.04),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
+  box-shadow:0 0 0 1px rgba(255,255,255,.04) inset;
+  cursor:zoom-in;
+  color:inherit;
+}
+.v7-generation{
+  display:grid;
+  gap:14px;
+  align-items:stretch;
+  margin:0 auto;
+}
+.v7-gen-atlas{grid-template-columns:minmax(0,1fr);max-width:620px;}
+.v7-gen-parents{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;}
+.v7-gen-grand{grid-template-columns:repeat(4,minmax(0,1fr));}
+.v7-gen-great{grid-template-columns:repeat(4,minmax(0,1fr));}
+.v7-card{
+  min-width:0;
+  border:1px solid rgba(195,153,73,.45);
+  background:rgba(0,0,0,.32);
+  padding:13px 10px 12px;
+  text-align:center;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.v7-featured{
+  border-color:rgba(195,153,73,.82);
+  padding:16px 12px;
+}
+.v7-small{
+  padding:11px 7px;
+}
+.v7-role{
+  color:rgba(195,153,73,.78);
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:8px;
+  margin-bottom:7px;
+}
+.v7-card h3{
+  margin:0;
+  color:#f8f8f8;
+  text-transform:uppercase;
+  letter-spacing:.035em;
+  font-size:14px;
+  line-height:1.24;
+}
+.v7-small h3{
+  font-size:11px;
+  line-height:1.22;
+}
+.v7-reg{
+  margin:7px 0 0;
+  color:#b8b8b8;
+  font-size:10px;
+  line-height:1.3;
+}
+.v7-small .v7-reg{
+  font-size:8.5px;
+}
+.v7-titles{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px 6px;
+  justify-content:center;
+}
+.v7-titles span{
+  color:#9c9c9c;
+  font-size:9px;
+  line-height:1.25;
+  white-space:normal;
+}
+.v7-small .v7-titles span{
+  font-size:8px;
+}
+.v7-titles .no-title{
+  opacity:.35;
+}
+.v7-connector{
+  width:1px;
+  height:30px;
+  background:linear-gradient(180deg,rgba(195,153,73,.78),rgba(195,153,73,.2));
+  margin:8px auto;
+  position:relative;
+}
+.v7-connector:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:7px;
+  height:7px;
+  transform:translate(-50%,-50%) rotate(45deg);
+  background:rgba(195,153,73,.62);
+}
+@media(max-width:760px){
+  .v7-bloodline-open{
+    padding:12px 8px;
+  }
+  .v7-generation{
+    gap:6px;
+  }
+  .v7-gen-parents,
+  .v7-gen-grand,
+  .v7-gen-great{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .v7-card{
+    padding:9px 6px;
+  }
+  .v7-card h3{
+    font-size:10px;
+  }
+  .v7-featured h3{
+    font-size:12px;
+  }
+  .v7-reg{
+    font-size:8px;
+  }
+  .v7-titles{
+    gap:2px 4px;
+  }
+  .v7-titles span{
+    font-size:7.5px;
+  }
+  .v7-connector{
+    height:18px;
+    margin:5px auto;
+  }
+}
+
+.gallery-modal,.pedigree-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  background:rgba(0,0,0,.975);
+  z-index:4000;
+  overflow:hidden;
+  touch-action:none;
+  overscroll-behavior:contain;
+}
+.gallery-modal.is-open,.pedigree-modal.is-open{display:block;}
+.gallery-stage,.pedigree-stage{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  touch-action:none;
+  cursor:grab;
+}
+.gallery-stage.is-dragging,.pedigree-stage.is-dragging{cursor:grabbing;}
+.gallery-image{
+  position:absolute;
+  left:50%;
+  top:50%;
+  max-width:100%;
+  max-height:92svh;
+  object-fit:contain;
+  transform:translate(-50%,-50%) scale(1);
+  transform-origin:center center;
+  will-change:transform;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+  touch-action:none;
+}
+.pedigree-zoom-content{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(96vw,1180px);
+  transform:translate(-50%,-50%) scale(1);
+  transform-origin:center center;
+  will-change:transform;
+}
+.pedigree-zoom-content .v7-bloodline-open{
+  cursor:grab;
+}
+.gallery-close,.pedigree-close{
+  position:fixed;
+  top:20px;
+  right:22px;
+  background:transparent;
+  border:0;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:11px;
+  opacity:.82;
+  z-index:4010;
+  cursor:pointer;
+}
+.gallery-arrow{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  background:transparent;
+  border:0;
+  color:#fff;
+  font-size:44px;
+  opacity:.18;
+  z-index:4010;
+  cursor:pointer;
+}
+.gallery-arrow:hover{opacity:.55}
+.gallery-prev{left:8px}
+.gallery-next{right:8px}
+@media(max-width:760px){.gallery-arrow{display:none}}

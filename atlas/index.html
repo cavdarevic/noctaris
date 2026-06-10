@@ -20,6 +20,20 @@
     <a href="/contact/" class="nav-item">Contact</a>
   </div>
 </nav>
+
+  <section class="atlas-editorial-nav" aria-label="Atlas profile contents">
+    <div class="atlas-editorial-nav-inner">
+      <p class="profile-contents-label">Profile Contents</p>
+      <div class="profile-contents-links">
+        <a href="#photos" data-section-link="photos">Photos</a><span>·</span>
+        <a href="#achievements" data-section-link="achievements">Achievements</a><span>·</span>
+        <a href="#" class="is-disabled" aria-disabled="true" data-section-link="titles">Titles<span class="desktop-only"> &amp; Honours</span></a><span>·</span>
+        <a href="#" class="is-disabled" aria-disabled="true" data-section-link="dna">DNA</a><span>·</span>
+        <a href="#pedigree" data-section-link="pedigree">Pedigree</a>
+      </div>
+    </div>
+  </section>
+
 <main class="atlas-page" id="top">
   <div class="utility-row">
     <a href="#photos" class="utility-link">View Photos</a>
@@ -41,7 +55,52 @@
     <div class="identity-column"><div><span>Owners</span><strong>Denis &amp; Anna Cavdarevic</strong></div><div><span>Contact</span><strong><a class="identity-link" href="mailto:contact@noctarisone.com">contact@noctarisone.com</a></strong></div><div class="identity-whatsapp"><span>WhatsApp</span><strong><a class="identity-link" href="https://wa.me/381648541871" target="_blank" rel="noopener">+381&nbsp;64&nbsp;854&nbsp;1871</a></strong></div><div><span>Location</span><strong>Belgrade, Serbia</strong></div></div>
   </section>
 
-  <section class="pedigree-section" id="pedigree">
+  
+  <section class="achievements-section editorial-section" id="achievements" data-profile-section="achievements">
+    <p class="archive-label">Achievements</p>
+    <h2>Achievement Wall</h2>
+    <div class="achievement-wall">
+      <article class="achievement-artifact achievement-anchor">
+        <p class="achievement-kicker">Bologna · Italy · 2026</p>
+        <h3>Junior ENCI Winner 2026</h3>
+        <div class="achievement-details"><span>Excellent 1/9</span><span>Junior Latin Winner 2026</span><span>Junior Champion of Italy</span></div>
+        <p class="achievement-judge">Under: Lemo Niska (HR)</p>
+      </article>
+      <article class="achievement-artifact">
+        <p class="achievement-kicker">Bologna · Italy · 2026</p>
+        <h3>World Dog Show 2026</h3>
+        <div class="achievement-details"><span>Junior Class</span><span>Excellent</span><span>Selected Final 7 of 15 Junior Males</span></div>
+        <p class="achievement-judge">Under: Salina Loredana (CH)</p>
+      </article>
+      <article class="achievement-artifact">
+        <p class="achievement-kicker">Sofia · Bulgaria · 2026</p>
+        <h3>Junior Club Winner 2026</h3>
+        <div class="achievement-details"><span>JBIS-1</span><span>BIS-3</span><span>BOB</span></div>
+        <p class="achievement-judge">Under: Fernando Quilis Bonet (ESP)</p>
+      </article>
+      <article class="achievement-artifact">
+        <p class="achievement-kicker">Belgrade · Serbia · 2026</p>
+        <h3>Junior World Club Winner</h3>
+        <div class="achievement-details"><span>Junior Belgrade Winner</span><span>World Schnauzer Pinscher Week</span></div>
+        <p class="achievement-judge">Under: Laura Asensi de Langlois (ESP) · Tamas Jakkel (HU)</p>
+      </article>
+      <article class="achievement-artifact achievement-supporting">
+        <p class="achievement-kicker">Bologna · Italy · 2026</p>
+        <h3>Club Show 2026</h3>
+        <div class="achievement-details"><span>Junior Class</span><span>Excellent 4/10</span></div>
+        <p class="achievement-judge">Under: Tamas Jakkel (HU)</p>
+      </article>
+      <article class="achievement-artifact achievement-supporting">
+        <p class="achievement-kicker">Ćuprija · Serbia · 2025</p>
+        <h3>Puppy BIS-1</h3>
+        <div class="achievement-details"><span>Puppy Grand Prix Winner</span><span>Puppy BOB</span><span>Grand Prix Schnauzer Pinscher Club</span></div>
+        <p class="achievement-judge">Under: Giovanni Pentenero (IT)</p>
+      </article>
+    </div>
+    <div class="section-return"><a href="#top">↑ Back To Top</a></div>
+  </section>
+
+  <section class="pedigree-section editorial-section" id="pedigree" data-profile-section="pedigree">
     <p class="archive-label">Bloodline</p>
     <h2>Pedigree</h2>
     <div class="pedigree-ornament"></div>
@@ -147,7 +206,7 @@
     <a class="primary-cta" href="/assets/NOCTARIS_Bloodline_Certificate_Made_In_Spain_Atlas.pdf" target="_blank" rel="noopener">Open Full Pedigree</a>
   </section>
 
-  <section class="photo-section" id="photos" aria-label="Atlas photographs">
+  <section class="photo-section editorial-section" id="photos" data-profile-section="photos" aria-label="Atlas photographs">
     <p class="archive-label">Photographs</p>
     <div class="photo-grid"><button class="photo-item" type="button" data-index="0"><img src="/assets/atlas/atlas-01.webp" alt="Atlas photo 1"></button><button class="photo-item" type="button" data-index="1"><img src="/assets/atlas/atlas-02.webp" alt="Atlas photo 2"></button><button class="photo-item" type="button" data-index="2"><img src="/assets/atlas/atlas-03.webp" alt="Atlas photo 3"></button></div>
   </section>
@@ -303,5 +362,29 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", e => { if (modal.classList.contains("is-open")) { if(e.key==="Escape") closeGallery(); if(e.key==="ArrowLeft"&&scale===1) show(-1); if(e.key==="ArrowRight"&&scale===1) show(1); } if (pModal.classList.contains("is-open") && e.key==="Escape") pCloseFn(); });
 });
 </script>
+
+<script id="noctaris-editorial-navigation-script">
+document.addEventListener("DOMContentLoaded",function(){
+  const nav=document.querySelector(".atlas-editorial-nav");
+  const links=[...document.querySelectorAll("[data-section-link]")];
+  const activeLinks=links.filter(l=>!l.classList.contains("is-disabled"));
+  const sections=[...document.querySelectorAll("[data-profile-section]")];
+  function focusSection(s){s.classList.remove("is-editorial-focus");void s.offsetWidth;s.classList.add("is-editorial-focus");setTimeout(()=>s.classList.remove("is-editorial-focus"),1300);}
+  activeLinks.forEach(link=>link.addEventListener("click",function(e){
+    const href=link.getAttribute("href"); if(!href||href==="#") return;
+    const target=document.querySelector(href); if(!target) return;
+    e.preventDefault();
+    const offset=(nav?nav.offsetHeight:0)+68;
+    window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-offset,behavior:"smooth"});
+    links.forEach(l=>l.classList.remove("is-active")); link.classList.add("is-active");
+    setTimeout(()=>focusSection(target),520);
+  }));
+  links.forEach(link=>{if(link.classList.contains("is-disabled")) link.addEventListener("click",e=>e.preventDefault());});
+  const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const id=entry.target.id;links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+id));});},{rootMargin:"-35% 0px -55% 0px",threshold:.01});
+  sections.forEach(s=>observer.observe(s));
+  document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>a.addEventListener("click",function(e){if(a.getAttribute("href")!=="#top")return;e.preventDefault();links.forEach(l=>l.classList.remove("is-active"));window.scrollTo({top:0,behavior:"smooth"});}));
+});
+</script>
+
 </body>
 </html>

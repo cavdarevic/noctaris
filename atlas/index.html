@@ -363,28 +363,64 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
 <script id="noctaris-editorial-navigation-script">
 document.addEventListener("DOMContentLoaded",function(){
   const nav=document.querySelector(".atlas-editorial-nav");
   const links=[...document.querySelectorAll("[data-section-link]")];
   const activeLinks=links.filter(l=>!l.classList.contains("is-disabled"));
   const sections=[...document.querySelectorAll("[data-profile-section]")];
-  function focusSection(s){s.classList.remove("is-editorial-focus");void s.offsetWidth;s.classList.add("is-editorial-focus");setTimeout(()=>s.classList.remove("is-editorial-focus"),1300);}
+
+  function getScrollOffset(){
+    const globalNav=document.querySelector("nav");
+    return (globalNav ? globalNav.offsetHeight : 0) + (nav ? nav.offsetHeight : 0) + 16;
+  }
+
+  function focusSection(section){
+    section.classList.remove("is-editorial-focus");
+    void section.offsetWidth;
+    section.classList.add("is-editorial-focus");
+    window.setTimeout(()=>section.classList.remove("is-editorial-focus"),1200);
+  }
+
   activeLinks.forEach(link=>link.addEventListener("click",function(e){
-    const href=link.getAttribute("href"); if(!href||href==="#") return;
-    const target=document.querySelector(href); if(!target) return;
+    const href=link.getAttribute("href");
+    if(!href||href==="#") return;
+    const target=document.querySelector(href);
+    if(!target) return;
     e.preventDefault();
-    const offset=(nav?nav.offsetHeight:0)+68;
-    window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-offset,behavior:"smooth"});
-    links.forEach(l=>l.classList.remove("is-active")); link.classList.add("is-active");
-    setTimeout(()=>focusSection(target),520);
+    links.forEach(l=>l.classList.remove("is-active"));
+    link.classList.add("is-active");
+    const top=target.getBoundingClientRect().top+window.scrollY-getScrollOffset();
+    window.scrollTo({top,behavior:"smooth"});
+    window.setTimeout(()=>focusSection(target),650);
   }));
-  links.forEach(link=>{if(link.classList.contains("is-disabled")) link.addEventListener("click",e=>e.preventDefault());});
-  const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const id=entry.target.id;links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+id));});},{rootMargin:"-35% 0px -55% 0px",threshold:.01});
+
+  links.forEach(link=>{
+    if(link.classList.contains("is-disabled")){
+      link.addEventListener("click",e=>e.preventDefault());
+    }
+  });
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const id=entry.target.id;
+      links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+id));
+    });
+  },{rootMargin:"-38% 0px -52% 0px",threshold:.01});
+
   sections.forEach(s=>observer.observe(s));
-  document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>a.addEventListener("click",function(e){if(a.getAttribute("href")!=="#top")return;e.preventDefault();links.forEach(l=>l.classList.remove("is-active"));window.scrollTo({top:0,behavior:"smooth"});}));
+
+  document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>a.addEventListener("click",function(e){
+    if(a.getAttribute("href")!=="#top") return;
+    e.preventDefault();
+    links.forEach(l=>l.classList.remove("is-active"));
+    window.scrollTo({top:0,behavior:"smooth"});
+  }));
 });
 </script>
+
 
 </body>
 </html>

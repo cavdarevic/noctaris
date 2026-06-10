@@ -304,3 +304,347 @@
 .section-return a:hover,.section-return a:focus{color:rgba(255,255,255,.92)}
 @media(max-width:760px){.atlas-editorial-nav-inner{padding:11px 10px 10px}.profile-contents-label{display:none}.profile-contents-links{justify-content:flex-start;gap:7px;padding:0 2px}.profile-contents-links a,.profile-contents-links span{font-size:7.5px;letter-spacing:.12em}.desktop-only{display:none}.editorial-section{scroll-margin-top:106px}.achievements-section{padding-top:44px}.achievement-wall{grid-template-columns:1fr;gap:14px}.achievement-artifact,.achievement-anchor,.achievement-supporting{min-height:auto;padding:30px 18px 28px}.achievement-artifact h3,.achievement-artifact:not(.achievement-anchor) h3{font-size:clamp(22px,7vw,34px)}.achievement-details span{font-size:11px}}
 
+
+/* =========================
+   NOCTARIS PHASE 1.0 FIX
+   Compact Editorial Navigation + Compact Achievement Wall
+   ========================= */
+
+/* Editorial navigation must NOT look like the global site navigation */
+.atlas-editorial-nav{
+  position: sticky;
+  top: 42px;
+  z-index: 895;
+  background: rgba(0,0,0,.82);
+  border-top: 0;
+  border-bottom: 1px solid rgba(195,153,73,.18);
+  box-shadow: 0 18px 38px rgba(0,0,0,.42);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.atlas-editorial-nav-inner{
+  width: min(100%, 940px);
+  margin: 0 auto;
+  padding: 10px 16px 9px;
+  text-align: center;
+}
+
+.profile-contents-label{
+  margin: 0 0 6px;
+  color: rgba(195,153,73,.54);
+  text-transform: uppercase;
+  letter-spacing: .34em;
+  font-size: 7px;
+  line-height: 1;
+}
+
+.profile-contents-links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.profile-contents-links::-webkit-scrollbar{ display:none; }
+
+.profile-contents-links a,
+.profile-contents-links span{
+  color: rgba(255,255,255,.52);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.profile-contents-links span{
+  color: rgba(195,153,73,.32);
+}
+
+.profile-contents-links a.is-active,
+.profile-contents-links a:hover,
+.profile-contents-links a:focus{
+  color: rgba(255,255,255,.92);
+  text-decoration: underline;
+  text-decoration-thickness: .5px;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(195,153,73,.70);
+}
+
+.profile-contents-links a.is-disabled{
+  opacity: .34;
+  cursor: default;
+}
+
+.profile-contents-links a.is-disabled:hover,
+.profile-contents-links a.is-disabled:focus{
+  color: rgba(255,255,255,.52);
+  text-decoration: none;
+}
+
+/* Achievement Wall: compact, readable, one-section feeling */
+.achievements-section{
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: clamp(34px, 5vw, 58px) 18px clamp(28px, 4vw, 46px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.achievements-section .archive-label{
+  margin-bottom: 12px;
+}
+
+.achievements-section h2{
+  margin: 0 0 24px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(26px, 4.2vw, 40px);
+  letter-spacing: .08em;
+  line-height: 1.05;
+}
+
+.achievement-wall{
+  display: grid;
+  grid-template-columns: 1.08fr .92fr .92fr;
+  grid-auto-rows: minmax(112px, auto);
+  gap: 12px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Anchor is important, but not a billboard */
+.achievement-anchor{
+  grid-column: 1 / 2;
+  grid-row: span 2;
+}
+
+.achievement-artifact{
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px 16px 16px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,.006));
+  text-align: center;
+  position: relative;
+}
+
+.achievement-artifact::before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 56px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(195,153,73,.55), transparent);
+}
+
+.achievement-anchor{
+  border-color: rgba(195,153,73,.30);
+  background: linear-gradient(180deg, rgba(195,153,73,.045), rgba(255,255,255,.008));
+}
+
+.achievement-supporting{
+  opacity: .94;
+}
+
+.achievement-kicker{
+  margin: 0 0 10px;
+  color: rgba(255,255,255,.42);
+  text-transform: uppercase;
+  letter-spacing: .24em;
+  font-size: 7.5px;
+  line-height: 1.35;
+}
+
+.achievement-artifact h3{
+  margin: 0;
+  color: rgba(255,255,255,.92);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.08;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.achievement-anchor h3{
+  font-size: clamp(22px, 2.8vw, 32px);
+}
+
+.achievement-details{
+  margin: 12px auto 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+  max-width: 440px;
+}
+
+.achievement-details span{
+  color: rgba(255,255,255,.70);
+  font-size: 9.5px;
+  line-height: 1.32;
+  letter-spacing: .05em;
+}
+
+.achievement-judge{
+  margin: 12px 0 0;
+  color: rgba(255,255,255,.36);
+  font-size: 8px;
+  line-height: 1.4;
+  letter-spacing: .10em;
+}
+
+.section-return{
+  margin: 24px auto 0;
+  text-align: center;
+}
+
+.section-return a{
+  display: inline-block;
+  color: rgba(255,255,255,.62);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .20em;
+  font-size: 8px;
+  line-height: 1;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(195,153,73,.34);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* Editorial focus should be visible but not theatrical */
+.editorial-section.is-editorial-focus{
+  animation: noctarisEditorialFocusSoft 1.05s ease both;
+}
+
+@keyframes noctarisEditorialFocusSoft{
+  0%{ opacity:.72; filter:brightness(.86); transform:translateY(5px); }
+  42%{ opacity:1; filter:brightness(1.12); }
+  100%{ opacity:1; filter:brightness(1); transform:translateY(0); }
+}
+
+@media(max-width: 760px){
+  .atlas-editorial-nav{
+    top: 56px;
+  }
+
+  .atlas-editorial-nav-inner{
+    padding: 9px 9px 8px;
+  }
+
+  .profile-contents-label{
+    display:none;
+  }
+
+  .profile-contents-links{
+    justify-content:flex-start;
+    gap:6px;
+  }
+
+  .profile-contents-links a,
+  .profile-contents-links span{
+    font-size:7px;
+    letter-spacing:.105em;
+  }
+
+  .desktop-only{
+    display:none;
+  }
+
+  .editorial-section{
+    scroll-margin-top: 104px;
+  }
+
+  .achievements-section{
+    width:100%;
+    padding: 30px 14px 34px;
+  }
+
+  .achievements-section h2{
+    font-size: clamp(30px, 10vw, 42px);
+    margin-bottom: 20px;
+  }
+
+  .achievement-wall{
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .achievement-anchor{
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .achievement-artifact{
+    min-height: 142px;
+    padding: 18px 12px 16px;
+  }
+
+  .achievement-anchor{
+    min-height: 166px;
+  }
+
+  .achievement-kicker{
+    font-size: 7px;
+    letter-spacing: .20em;
+    margin-bottom: 9px;
+  }
+
+  .achievement-artifact h3{
+    font-size: clamp(15px, 4.6vw, 22px);
+    line-height: 1.12;
+  }
+
+  .achievement-anchor h3{
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  .achievement-details{
+    margin-top: 10px;
+    gap: 4px 8px;
+  }
+
+  .achievement-details span{
+    font-size: 8.5px;
+    line-height: 1.28;
+  }
+
+  .achievement-judge{
+    font-size: 7px;
+    margin-top: 10px;
+  }
+}
+
+@media(max-width: 430px){
+  .achievement-wall{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .achievement-artifact,
+  .achievement-anchor{
+    min-height: 130px;
+  }
+
+  .achievement-anchor{
+    min-height: 152px;
+  }
+
+  .achievement-artifact h3{
+    font-size: clamp(18px, 6.2vw, 26px);
+  }
+
+  .achievement-anchor h3{
+    font-size: clamp(24px, 8vw, 32px);
+  }
+}
+

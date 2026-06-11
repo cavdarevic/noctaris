@@ -60,41 +60,41 @@
     <p class="archive-label">Achievements</p>
     <h2>Achievement Wall</h2>
     <div class="achievement-wall">
-      <article class="achievement-artifact achievement-anchor">
+      <article class="achievement-artifact achievement-anchor achievement-large achievement-medium achievement-medium achievement-small achievement-small achievement-small" tabindex="0" role="button" aria-expanded="false"><button class="achievement-cancel" type="button" aria-label="Close achievement">Cancel</button>
         <p class="achievement-kicker">Bologna · Italy · 2026</p>
         <h3>Junior ENCI Winner 2026</h3>
-        <div class="achievement-details"><span>Excellent 1/9</span><span>Junior Latin Winner 2026</span><span>Junior Champion of Italy</span></div>
-        <p class="achievement-judge">Under: Lemo Niska (HR)</p>
+        <div class="achievement-details achievement-expand-content"><span>Excellent 1/9</span><span>Junior Latin Winner 2026</span><span>Junior Champion of Italy</span></div>
+        <p class="achievement-judge achievement-expand-content">Under: Lemo Niska (HR)</p>
       </article>
-      <article class="achievement-artifact">
+      <article class="achievement-artifact" tabindex="0" role="button" aria-expanded="false"><button class="achievement-cancel" type="button" aria-label="Close achievement">Cancel</button>
         <p class="achievement-kicker">Bologna · Italy · 2026</p>
         <h3>World Dog Show 2026</h3>
-        <div class="achievement-details"><span>Junior Class</span><span>Excellent</span><span>Selected Final 7 of 15 Junior Males</span></div>
-        <p class="achievement-judge">Under: Salina Loredana (CH)</p>
+        <div class="achievement-details achievement-expand-content"><span>Junior Class</span><span>Excellent</span><span>Selected Final 7 of 15 Junior Males</span></div>
+        <p class="achievement-judge achievement-expand-content">Under: Salina Loredana (CH)</p>
       </article>
-      <article class="achievement-artifact">
+      <article class="achievement-artifact" tabindex="0" role="button" aria-expanded="false"><button class="achievement-cancel" type="button" aria-label="Close achievement">Cancel</button>
         <p class="achievement-kicker">Sofia · Bulgaria · 2026</p>
         <h3>Junior Club Winner 2026</h3>
-        <div class="achievement-details"><span>JBIS-1</span><span>BIS-3</span><span>BOB</span></div>
-        <p class="achievement-judge">Under: Fernando Quilis Bonet (ESP)</p>
+        <div class="achievement-details achievement-expand-content"><span>JBIS-1</span><span>BIS-3</span><span>BOB</span></div>
+        <p class="achievement-judge achievement-expand-content">Under: Fernando Quilis Bonet (ESP)</p>
       </article>
-      <article class="achievement-artifact">
+      <article class="achievement-artifact" tabindex="0" role="button" aria-expanded="false"><button class="achievement-cancel" type="button" aria-label="Close achievement">Cancel</button>
         <p class="achievement-kicker">Belgrade · Serbia · 2026</p>
         <h3>Junior World Club Winner</h3>
-        <div class="achievement-details"><span>Junior Belgrade Winner</span><span>World Schnauzer Pinscher Week</span></div>
-        <p class="achievement-judge">Under: Laura Asensi de Langlois (ESP) · Tamas Jakkel (HU)</p>
+        <div class="achievement-details achievement-expand-content"><span>Junior Belgrade Winner</span><span>World Schnauzer Pinscher Week</span></div>
+        <p class="achievement-judge achievement-expand-content">Under: Laura Asensi de Langlois (ESP) · Tamas Jakkel (HU)</p>
       </article>
-      <article class="achievement-artifact achievement-supporting">
+      <article class="achievement-artifact achievement-supporting" tabindex="0" role="button" aria-expanded="false"><button class="achievement-cancel" type="button" aria-label="Close achievement">Cancel</button>
         <p class="achievement-kicker">Bologna · Italy · 2026</p>
         <h3>Club Show 2026</h3>
-        <div class="achievement-details"><span>Junior Class</span><span>Excellent 4/10</span></div>
-        <p class="achievement-judge">Under: Tamas Jakkel (HU)</p>
+        <div class="achievement-details achievement-expand-content"><span>Junior Class</span><span>Excellent 4/10</span></div>
+        <p class="achievement-judge achievement-expand-content">Under: Tamas Jakkel (HU)</p>
       </article>
-      <article class="achievement-artifact achievement-supporting">
+      <article class="achievement-artifact achievement-supporting" tabindex="0" role="button" aria-expanded="false"><button class="achievement-cancel" type="button" aria-label="Close achievement">Cancel</button>
         <p class="achievement-kicker">Ćuprija · Serbia · 2025</p>
         <h3>Puppy BIS-1</h3>
-        <div class="achievement-details"><span>Puppy Grand Prix Winner</span><span>Puppy BOB</span><span>Grand Prix Schnauzer Pinscher Club</span></div>
-        <p class="achievement-judge">Under: Giovanni Pentenero (IT)</p>
+        <div class="achievement-details achievement-expand-content"><span>Puppy Grand Prix Winner</span><span>Puppy BOB</span><span>Grand Prix Schnauzer Pinscher Club</span></div>
+        <p class="achievement-judge achievement-expand-content">Under: Giovanni Pentenero (IT)</p>
       </article>
     </div>
     <div class="section-return"><a href="#top">↑ Back To Top</a></div>
@@ -366,58 +366,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script id="noctaris-editorial-navigation-script">
 document.addEventListener("DOMContentLoaded",function(){
-  const nav=document.querySelector(".atlas-editorial-nav");
-  const links=[...document.querySelectorAll("[data-section-link]")];
-  const activeLinks=links.filter(l=>!l.classList.contains("is-disabled"));
-  const sections=[...document.querySelectorAll("[data-profile-section]")];
-
-  function getScrollOffset(){
-    const globalNav=document.querySelector("nav");
-    return (globalNav ? globalNav.offsetHeight : 0) + (nav ? nav.offsetHeight : 0) + 16;
-  }
-
-  function focusSection(section){
-    section.classList.remove("is-editorial-focus");
-    void section.offsetWidth;
-    section.classList.add("is-editorial-focus");
-    window.setTimeout(()=>section.classList.remove("is-editorial-focus"),1200);
-  }
-
-  activeLinks.forEach(link=>link.addEventListener("click",function(e){
-    const href=link.getAttribute("href");
-    if(!href||href==="#") return;
-    const target=document.querySelector(href);
-    if(!target) return;
-    e.preventDefault();
-    links.forEach(l=>l.classList.remove("is-active"));
-    link.classList.add("is-active");
-    const top=target.getBoundingClientRect().top+window.scrollY-getScrollOffset();
-    window.scrollTo({top,behavior:"smooth"});
-    window.setTimeout(()=>focusSection(target),650);
-  }));
-
-  links.forEach(link=>{
-    if(link.classList.contains("is-disabled")){
-      link.addEventListener("click",e=>e.preventDefault());
-    }
-  });
-
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting) return;
-      const id=entry.target.id;
-      links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+id));
-    });
-  },{rootMargin:"-38% 0px -52% 0px",threshold:.01});
-
-  sections.forEach(s=>observer.observe(s));
-
-  document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>a.addEventListener("click",function(e){
-    if(a.getAttribute("href")!=="#top") return;
-    e.preventDefault();
-    links.forEach(l=>l.classList.remove("is-active"));
-    window.scrollTo({top:0,behavior:"smooth"});
-  }));
+const nav=document.querySelector(".atlas-editorial-nav");
+const links=[...document.querySelectorAll("[data-section-link]")];
+const sections=[...document.querySelectorAll("[data-profile-section]")];
+function off(){const g=document.querySelector("nav");return (g?g.offsetHeight:0)+(nav?nav.offsetHeight:0)+14}
+function foc(s){s.classList.remove("is-editorial-focus");void s.offsetWidth;s.classList.add("is-editorial-focus");setTimeout(()=>s.classList.remove("is-editorial-focus"),1200)}
+links.filter(l=>!l.classList.contains("is-disabled")).forEach(l=>l.addEventListener("click",e=>{const h=l.getAttribute("href");if(!h||h=="#")return;const t=document.querySelector(h);if(!t)return;e.preventDefault();links.forEach(x=>x.classList.remove("is-active"));l.classList.add("is-active");window.scrollTo({top:t.getBoundingClientRect().top+scrollY-off(),behavior:"smooth"});setTimeout(()=>foc(t),650)}));
+links.forEach(l=>{if(l.classList.contains("is-disabled"))l.addEventListener("click",e=>e.preventDefault())});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+e.target.id))})},{rootMargin:"-38% 0px -52% 0px",threshold:.01});
+sections.forEach(s=>obs.observe(s));
+document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>a.addEventListener("click",e=>{if(a.getAttribute("href")!=="#top")return;e.preventDefault();links.forEach(l=>l.classList.remove("is-active"));scrollTo({top:0,behavior:"smooth"})}));
+const wall=document.querySelector(".achievement-wall"), cards=[...document.querySelectorAll(".achievement-artifact")];
+function close(c){c.classList.remove("is-expanded");c.setAttribute("aria-expanded","false");if(wall)wall.classList.remove("has-expanded")}
+function open(c){cards.forEach(x=>{if(x!==c)close(x)});c.classList.add("is-expanded");c.setAttribute("aria-expanded","true");if(wall)wall.classList.add("has-expanded");setTimeout(()=>c.scrollIntoView({behavior:"smooth",block:"center"}),120)}
+cards.forEach(c=>{c.addEventListener("click",e=>{if(e.target.closest(".achievement-cancel")){e.stopPropagation();close(c);return}c.classList.contains("is-expanded")?close(c):open(c)});c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();c.classList.contains("is-expanded")?close(c):open(c)}if(e.key==="Escape")close(c)})});
 });
 </script>
 

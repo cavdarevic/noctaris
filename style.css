@@ -780,124 +780,94 @@
 
 
 /* =========================
-   NOCTARIS v1.0.8 — Symmetric Achievement Wall
-   Removes masonry/dashboard feeling.
+   NOCTARIS v1.0.9 — Desktop 3x2 Achievement Wall
+   Desktop only: strict symmetric grid.
+   Mobile preserved from previous approved version.
    ========================= */
 
-/* Achievements title: calm, secondary to the wall itself */
-.achievements-section h2{
-  font-size: clamp(23px, 3vw, 34px) !important;
-  margin-bottom: 28px !important;
-}
+@media(min-width:761px){
+  .achievement-wall{
+    width: min(100%, 920px) !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+    align-items: stretch !important;
+  }
 
-/* Core principle: strict symmetric rows, no Pinterest/masonry */
-.achievement-wall{
-  width: min(100%, 920px) !important;
-  margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-  gap: 18px !important;
-  align-items: stretch !important;
-}
+  .achievement-large,
+  .achievement-medium,
+  .achievement-small,
+  .achievement-anchor,
+  .achievement-supporting,
+  .achievement-artifact{
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
 
-/* Reset every old layout rule */
-.achievement-large,
-.achievement-medium,
-.achievement-small,
-.achievement-anchor,
-.achievement-supporting{
-  grid-row: auto !important;
-  min-height: auto !important;
-}
+  .achievement-artifact{
+    min-height: 205px !important;
+    height: 205px !important;
+    padding: 22px 20px 20px !important;
+    box-sizing: border-box !important;
+    cursor: pointer;
+    overflow: hidden !important;
+    transform-origin: center center !important;
+    transition:
+      transform .34s ease,
+      opacity .30s ease,
+      filter .30s ease,
+      border-color .30s ease,
+      background .30s ease,
+      box-shadow .30s ease,
+      height .30s ease,
+      min-height .30s ease;
+  }
 
-/* Desktop editorial symmetry:
-   ENCI full width;
-   WDS + Sofia in two equal columns;
-   remaining three in equal columns. */
-.achievement-large{
-  grid-column: 1 / -1 !important;
-  min-height: 178px !important;
-}
+  .achievement-artifact h3{
+    font-size: clamp(18px, 1.85vw, 25px) !important;
+    line-height: 1.10 !important;
+    letter-spacing: .055em !important;
+  }
 
-.achievement-medium{
-  grid-column: span 3 !important;
-  min-height: 148px !important;
-}
+  .achievement-kicker{
+    font-size: 7.2px !important;
+    letter-spacing: .22em !important;
+    margin-bottom: 12px !important;
+  }
 
-.achievement-small{
-  grid-column: span 2 !important;
-  min-height: 126px !important;
-}
+  .achievement-details span{
+    font-size: 9.5px !important;
+  }
 
-.achievement-artifact{
-  padding: 20px 18px 18px !important;
-  cursor: pointer;
-  transform-origin: center center !important;
-  transition:
-    transform .34s ease,
-    opacity .30s ease,
-    filter .30s ease,
-    border-color .30s ease,
-    background .30s ease,
-    box-shadow .30s ease,
-    min-height .30s ease;
-}
+  .achievement-judge{
+    font-size: 7.8px !important;
+  }
 
-.achievement-kicker{
-  font-size: 7.2px !important;
-  letter-spacing: .22em !important;
-  margin-bottom: 11px !important;
-}
+  .achievement-wall.has-expanded .achievement-artifact:not(.is-expanded){
+    opacity: .36 !important;
+    filter: blur(1.4px) brightness(.60) !important;
+  }
 
-.achievement-artifact h3{
-  font-size: clamp(17px, 1.85vw, 24px) !important;
-  line-height: 1.1 !important;
-  letter-spacing: .055em !important;
-}
+  .achievement-artifact.is-expanded{
+    height: auto !important;
+    min-height: 285px !important;
+    transform: scale(1.18) !important;
+    z-index: 20 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    border-color: rgba(195,153,73,.68) !important;
+    background: linear-gradient(180deg, rgba(195,153,73,.08), rgba(255,255,255,.016)) !important;
+    box-shadow: 0 28px 80px rgba(0,0,0,.68) !important;
+  }
 
-.achievement-large h3{
-  font-size: clamp(25px, 3vw, 36px) !important;
-}
+  .achievement-artifact.is-expanded .achievement-details span{
+    font-size: 11px !important;
+  }
 
-.achievement-medium h3{
-  font-size: clamp(20px, 2.35vw, 30px) !important;
-}
-
-.achievement-small h3{
-  font-size: clamp(16px, 1.7vw, 22px) !important;
-}
-
-.achievement-details span{
-  font-size: 9.5px !important;
-}
-
-.achievement-judge{
-  font-size: 7.8px !important;
-}
-
-/* Focus mode */
-.achievement-wall.has-expanded .achievement-artifact:not(.is-expanded){
-  opacity: .36 !important;
-  filter: blur(1.4px) brightness(.60) !important;
-}
-
-.achievement-artifact.is-expanded{
-  opacity: 1 !important;
-  filter: none !important;
-  transform: scale(1.12) !important;
-  z-index: 20 !important;
-  min-height: 265px !important;
-  border-color: rgba(195,153,73,.68) !important;
-  background: linear-gradient(180deg, rgba(195,153,73,.08), rgba(255,255,255,.016)) !important;
-  box-shadow: 0 28px 80px rgba(0,0,0,.68) !important;
-}
-
-.achievement-artifact.is-expanded .achievement-details span{
-  font-size: 11px !important;
-}
-
-.achievement-artifact.is-expanded .achievement-judge{
-  font-size: 9px !important;
+  .achievement-artifact.is-expanded .achievement-judge{
+    font-size: 9px !important;
+  }
 }
 
 .achievement-cancel{
@@ -916,124 +886,5 @@
 
 .achievement-artifact.is-expanded .achievement-cancel{
   display:block !important;
-}
-
-/* Mobile: quiet symmetric wall, not all squeezed into columns */
-@media(max-width:760px){
-  .achievements-section{
-    padding-left: 18px !important;
-    padding-right: 18px !important;
-  }
-
-  .achievements-section h2{
-    font-size: clamp(22px, 6vw, 30px) !important;
-    margin-bottom: 20px !important;
-  }
-
-  .achievement-wall{
-    width: min(100%, 90vw) !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-  }
-
-  /* mobile symmetry:
-     ENCI full row,
-     two medium,
-     two small,
-     final small centered visually by full row */
-  .achievement-large{
-    grid-column: 1 / -1 !important;
-    min-height: 132px !important;
-  }
-
-  .achievement-medium{
-    grid-column: span 1 !important;
-    min-height: 118px !important;
-  }
-
-  .achievement-small{
-    grid-column: span 1 !important;
-    min-height: 104px !important;
-  }
-
-  .achievement-small:last-child{
-    grid-column: 1 / -1 !important;
-    min-height: 92px !important;
-  }
-
-  .achievement-artifact{
-    padding: 14px 10px 12px !important;
-  }
-
-  .achievement-kicker{
-    font-size: 5.8px !important;
-    letter-spacing: .13em !important;
-    margin-bottom: 7px !important;
-  }
-
-  .achievement-artifact h3{
-    font-size: clamp(11px, 3.2vw, 15px) !important;
-    line-height: 1.08 !important;
-  }
-
-  .achievement-large h3{
-    font-size: clamp(17px, 5vw, 23px) !important;
-  }
-
-  .achievement-medium h3{
-    font-size: clamp(13px, 3.7vw, 17px) !important;
-  }
-
-  .achievement-small h3{
-    font-size: clamp(12px, 3.4vw, 16px) !important;
-  }
-
-  .achievement-artifact:not(.is-expanded) .achievement-details,
-  .achievement-artifact:not(.is-expanded) .achievement-judge{
-    display: none !important;
-  }
-
-  .achievement-artifact.is-expanded{
-    grid-column: 1 / -1 !important;
-    min-height: 260px !important;
-    transform: scale(1.035) !important;
-  }
-
-  .achievement-artifact.is-expanded h3{
-    font-size: clamp(24px, 7vw, 34px) !important;
-  }
-
-  .achievement-artifact.is-expanded .achievement-details{
-    display:flex !important;
-    margin-top: 16px !important;
-  }
-
-  .achievement-artifact.is-expanded .achievement-judge{
-    display:block !important;
-    margin-top: 16px !important;
-  }
-
-  .achievement-artifact.is-expanded .achievement-details span{
-    font-size: 11px !important;
-  }
-
-  .achievement-artifact.is-expanded .achievement-judge{
-    font-size: 8px !important;
-  }
-}
-
-@media(max-width:390px){
-  .achievement-wall{
-    width: min(100%, 92vw) !important;
-    gap: 8px !important;
-  }
-
-  .achievement-large{ min-height: 122px !important; }
-  .achievement-medium{ min-height: 108px !important; }
-  .achievement-small{ min-height: 98px !important; }
-
-  .achievement-artifact{
-    padding: 13px 8px 11px !important;
-  }
 }
 

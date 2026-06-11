@@ -778,3 +778,256 @@
   .achievement-artifact{padding:12px 6px 10px!important}
 }
 
+
+/* =========================
+   NOCTARIS v1.0.7 — Editorial Achievement Wall
+   Final Hall of Fame layout: calm, symmetric, monolithic
+   ========================= */
+
+/* Keep title badges elegant and slightly lower on mobile */
+@media(max-width:760px){
+  .title-grid,
+  .titles-grid{
+    width: min(100%, 91vw) !important;
+  }
+
+  .title-grid .title-badge,
+  .titles-grid .title-badge,
+  .title-badge{
+    min-height: 48px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+}
+
+/* Achievement heading stays quiet */
+.achievements-section h2{
+  font-size: clamp(23px, 3vw, 34px) !important;
+  margin-bottom: 26px !important;
+}
+
+/* Desktop: centered editorial pyramid, not dashboard */
+.achievement-wall{
+  width: min(100%, 900px) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+}
+
+/* Reset previous aggressive spans */
+.achievement-large,
+.achievement-medium,
+.achievement-small,
+.achievement-anchor,
+.achievement-supporting{
+  min-height: auto !important;
+  grid-row: auto !important;
+}
+
+/* Symmetric Hall of Fame:
+   row 1: centered large
+   row 2: two medium
+   row 3: three small */
+.achievement-large{
+  grid-column: 2 / span 4 !important;
+  min-height: 210px !important;
+}
+
+.achievement-medium{
+  grid-column: span 3 !important;
+  min-height: 166px !important;
+}
+
+.achievement-small{
+  grid-column: span 2 !important;
+  min-height: 142px !important;
+}
+
+.achievement-artifact{
+  padding: 20px 18px 18px !important;
+  cursor: pointer;
+  transition:
+    transform .34s ease,
+    opacity .30s ease,
+    filter .30s ease,
+    border-color .30s ease,
+    background .30s ease,
+    box-shadow .30s ease,
+    min-height .30s ease;
+}
+
+.achievement-kicker{
+  font-size: 7.2px !important;
+  letter-spacing: .22em !important;
+  margin-bottom: 11px !important;
+}
+
+.achievement-artifact h3{
+  font-size: clamp(17px, 2vw, 25px) !important;
+  line-height: 1.1 !important;
+  letter-spacing: .055em !important;
+}
+
+.achievement-large h3{
+  font-size: clamp(24px, 3vw, 35px) !important;
+}
+
+.achievement-details span{
+  font-size: 9.5px !important;
+}
+
+.achievement-judge{
+  font-size: 7.8px !important;
+}
+
+/* Focus mode */
+.achievement-wall.has-expanded .achievement-artifact:not(.is-expanded){
+  opacity: .36 !important;
+  filter: blur(1.4px) brightness(.60) !important;
+}
+
+.achievement-artifact.is-expanded{
+  opacity: 1 !important;
+  filter: none !important;
+  transform: scale(1.16) !important;
+  z-index: 20 !important;
+  min-height: 285px !important;
+  border-color: rgba(195,153,73,.68) !important;
+  background: linear-gradient(180deg, rgba(195,153,73,.08), rgba(255,255,255,.016)) !important;
+  box-shadow: 0 28px 80px rgba(0,0,0,.68) !important;
+}
+
+.achievement-artifact.is-expanded .achievement-details span{
+  font-size: 11px !important;
+}
+
+.achievement-artifact.is-expanded .achievement-judge{
+  font-size: 9px !important;
+}
+
+.achievement-cancel{
+  display:none;
+  position:absolute;
+  top:10px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:rgba(255,255,255,.62);
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:7px;
+  cursor:pointer;
+}
+
+.achievement-artifact.is-expanded .achievement-cancel{
+  display:block !important;
+}
+
+/* Mobile: Hall of Fame, not a roll.
+   6 current achievements fit as a calm composition. */
+@media(max-width:760px){
+  .achievements-section{
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .achievements-section h2{
+    font-size: clamp(22px, 6vw, 30px) !important;
+    margin-bottom: 20px !important;
+  }
+
+  .achievement-wall{
+    width: min(100%, 92vw) !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+  }
+
+  .achievement-large{
+    grid-column: 1 / -1 !important;
+    min-height: 116px !important;
+  }
+
+  .achievement-medium{
+    grid-column: span 3 !important;
+    min-height: 104px !important;
+  }
+
+  .achievement-small{
+    grid-column: span 2 !important;
+    min-height: 84px !important;
+  }
+
+  .achievement-artifact{
+    padding: 13px 7px 11px !important;
+  }
+
+  .achievement-kicker{
+    font-size: 5.6px !important;
+    letter-spacing: .12em !important;
+    margin-bottom: 6px !important;
+  }
+
+  .achievement-artifact h3{
+    font-size: clamp(9.5px, 2.85vw, 13px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .achievement-large h3{
+    font-size: clamp(16px, 5vw, 22px) !important;
+  }
+
+  .achievement-medium h3{
+    font-size: clamp(12px, 3.7vw, 16px) !important;
+  }
+
+  .achievement-artifact:not(.is-expanded) .achievement-details,
+  .achievement-artifact:not(.is-expanded) .achievement-judge{
+    display: none !important;
+  }
+
+  .achievement-artifact.is-expanded{
+    grid-column: 1 / -1 !important;
+    min-height: 260px !important;
+    transform: scale(1.035) !important;
+  }
+
+  .achievement-artifact.is-expanded h3{
+    font-size: clamp(24px, 7vw, 34px) !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-details{
+    display:flex !important;
+    margin-top: 16px !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-judge{
+    display:block !important;
+    margin-top: 16px !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-details span{
+    font-size: 11px !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-judge{
+    font-size: 8px !important;
+  }
+}
+
+@media(max-width:390px){
+  .achievement-wall{
+    width: min(100%, 94vw) !important;
+    gap: 7px !important;
+  }
+
+  .achievement-large{ min-height: 108px !important; }
+  .achievement-medium{ min-height: 96px !important; }
+  .achievement-small{ min-height: 78px !important; }
+
+  .achievement-artifact{
+    padding: 12px 6px 10px !important;
+  }
+}
+

@@ -364,24 +364,103 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
+
 <script id="noctaris-editorial-navigation-script">
 document.addEventListener("DOMContentLoaded",function(){
-const nav=document.querySelector(".atlas-editorial-nav");
-const links=[...document.querySelectorAll("[data-section-link]")];
-const sections=[...document.querySelectorAll("[data-profile-section]")];
-function off(){const g=document.querySelector("nav");return (g?g.offsetHeight:0)+(nav?nav.offsetHeight:0)+14}
-function foc(s){s.classList.remove("is-editorial-focus");void s.offsetWidth;s.classList.add("is-editorial-focus");setTimeout(()=>s.classList.remove("is-editorial-focus"),1200)}
-links.filter(l=>!l.classList.contains("is-disabled")).forEach(l=>l.addEventListener("click",e=>{const h=l.getAttribute("href");if(!h||h=="#")return;const t=document.querySelector(h);if(!t)return;e.preventDefault();links.forEach(x=>x.classList.remove("is-active"));l.classList.add("is-active");window.scrollTo({top:t.getBoundingClientRect().top+scrollY-off(),behavior:"smooth"});setTimeout(()=>foc(t),650)}));
-links.forEach(l=>{if(l.classList.contains("is-disabled"))l.addEventListener("click",e=>e.preventDefault())});
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+e.target.id))})},{rootMargin:"-38% 0px -52% 0px",threshold:.01});
-sections.forEach(s=>obs.observe(s));
-document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>a.addEventListener("click",e=>{if(a.getAttribute("href")!=="#top")return;e.preventDefault();links.forEach(l=>l.classList.remove("is-active"));scrollTo({top:0,behavior:"smooth"})}));
-const wall=document.querySelector(".achievement-wall"), cards=[...document.querySelectorAll(".achievement-artifact")];
-function close(c){c.classList.remove("is-expanded");c.setAttribute("aria-expanded","false");if(wall)wall.classList.remove("has-expanded")}
-function open(c){cards.forEach(x=>{if(x!==c)close(x)});c.classList.add("is-expanded");c.setAttribute("aria-expanded","true");if(wall)wall.classList.add("has-expanded");setTimeout(()=>c.scrollIntoView({behavior:"smooth",block:"center"}),120)}
-cards.forEach(c=>{c.addEventListener("click",e=>{if(e.target.closest(".achievement-cancel")){e.stopPropagation();close(c);return}c.classList.contains("is-expanded")?close(c):open(c)});c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();c.classList.contains("is-expanded")?close(c):open(c)}if(e.key==="Escape")close(c)})});
+  const nav=document.querySelector(".atlas-editorial-nav");
+  const links=[...document.querySelectorAll("[data-section-link]")];
+  const sections=[...document.querySelectorAll("[data-profile-section]")];
+
+  function getScrollOffset(){
+    const globalNav=document.querySelector("nav");
+    return (globalNav ? globalNav.offsetHeight : 0) + (nav ? nav.offsetHeight : 0) + 18;
+  }
+
+  function focusSection(section){
+    section.classList.remove("is-editorial-focus");
+    void section.offsetWidth;
+    section.classList.add("is-editorial-focus");
+    window.setTimeout(()=>section.classList.remove("is-editorial-focus"),1200);
+  }
+
+  links.filter(l=>!l.classList.contains("is-disabled")).forEach(link=>{
+    link.addEventListener("click",function(e){
+      const href=link.getAttribute("href");
+      if(!href||href==="#") return;
+      const target=document.querySelector(href);
+      if(!target) return;
+      e.preventDefault();
+      links.forEach(l=>l.classList.remove("is-active"));
+      link.classList.add("is-active");
+      window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-getScrollOffset(),behavior:"smooth"});
+      window.setTimeout(()=>focusSection(target),650);
+    });
+  });
+
+  links.forEach(link=>{
+    if(link.classList.contains("is-disabled")) link.addEventListener("click",e=>e.preventDefault());
+  });
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const id=entry.target.id;
+      links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+id));
+    });
+  },{rootMargin:"-38% 0px -52% 0px",threshold:.01});
+  sections.forEach(s=>observer.observe(s));
+
+  document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>{
+    a.addEventListener("click",function(e){
+      if(a.getAttribute("href")!=="#top") return;
+      e.preventDefault();
+      links.forEach(l=>l.classList.remove("is-active"));
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+  });
+
+  const wall=document.querySelector(".achievement-wall");
+  const cards=[...document.querySelectorAll(".achievement-artifact")];
+
+  function closeCard(card){
+    card.classList.remove("is-expanded");
+    card.setAttribute("aria-expanded","false");
+    if(wall) wall.classList.remove("has-expanded");
+  }
+
+  function openCard(card){
+    cards.forEach(c=>{
+      if(c!==card){
+        c.classList.remove("is-expanded");
+        c.setAttribute("aria-expanded","false");
+      }
+    });
+    card.classList.add("is-expanded");
+    card.setAttribute("aria-expanded","true");
+    if(wall) wall.classList.add("has-expanded");
+    window.setTimeout(()=>card.scrollIntoView({behavior:"smooth",block:"center"}),120);
+  }
+
+  cards.forEach(card=>{
+    card.addEventListener("click",function(e){
+      if(e.target.closest(".achievement-cancel")){
+        e.stopPropagation();
+        closeCard(card);
+        return;
+      }
+      card.classList.contains("is-expanded") ? closeCard(card) : openCard(card);
+    });
+    card.addEventListener("keydown",function(e){
+      if(e.key==="Enter"||e.key===" "){
+        e.preventDefault();
+        card.classList.contains("is-expanded") ? closeCard(card) : openCard(card);
+      }
+      if(e.key==="Escape") closeCard(card);
+    });
+  });
 });
 </script>
+
 
 
 </body>

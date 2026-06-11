@@ -888,3 +888,113 @@
   display:block !important;
 }
 
+
+/* =========================
+   NOCTARIS v1.0.10 — Mobile Achievement Wall Restored
+   Desktop v1.0.9 remains unchanged.
+   Mobile returns to clean 2x3 symmetric grid.
+   ========================= */
+
+@media(max-width:760px){
+  .achievement-wall{
+    width: min(100%, 92vw) !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+
+  .achievement-large,
+  .achievement-medium,
+  .achievement-small,
+  .achievement-anchor,
+  .achievement-supporting,
+  .achievement-artifact{
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .achievement-artifact{
+    min-height: 128px !important;
+    height: 128px !important;
+    padding: 14px 10px 12px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .achievement-kicker{
+    font-size: 5.8px !important;
+    letter-spacing: .13em !important;
+    margin-bottom: 7px !important;
+  }
+
+  .achievement-artifact h3,
+  .achievement-anchor h3,
+  .achievement-large h3,
+  .achievement-medium h3,
+  .achievement-small h3{
+    font-size: clamp(12px, 3.7vw, 17px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: .045em !important;
+  }
+
+  .achievement-artifact:not(.is-expanded) .achievement-details,
+  .achievement-artifact:not(.is-expanded) .achievement-judge{
+    display: none !important;
+  }
+
+  .achievement-wall.has-expanded .achievement-artifact:not(.is-expanded){
+    opacity: .36 !important;
+    filter: blur(1.4px) brightness(.60) !important;
+  }
+
+  .achievement-artifact.is-expanded{
+    grid-column: 1 / -1 !important;
+    height: auto !important;
+    min-height: 260px !important;
+    transform: scale(1.035) !important;
+    z-index: 20 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    border-color: rgba(195,153,73,.68) !important;
+    background: linear-gradient(180deg, rgba(195,153,73,.08), rgba(255,255,255,.016)) !important;
+    box-shadow: 0 28px 80px rgba(0,0,0,.68) !important;
+  }
+
+  .achievement-artifact.is-expanded h3{
+    font-size: clamp(24px, 7vw, 34px) !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-details{
+    display: flex !important;
+    margin-top: 16px !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-judge{
+    display: block !important;
+    margin-top: 16px !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-details span{
+    font-size: 11px !important;
+  }
+
+  .achievement-artifact.is-expanded .achievement-judge{
+    font-size: 8px !important;
+  }
+}
+
+@media(max-width:390px){
+  .achievement-wall{
+    width: min(100%, 94vw) !important;
+    gap: 8px !important;
+  }
+
+  .achievement-artifact{
+    min-height: 118px !important;
+    height: 118px !important;
+    padding: 13px 8px 11px !important;
+  }
+}
+

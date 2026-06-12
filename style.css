@@ -1014,3 +1014,44 @@
   #pedigree .section-return-inline,#photos .section-return-inline,#photographs .section-return-inline{margin-bottom:22px!important}
 }
 
+/* NOCTARIS v1.0.12 — Precise Back To Top Fix */
+.section-return-inline{
+  display:block !important;
+  margin:14px auto 22px !important;
+  text-align:center !important;
+  width:100% !important;
+}
+.section-return-inline a{
+  display:inline-block !important;
+  padding:11px 20px !important;
+  border-top:1px solid rgba(195,153,73,.38) !important;
+  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  color:rgba(255,255,255,.78) !important;
+  font-size:9px !important;
+  letter-spacing:.24em !important;
+  line-height:1 !important;
+  text-decoration:none !important;
+  text-transform:uppercase !important;
+}
+.section-return-inline a:hover{
+  color:rgba(255,255,255,.96) !important;
+  border-top-color:rgba(195,153,73,.68) !important;
+}
+#pedigree .pedigree-return-top,
+#photos .photos-return-top{
+  margin-top:12px !important;
+  margin-bottom:20px !important;
+}
+@media(max-width:760px){
+  #pedigree .pedigree-return-top,
+  #photos .photos-return-top{
+    margin-top:10px !important;
+    margin-bottom:18px !important;
+  }
+  .section-return-inline a{
+    padding:10px 17px !important;
+    font-size:8.5px !important;
+    letter-spacing:.21em !important;
+  }
+}
+

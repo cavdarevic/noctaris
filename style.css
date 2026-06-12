@@ -998,3 +998,19 @@
   }
 }
 
+/* NOCTARIS v1.0.11 — Navigation + Back To Top UX Fix */
+.section-return-inline{margin:18px auto 28px!important;text-align:center!important}
+.section-return-inline a{display:inline-block!important;padding:12px 22px!important;border-top:1px solid rgba(195,153,73,.35)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;color:rgba(255,255,255,.78)!important;font-size:10px!important;letter-spacing:.26em!important;text-decoration:none!important;text-transform:uppercase!important}
+.section-return-inline a:hover{color:rgba(255,255,255,.96)!important;border-top-color:rgba(195,153,73,.65)!important}
+#pedigree .section-return-inline,#photos .section-return-inline,#photographs .section-return-inline{margin-top:16px!important;margin-bottom:26px!important}
+#pedigree .section-return:not(.section-return-inline),#photos .section-return:not(.section-return-inline),#photographs .section-return:not(.section-return-inline){margin-top:24px!important}
+@media(min-width:761px){
+  #pedigree{padding-bottom:42px!important}
+  #pedigree .pedigree-preview,#pedigree .pedigree-frame,#pedigree .pedigree-image{margin-bottom:22px!important}
+}
+@media(max-width:760px){
+  .section-return-inline{margin:14px auto 24px!important}
+  .section-return-inline a{padding:11px 18px!important;font-size:9px!important;letter-spacing:.22em!important}
+  #pedigree .section-return-inline,#photos .section-return-inline,#photographs .section-return-inline{margin-bottom:22px!important}
+}
+

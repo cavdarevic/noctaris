@@ -103,6 +103,7 @@
   <section class="pedigree-section editorial-section" id="pedigree" data-profile-section="pedigree">
     <p class="archive-label">Bloodline</p>
     <h2>Pedigree</h2>
+<div class="section-return section-return-inline pedigree-return-top"><a href="#top">↑ BACK TO TOP</a></div>
     <div class="pedigree-ornament"></div>
     <button class="v8-tree-button" type="button" id="open-pedigree-viewer" aria-label="Open NOCTARIS bloodline tree viewer"><svg class="v8-svg" viewBox="0 0 1680 930" role="img" aria-label="NOCTARIS bloodline tree">
 <path class="v8-line" d="M 840.0 190.0 V 230.0 H 530.8 V 270.0 M 840.0 230.0 H 1149.2 V 270.0"/>
@@ -369,7 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded",function(){
   const nav=document.querySelector(".atlas-editorial-nav");
   const links=[...document.querySelectorAll("[data-section-link]")];
-  const sections=[...document.querySelectorAll("[data-profile-section]")];
+  const sections=[...document.querySelectorAll("[data-profile-section], #photos, #photographs, #pedigree, #achievements")];
 
   function getScrollOffset(){
     const globalNav=document.querySelector("nav");
@@ -408,7 +409,7 @@ document.addEventListener("DOMContentLoaded",function(){
       links.forEach(l=>l.classList.toggle("is-active",l.getAttribute("href")==="#"+id));
     });
   },{rootMargin:"-38% 0px -52% 0px",threshold:.01});
-  sections.forEach(s=>observer.observe(s));
+  sections.forEach(s=>{ if(s && s.id) observer.observe(s); });
 
   document.querySelectorAll(".section-return a,.back-to-top").forEach(a=>{
     a.addEventListener("click",function(e){

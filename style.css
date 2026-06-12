@@ -1153,9 +1153,41 @@
   }
 }
 
-/* NOCTARIS v1.0.15 — Remove duplicate Back To Top */
-#photos .section-return:not(.photos-return-after),
-#pedigree .section-return:not(.pedigree-return-after){
-  display:none !important;
+/* NOCTARIS v1.0.16 — Final single Back To Top cleanup */
+.section-return-after{
+  display:block !important;
+  width:100% !important;
+  text-align:center !important;
+}
+.section-return-after a{
+  display:inline-block !important;
+  padding:10px 18px !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  color:rgba(255,255,255,.78) !important;
+  font-size:8.5px !important;
+  letter-spacing:.23em !important;
+  line-height:1 !important;
+  text-decoration:none !important;
+  text-transform:uppercase !important;
+  background:transparent !important;
+}
+#pedigree .pedigree-return-after{
+  margin:10px auto 30px !important;
+}
+#photos .photos-return-after{
+  margin:18px auto 0 !important;
+}
+@media(max-width:760px){
+  .section-return-after a{
+    padding:10px 16px !important;
+    font-size:8.3px !important;
+    letter-spacing:.20em !important;
+  }
+  #pedigree .pedigree-return-after{
+    margin:8px auto 26px !important;
+  }
+  #photos .photos-return-after{
+    margin:16px auto 0 !important;
+  }
 }
 

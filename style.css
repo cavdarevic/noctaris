@@ -1014,44 +1014,59 @@
   #pedigree .section-return-inline,#photos .section-return-inline,#photographs .section-return-inline{margin-bottom:22px!important}
 }
 
-/* NOCTARIS v1.0.12 — Precise Back To Top Fix */
-.section-return-inline{
+/* NOCTARIS v1.0.13 — Back To Top Reposition */
+.section-return-after{
   display:block !important;
-  margin:14px auto 22px !important;
   text-align:center !important;
   width:100% !important;
 }
-.section-return-inline a{
+.section-return-after a{
   display:inline-block !important;
   padding:11px 20px !important;
-  border-top:1px solid rgba(195,153,73,.38) !important;
-  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
   color:rgba(255,255,255,.78) !important;
   font-size:9px !important;
   letter-spacing:.24em !important;
   line-height:1 !important;
   text-decoration:none !important;
   text-transform:uppercase !important;
+  background:transparent !important;
 }
-.section-return-inline a:hover{
+.section-return-after a:hover{
   color:rgba(255,255,255,.96) !important;
-  border-top-color:rgba(195,153,73,.68) !important;
+  border-color:rgba(195,153,73,.55) !important;
 }
-#pedigree .pedigree-return-top,
-#photos .photos-return-top{
-  margin-top:12px !important;
-  margin-bottom:20px !important;
+#pedigree .pedigree-return-after{
+  margin:16px auto 46px !important;
 }
+#photos .photos-return-after{
+  margin:22px auto 0 !important;
+}
+
+/* Pull Pedigree action area closer to diagram so full pedigree + return stay visible */
+#pedigree .pedigree-preview,
+#pedigree .pedigree-frame,
+#pedigree .pedigree-image{
+  margin-bottom:16px !important;
+}
+#pedigree .open-pedigree,
+#pedigree .pedigree-open,
+#pedigree .full-pedigree,
+#pedigree a[href*="pedigree"]{
+  margin-top:14px !important;
+}
+
 @media(max-width:760px){
-  #pedigree .pedigree-return-top,
-  #photos .photos-return-top{
-    margin-top:10px !important;
-    margin-bottom:18px !important;
-  }
-  .section-return-inline a{
+  .section-return-after a{
     padding:10px 17px !important;
     font-size:8.5px !important;
     letter-spacing:.21em !important;
+  }
+  #pedigree .pedigree-return-after{
+    margin:14px auto 40px !important;
+  }
+  #photos .photos-return-after{
+    margin:18px auto 0 !important;
   }
 }
 

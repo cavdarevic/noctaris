@@ -1153,3 +1153,9 @@
   }
 }
 
+/* NOCTARIS v1.0.15 — Remove duplicate Back To Top */
+#photos .section-return:not(.photos-return-after),
+#pedigree .section-return:not(.pedigree-return-after){
+  display:none !important;
+}
+

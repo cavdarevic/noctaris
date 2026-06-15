@@ -115,7 +115,7 @@
       <div class="v8-role">ATLAS</div>
       <div class="v8-name">MADE IN SPAIN ATLAS</div>
       <div class="v8-reg">LOE 2745202 · JR 79591 Pš</div>
-      <div class="v8-titles">J.SRB.26 J.MNE.26 J.BIH.26 C.I.B.-J.26</div>
+      <div class="v8-titles">J.SRB.26 J.CH.IT.26 J.MNE.26 J.BIH.26 C.I.B.-J.26</div>
     </div></foreignObject>
 <foreignObject x="443.3" y="270.0" width="175" height="148" class="v8-fo"><div xmlns="http://www.w3.org/1999/xhtml" class="v8-card medium">
       <div class="v8-role">SIRE</div>
@@ -229,7 +229,7 @@
       <div class="v8-role">ATLAS</div>
       <div class="v8-name">MADE IN SPAIN ATLAS</div>
       <div class="v8-reg">LOE 2745202 · JR 79591 Pš</div>
-      <div class="v8-titles">J.SRB.26 J.MNE.26 J.BIH.26 C.I.B.-J.26</div>
+      <div class="v8-titles">J.SRB.26 J.CH.IT.26 J.MNE.26 J.BIH.26 C.I.B.-J.26</div>
     </div></foreignObject>
 <foreignObject x="443.3" y="270.0" width="175" height="148" class="v8-fo"><div xmlns="http://www.w3.org/1999/xhtml" class="v8-card medium">
       <div class="v8-role">SIRE</div>
@@ -348,7 +348,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close");
   let ps=1, px=0, py=0, pp=new Map(), pd0=0, ps0=1, pc0=null, pdrag=null;
-  function pSet() { pContent.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px)) scale(${ps})`; }
+  function pSet() {
+    const base = Math.min(window.innerWidth * 0.96, 1680);
+    pContent.style.width = `${base * ps}px`;
+    pContent.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`;
+  }
   function pReset() { ps=1; px=0; py=0; pSet(); }
   function pc(v) { return Math.min(Math.max(v,.75),5); }
   pOpen.addEventListener("click", () => { pReset(); pModal.classList.add("is-open"); pModal.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; });

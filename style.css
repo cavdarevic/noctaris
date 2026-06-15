@@ -1191,3 +1191,30 @@
   }
 }
 
+/* NOCTARIS v1.0.17 — Pedigree Italy title + crisp zoom */
+.pedigree-zoom-content{
+  width:min(96vw,1680px) !important;
+  transform:translate(-50%,-50%) !important;
+  backface-visibility:hidden !important;
+  -webkit-font-smoothing:antialiased !important;
+  text-rendering:geometricPrecision !important;
+}
+.pedigree-zoom-content .v8-svg,
+.pedigree-zoom-content .v8-card,
+.pedigree-zoom-content .v8-name,
+.pedigree-zoom-content .v8-reg,
+.pedigree-zoom-content .v8-titles{
+  text-rendering:geometricPrecision !important;
+  -webkit-font-smoothing:antialiased !important;
+}
+.v8-fo.featured .v8-titles{
+  font-size:7.25px !important;
+  line-height:1.16 !important;
+}
+@media(max-width:760px){
+  .v8-fo.featured .v8-titles{
+    font-size:8px !important;
+    line-height:1.14 !important;
+  }
+}
+

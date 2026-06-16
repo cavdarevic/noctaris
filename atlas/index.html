@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const PEDIGREE_ZOOM = 1.6;
 
   function pSet() {
-    pContent.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px)) scale(${ps})`;
+    pContent.style.setProperty("transform", `translate(calc(-50% + ${px}px), calc(-50% + ${py}px)) scale(${ps})`, "important");
   }
 
   function pReset() {
@@ -386,6 +386,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   pClose.addEventListener("click", pCloseFn);
+
+  /* NOCTARIS fallback: direct content double click/tap zoom */
+  let pContentLastTap = 0, pContentLastX = 0, pContentLastY = 0;
+  function pDoubleTapFallback(e){
+    if (pIsCloseTarget(e)) return;
+    const now = Date.now();
+    const x = e.clientX || 0;
+    const y = e.clientY || 0;
+    const dist = Math.hypot(x - pContentLastX, y - pContentLastY);
+    if (now - pContentLastTap < 360 && dist < 38) {
+      e.preventDefault();
+      pToggleZoom();
+      pContentLastTap = 0;
+    } else {
+      pContentLastTap = now;
+      pContentLastX = x;
+      pContentLastY = y;
+    }
+  }
+  pContent.addEventListener("dblclick", e => { e.preventDefault(); pToggleZoom(); });
+  pContent.addEventListener("click", pDoubleTapFallback);
+
 
   function pIsCloseTarget(e) {
     return e.target && e.target.closest && e.target.closest(".pedigree-close");

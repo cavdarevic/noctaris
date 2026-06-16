@@ -1271,3 +1271,8 @@
   will-change:transform !important;
 }
 
+/* NOCTARIS v1.0.21 — Pedigree zoom real fix */
+.pedigree-zoom-content{
+  transform:translate(-50%,-50%) scale(1);
+}
+

@@ -1276,3 +1276,72 @@
   transform:translate(-50%,-50%) scale(1);
 }
 
+/* NOCTARIS v1.0.22 — Pedigree fullscreen zoom + hint */
+.pedigree-modal{
+  opacity:0;
+  transition:opacity .28s ease !important;
+}
+.pedigree-modal.is-open{
+  opacity:1;
+}
+.pedigree-stage,
+.pedigree-zoom-content,
+.pedigree-zoom-content *{
+  touch-action:none !important;
+  user-select:none !important;
+  -webkit-user-select:none !important;
+}
+.pedigree-stage{
+  cursor:zoom-in !important;
+}
+.pedigree-stage.is-dragging{
+  cursor:grabbing !important;
+}
+.pedigree-zoom-content{
+  width:min(96vw,1680px) !important;
+  transform:translate(-50%,-50%) scale(1) !important;
+  transform-origin:center center !important;
+  will-change:transform !important;
+  filter:none !important;
+  backface-visibility:hidden !important;
+  -webkit-font-smoothing:antialiased !important;
+  text-rendering:geometricPrecision !important;
+}
+.pedigree-zoom-content .v8-svg,
+.pedigree-zoom-content .v8-card,
+.pedigree-zoom-content .v8-name,
+.pedigree-zoom-content .v8-reg,
+.pedigree-zoom-content .v8-titles{
+  filter:none !important;
+  text-rendering:geometricPrecision !important;
+  -webkit-font-smoothing:antialiased !important;
+}
+.pedigree-zoom-hint{
+  position:fixed;
+  left:50%;
+  bottom:34px;
+  transform:translateX(-50%);
+  z-index:4012;
+  color:rgba(255,255,255,.58);
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .55s ease;
+  white-space:nowrap;
+}
+.pedigree-zoom-hint.is-visible{
+  opacity:1;
+}
+.pedigree-zoom-hint.is-hiding{
+  opacity:0;
+}
+@media(max-width:760px){
+  .pedigree-zoom-hint{
+    bottom:28px;
+    font-size:8.5px;
+    letter-spacing:.18em;
+  }
+}
+

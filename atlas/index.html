@@ -217,7 +217,7 @@
 </main>
 
 <div class="gallery-modal" id="gallery-modal" aria-hidden="true"><div class="gallery-stage" id="gallery-stage"><button class="gallery-close" id="gallery-close" type="button">Close</button><button class="gallery-arrow gallery-prev" id="gallery-prev" type="button">‹</button><img class="gallery-image" id="gallery-full" alt="Atlas fullscreen photo"><button class="gallery-arrow gallery-next" id="gallery-next" type="button">›</button></div></div>
-<div class="pedigree-modal" id="pedigree-modal" aria-hidden="true"><div class="pedigree-stage" id="pedigree-stage"><button class="pedigree-close" id="pedigree-close" type="button">Close</button><div class="pedigree-zoom-content" id="pedigree-zoom-content"><svg class="v8-svg" viewBox="0 0 1680 930" role="img" aria-label="NOCTARIS bloodline tree">
+<div class="pedigree-modal" id="pedigree-modal" aria-hidden="true"><div class="pedigree-stage" id="pedigree-stage"><button class="pedigree-close" id="pedigree-close" type="button">Close</button><div class="pedigree-zoom-hint" id="pedigree-zoom-hint">Double tap to inspect pedigree</div><div class="pedigree-zoom-content" id="pedigree-zoom-content"><svg class="v8-svg" viewBox="0 0 1680 930" role="img" aria-label="NOCTARIS bloodline tree">
 <path class="v8-line" d="M 840.0 190.0 V 230.0 H 530.8 V 270.0 M 840.0 230.0 H 1149.2 V 270.0"/>
 <path class="v8-line" d="M 530.8 418.0 V 459.0 H 283.5 V 500.0 M 530.8 459.0 H 654.5 V 500.0"/>
 <path class="v8-line" d="M 1149.2 418.0 V 459.0 H 1025.5 V 500.0 M 1149.2 459.0 H 1396.5 V 500.0"/>
@@ -346,19 +346,41 @@ document.addEventListener("DOMContentLoaded", function () {
   stage.addEventListener("wheel", e => { e.preventDefault(); const old = scale; scale = clampScale(scale + (e.deltaY < 0 ? .22 : -.22)); if (scale === 1) { panX = 0; panY = 0; } else { panX *= scale / old; panY *= scale / old; } setTransform(); }, { passive:false });
   close.addEventListener("click", closeGallery); prev.addEventListener("click", () => show(-1)); next.addEventListener("click", () => show(1));
 
-  const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close");
-  let ps=1, px=0, py=0, pdrag=null, pDown=null, pLastTap=0, pLastTapX=0, pLastTapY=0;
-  const PEDIGREE_ZOOM = 1.6;
+  const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close"), pHint = document.getElementById("pedigree-zoom-hint");
+  let ps=1, px=0, py=0, pdrag=null, pLastTap=0, pLastTapX=0, pLastTapY=0, pHintTimer=null;
+  const PEDIGREE_ZOOM = 2.15;
 
   function pSet() {
     pContent.style.setProperty("transform", `translate(calc(-50% + ${px}px), calc(-50% + ${py}px)) scale(${ps})`, "important");
   }
 
   function pReset() {
-    ps=1; px=0; py=0; pSet();
+    ps=1;
+    px=0;
+    py=0;
+    pSet();
+  }
+
+  function pShowHint() {
+    if (!pHint) return;
+    clearTimeout(pHintTimer);
+    pHint.classList.remove("is-hiding");
+    pHint.classList.add("is-visible");
+    pHintTimer = setTimeout(() => {
+      pHint.classList.add("is-hiding");
+      pHint.classList.remove("is-visible");
+    }, 2600);
+  }
+
+  function pHideHint() {
+    if (!pHint) return;
+    clearTimeout(pHintTimer);
+    pHint.classList.remove("is-visible");
+    pHint.classList.add("is-hiding");
   }
 
   function pToggleZoom() {
+    pHideHint();
     if (ps === 1) {
       ps = PEDIGREE_ZOOM;
       px = 0;
@@ -376,9 +398,11 @@ document.addEventListener("DOMContentLoaded", function () {
     pModal.classList.add("is-open");
     pModal.setAttribute("aria-hidden","false");
     document.body.style.overflow="hidden";
+    pShowHint();
   });
 
   function pCloseFn() {
+    pHideHint();
     pModal.classList.remove("is-open");
     pModal.setAttribute("aria-hidden","true");
     document.body.style.overflow="";
@@ -387,83 +411,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
   pClose.addEventListener("click", pCloseFn);
 
-  /* NOCTARIS fallback: direct content double click/tap zoom */
-  let pContentLastTap = 0, pContentLastX = 0, pContentLastY = 0;
-  function pDoubleTapFallback(e){
-    if (pIsCloseTarget(e)) return;
-    const now = Date.now();
-    const x = e.clientX || 0;
-    const y = e.clientY || 0;
-    const dist = Math.hypot(x - pContentLastX, y - pContentLastY);
-    if (now - pContentLastTap < 360 && dist < 38) {
-      e.preventDefault();
-      pToggleZoom();
-      pContentLastTap = 0;
-    } else {
-      pContentLastTap = now;
-      pContentLastX = x;
-      pContentLastY = y;
-    }
-  }
-  pContent.addEventListener("dblclick", e => { e.preventDefault(); pToggleZoom(); });
-  pContent.addEventListener("click", pDoubleTapFallback);
-
-
   function pIsCloseTarget(e) {
     return e.target && e.target.closest && e.target.closest(".pedigree-close");
+  }
+
+  function pHandleDouble(e) {
+    if (pIsCloseTarget(e)) return;
+    e.preventDefault();
+    pToggleZoom();
+  }
+
+  function pHandleTap(e) {
+    if (pIsCloseTarget(e)) return;
+    const now = Date.now();
+    const dist = Math.hypot(e.clientX - pLastTapX, e.clientY - pLastTapY);
+    if ((now - pLastTap) < 360 && dist < 38) {
+      e.preventDefault();
+      pToggleZoom();
+      pLastTap = 0;
+      return true;
+    }
+    pLastTap = now;
+    pLastTapX = e.clientX;
+    pLastTapY = e.clientY;
+    return false;
   }
 
   pStage.addEventListener("pointerdown", e => {
     if (pIsCloseTarget(e)) return;
     e.preventDefault();
     try { pStage.setPointerCapture(e.pointerId); } catch(err) {}
-    pDown = { id:e.pointerId, x:e.clientX, y:e.clientY, px, py, moved:false };
+    pdrag = { id:e.pointerId, x:e.clientX, y:e.clientY, px, py, moved:false };
     pStage.classList.add("is-dragging");
   }, { passive:false });
 
   pStage.addEventListener("pointermove", e => {
-    if (!pDown || pDown.id !== e.pointerId) return;
-    const dx=e.clientX-pDown.x, dy=e.clientY-pDown.y;
-    if (Math.abs(dx)>4 || Math.abs(dy)>4) pDown.moved=true;
+    if (!pdrag || pdrag.id !== e.pointerId) return;
+    const dx=e.clientX-pdrag.x, dy=e.clientY-pdrag.y;
+    if (Math.abs(dx)>4 || Math.abs(dy)>4) pdrag.moved=true;
     if (ps > 1) {
-      px=pDown.px+dx;
-      py=pDown.py+dy;
+      px=pdrag.px+dx;
+      py=pdrag.py+dy;
       pSet();
     }
   }, { passive:false });
 
   pStage.addEventListener("pointerup", e => {
-    if (!pDown || pDown.id !== e.pointerId) return;
-    const moved = pDown.moved;
+    if (!pdrag || pdrag.id !== e.pointerId) return;
+    const moved = pdrag.moved;
     pStage.classList.remove("is-dragging");
-
-    const now = Date.now();
-    const distTap = Math.hypot(e.clientX-pLastTapX, e.clientY-pLastTapY);
-    const isDoubleTap = !moved && (now-pLastTap < 360) && distTap < 34;
-
-    if (isDoubleTap) {
-      e.preventDefault();
-      pToggleZoom();
-      pLastTap = 0;
-    } else if (!moved) {
-      pLastTap = now;
-      pLastTapX = e.clientX;
-      pLastTapY = e.clientY;
-    }
-
-    pDown = null;
+    pdrag = null;
+    if (!moved) pHandleTap(e);
   }, { passive:false });
 
   pStage.addEventListener("pointercancel", e => {
     pStage.classList.remove("is-dragging");
-    pDown = null;
+    pdrag = null;
   });
 
-  pStage.addEventListener("dblclick", e => {
-    if (pIsCloseTarget(e)) return;
-    e.preventDefault();
-    pToggleZoom();
-  });
+  pStage.addEventListener("dblclick", pHandleDouble);
+  pContent.addEventListener("dblclick", pHandleDouble);
 
   pStage.addEventListener("wheel", e => {
     e.preventDefault();

@@ -347,23 +347,104 @@ document.addEventListener("DOMContentLoaded", function () {
   close.addEventListener("click", closeGallery); prev.addEventListener("click", () => show(-1)); next.addEventListener("click", () => show(1));
 
   const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close");
-  let ps=1, px=0, py=0, pp=new Map(), pd0=0, ps0=1, pc0=null, pdrag=null;
+  let ps=1, px=0, py=0, pp=new Map(), pdrag=null, lastPedigreeTap=0, lastPedigreeTapX=0, lastPedigreeTapY=0;
+  const PEDIGREE_ZOOM = 1.6;
+
   function pSet() {
     const base = Math.min(window.innerWidth * 0.96, 1680);
     pContent.style.width = `${base * ps}px`;
     pContent.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`;
   }
-  function pReset() { ps=1; px=0; py=0; pSet(); }
-  function pc(v) { return Math.min(Math.max(v,.75),5); }
-  pOpen.addEventListener("click", () => { pReset(); pModal.classList.add("is-open"); pModal.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; });
-  function pCloseFn() { pModal.classList.remove("is-open"); pModal.setAttribute("aria-hidden","true"); document.body.style.overflow=""; pp.clear(); setTimeout(() => document.getElementById("pedigree").scrollIntoView({ behavior:"smooth", block:"start" }), 30); }
+
+  function pReset() {
+    ps=1; px=0; py=0; pSet();
+  }
+
+  function pToggleZoom() {
+    if (ps === 1) {
+      ps = PEDIGREE_ZOOM;
+      px = 0;
+      py = 0;
+    } else {
+      pReset();
+      return;
+    }
+    pSet();
+  }
+
+  pOpen.addEventListener("click", () => {
+    pReset();
+    pModal.classList.add("is-open");
+    pModal.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+  });
+
+  function pCloseFn() {
+    pModal.classList.remove("is-open");
+    pModal.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+    pp.clear();
+    setTimeout(() => document.getElementById("pedigree").scrollIntoView({ behavior:"smooth", block:"start" }), 30);
+  }
+
   pClose.addEventListener("click", pCloseFn);
-  pStage.addEventListener("pointerdown", e => { if (e.target.classList.contains("pedigree-close")) return; pStage.setPointerCapture(e.pointerId); pp.set(e.pointerId,e); if (pp.size===1) { pdrag={x:e.clientX,y:e.clientY,px,py}; pStage.classList.add("is-dragging"); } if (pp.size===2) { const pts=Array.from(pp.values()); pd0=dist(pts[0],pts[1]); ps0=ps; pc0=center(pts[0],pts[1]); } });
-  pStage.addEventListener("pointermove", e => { if (!pp.has(e.pointerId)) return; pp.set(e.pointerId,e); if (pp.size===2) { const pts=Array.from(pp.values()), cc=center(pts[0],pts[1]), dd=dist(pts[0],pts[1]); ps=pc(ps0*(dd/pd0)); if (pc0) { px+=cc.x-pc0.x; py+=cc.y-pc0.y; } pc0=cc; pSet(); } else if (pp.size===1 && pdrag) { px=pdrag.px+(e.clientX-pdrag.x); py=pdrag.py+(e.clientY-pdrag.y); pSet(); } });
-  pStage.addEventListener("pointerup", e => { pp.delete(e.pointerId); pStage.classList.remove("is-dragging"); if (pp.size===0) { pdrag=null; pc0=null; } });
-  pStage.addEventListener("pointercancel", e => { pp.delete(e.pointerId); pStage.classList.remove("is-dragging"); });
-  pStage.addEventListener("dblclick", e => { e.preventDefault(); if (ps===1) { ps=2; px=0; py=0; } else pReset(); pSet(); });
-  pStage.addEventListener("wheel", e => { e.preventDefault(); ps=pc(ps+(e.deltaY<0?.25:-.25)); if (ps===1) { px=0; py=0; } pSet(); }, { passive:false });
+
+  pStage.addEventListener("pointerdown", e => {
+    if (e.target.classList.contains("pedigree-close")) return;
+    pStage.setPointerCapture(e.pointerId);
+    pp.set(e.pointerId,e);
+    if (pp.size===1) {
+      pdrag={x:e.clientX,y:e.clientY,px,py,moved:false};
+      pStage.classList.add("is-dragging");
+    }
+  });
+
+  pStage.addEventListener("pointermove", e => {
+    if (!pp.has(e.pointerId)) return;
+    pp.set(e.pointerId,e);
+    if (pp.size===1 && pdrag && ps>1) {
+      const dx=e.clientX-pdrag.x, dy=e.clientY-pdrag.y;
+      if (Math.abs(dx)>3 || Math.abs(dy)>3) pdrag.moved=true;
+      px=pdrag.px+dx;
+      py=pdrag.py+dy;
+      pSet();
+    }
+  });
+
+  pStage.addEventListener("pointerup", e => {
+    const now = Date.now();
+    const distFromLast = Math.hypot(e.clientX-lastPedigreeTapX, e.clientY-lastPedigreeTapY);
+    const isDouble = (now-lastPedigreeTap < 330 && distFromLast < 28);
+    pp.delete(e.pointerId);
+    pStage.classList.remove("is-dragging");
+
+    if (isDouble && (!pdrag || !pdrag.moved)) {
+      e.preventDefault();
+      pToggleZoom();
+      lastPedigreeTap = 0;
+    } else {
+      lastPedigreeTap = now;
+      lastPedigreeTapX = e.clientX;
+      lastPedigreeTapY = e.clientY;
+    }
+
+    if (pp.size===0) pdrag=null;
+  });
+
+  pStage.addEventListener("pointercancel", e => {
+    pp.delete(e.pointerId);
+    pStage.classList.remove("is-dragging");
+    if (pp.size===0) pdrag=null;
+  });
+
+  pStage.addEventListener("dblclick", e => {
+    e.preventDefault();
+    pToggleZoom();
+  });
+
+  pStage.addEventListener("wheel", e => {
+    e.preventDefault();
+  }, { passive:false });
   document.addEventListener("keydown", e => { if (modal.classList.contains("is-open")) { if(e.key==="Escape") closeGallery(); if(e.key==="ArrowLeft"&&scale===1) show(-1); if(e.key==="ArrowRight"&&scale===1) show(1); } if (pModal.classList.contains("is-open") && e.key==="Escape") pCloseFn(); });
 });
 </script>

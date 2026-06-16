@@ -1218,3 +1218,35 @@
   }
 }
 
+/* NOCTARIS v1.0.19 — Pedigree double tap zoom + PDF baseline fix */
+.pedigree-modal{
+  opacity:0;
+  transition:opacity .28s ease !important;
+}
+.pedigree-modal.is-open{
+  opacity:1;
+}
+.pedigree-stage{
+  cursor:zoom-in !important;
+}
+.pedigree-stage.is-dragging{
+  cursor:grabbing !important;
+}
+.pedigree-zoom-content{
+  width:min(96vw,1680px) !important;
+  transform:translate(-50%,-50%) !important;
+  transform-origin:center center !important;
+  will-change:width,transform !important;
+  backface-visibility:hidden !important;
+  -webkit-font-smoothing:antialiased !important;
+  text-rendering:geometricPrecision !important;
+}
+.pedigree-zoom-content .v8-svg,
+.pedigree-zoom-content .v8-card,
+.pedigree-zoom-content .v8-name,
+.pedigree-zoom-content .v8-reg,
+.pedigree-zoom-content .v8-titles{
+  text-rendering:geometricPrecision !important;
+  -webkit-font-smoothing:antialiased !important;
+}
+

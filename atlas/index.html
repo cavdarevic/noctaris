@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
   stage.addEventListener("wheel", e => { e.preventDefault(); const old = scale; scale = clampScale(scale + (e.deltaY < 0 ? .22 : -.22)); if (scale === 1) { panX = 0; panY = 0; } else { panX *= scale / old; panY *= scale / old; } setTransform(); }, { passive:false });
   close.addEventListener("click", closeGallery); prev.addEventListener("click", () => show(-1)); next.addEventListener("click", () => show(1));
 
-  const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close"), pHint = document.getElementById("pedigree-zoom-hint");
+  const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer") || document.querySelector(".v8-tree-button"), pClose = document.getElementById("pedigree-close"), pHint = document.getElementById("pedigree-zoom-hint");
   let ps=1, px=0, py=0, pdrag=null, pLastTap=0, pLastTapX=0, pLastTapY=0, pHintTimer=null, pLastToggleAt=0;
   const PEDIGREE_ZOOM = window.matchMedia("(max-width: 760px)").matches ? 4.0 : 3.0;
 
@@ -404,13 +404,25 @@ document.addEventListener("DOMContentLoaded", function () {
     pSet();
   }
 
-  pOpen.addEventListener("click", () => {
+  function pOpenFn(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     pReset();
     pModal.classList.add("is-open");
     pModal.setAttribute("aria-hidden","false");
     document.body.style.overflow="hidden";
     pShowHint();
-  });
+  }
+
+  if (pOpen) pOpen.addEventListener("click", pOpenFn);
+
+  const pPreviewButton = document.querySelector(".v8-tree-button");
+  if (pPreviewButton && pPreviewButton !== pOpen) {
+    pPreviewButton.addEventListener("click", pOpenFn);
+  }
+
 
   function pCloseFn() {
     pHideHint();

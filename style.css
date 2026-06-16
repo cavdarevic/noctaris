@@ -1374,15 +1374,8 @@
 }
 /* NOCTARIS v1.0.24 — Mobile 4x zoom + desktop zoom toggle fix */
 
-/* NOCTARIS v1.0.25 — Restore Pedigree fullscreen open */
-.v8-tree-button{
+/* NOCTARIS v1.0.26 — Restore Pedigree fullscreen click */
+#pedigree .v8-tree-button{
   cursor:zoom-in !important;
-}
-.v8-tree-button *{
-  pointer-events:none;
-}
-.pedigree-modal.is-open .v8-tree-button *,
-.pedigree-modal.is-open .pedigree-zoom-content *{
-  pointer-events:auto;
 }
 

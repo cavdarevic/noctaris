@@ -347,13 +347,11 @@ document.addEventListener("DOMContentLoaded", function () {
   close.addEventListener("click", closeGallery); prev.addEventListener("click", () => show(-1)); next.addEventListener("click", () => show(1));
 
   const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close");
-  let ps=1, px=0, py=0, pp=new Map(), pdrag=null, lastPedigreeTap=0, lastPedigreeTapX=0, lastPedigreeTapY=0;
+  let ps=1, px=0, py=0, pdrag=null, pDown=null, pLastTap=0, pLastTapX=0, pLastTapY=0;
   const PEDIGREE_ZOOM = 1.6;
 
   function pSet() {
-    const base = Math.min(window.innerWidth * 0.96, 1680);
-    pContent.style.width = `${base * ps}px`;
-    pContent.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`;
+    pContent.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px)) scale(${ps})`;
   }
 
   function pReset() {
@@ -366,8 +364,9 @@ document.addEventListener("DOMContentLoaded", function () {
       px = 0;
       py = 0;
     } else {
-      pReset();
-      return;
+      ps = 1;
+      px = 0;
+      py = 0;
     }
     pSet();
   }
@@ -383,61 +382,63 @@ document.addEventListener("DOMContentLoaded", function () {
     pModal.classList.remove("is-open");
     pModal.setAttribute("aria-hidden","true");
     document.body.style.overflow="";
-    pp.clear();
     setTimeout(() => document.getElementById("pedigree").scrollIntoView({ behavior:"smooth", block:"start" }), 30);
   }
 
   pClose.addEventListener("click", pCloseFn);
 
+  function pIsCloseTarget(e) {
+    return e.target && e.target.closest && e.target.closest(".pedigree-close");
+  }
+
   pStage.addEventListener("pointerdown", e => {
-    if (e.target.classList.contains("pedigree-close")) return;
-    pStage.setPointerCapture(e.pointerId);
-    pp.set(e.pointerId,e);
-    if (pp.size===1) {
-      pdrag={x:e.clientX,y:e.clientY,px,py,moved:false};
-      pStage.classList.add("is-dragging");
-    }
-  });
+    if (pIsCloseTarget(e)) return;
+    e.preventDefault();
+    try { pStage.setPointerCapture(e.pointerId); } catch(err) {}
+    pDown = { id:e.pointerId, x:e.clientX, y:e.clientY, px, py, moved:false };
+    pStage.classList.add("is-dragging");
+  }, { passive:false });
 
   pStage.addEventListener("pointermove", e => {
-    if (!pp.has(e.pointerId)) return;
-    pp.set(e.pointerId,e);
-    if (pp.size===1 && pdrag && ps>1) {
-      const dx=e.clientX-pdrag.x, dy=e.clientY-pdrag.y;
-      if (Math.abs(dx)>3 || Math.abs(dy)>3) pdrag.moved=true;
-      px=pdrag.px+dx;
-      py=pdrag.py+dy;
+    if (!pDown || pDown.id !== e.pointerId) return;
+    const dx=e.clientX-pDown.x, dy=e.clientY-pDown.y;
+    if (Math.abs(dx)>4 || Math.abs(dy)>4) pDown.moved=true;
+    if (ps > 1) {
+      px=pDown.px+dx;
+      py=pDown.py+dy;
       pSet();
     }
-  });
+  }, { passive:false });
 
   pStage.addEventListener("pointerup", e => {
-    const now = Date.now();
-    const distFromLast = Math.hypot(e.clientX-lastPedigreeTapX, e.clientY-lastPedigreeTapY);
-    const isDouble = (now-lastPedigreeTap < 330 && distFromLast < 28);
-    pp.delete(e.pointerId);
+    if (!pDown || pDown.id !== e.pointerId) return;
+    const moved = pDown.moved;
     pStage.classList.remove("is-dragging");
 
-    if (isDouble && (!pdrag || !pdrag.moved)) {
+    const now = Date.now();
+    const distTap = Math.hypot(e.clientX-pLastTapX, e.clientY-pLastTapY);
+    const isDoubleTap = !moved && (now-pLastTap < 360) && distTap < 34;
+
+    if (isDoubleTap) {
       e.preventDefault();
       pToggleZoom();
-      lastPedigreeTap = 0;
-    } else {
-      lastPedigreeTap = now;
-      lastPedigreeTapX = e.clientX;
-      lastPedigreeTapY = e.clientY;
+      pLastTap = 0;
+    } else if (!moved) {
+      pLastTap = now;
+      pLastTapX = e.clientX;
+      pLastTapY = e.clientY;
     }
 
-    if (pp.size===0) pdrag=null;
-  });
+    pDown = null;
+  }, { passive:false });
 
   pStage.addEventListener("pointercancel", e => {
-    pp.delete(e.pointerId);
     pStage.classList.remove("is-dragging");
-    if (pp.size===0) pdrag=null;
+    pDown = null;
   });
 
   pStage.addEventListener("dblclick", e => {
+    if (pIsCloseTarget(e)) return;
     e.preventDefault();
     pToggleZoom();
   });

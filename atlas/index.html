@@ -348,10 +348,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close"), pHint = document.getElementById("pedigree-zoom-hint");
   let ps=1, px=0, py=0, pdrag=null, pLastTap=0, pLastTapX=0, pLastTapY=0, pHintTimer=null;
-  const PEDIGREE_ZOOM = 2.15;
+  const PEDIGREE_ZOOM = 3.0;
 
   function pSet() {
-    pContent.style.setProperty("transform", `translate(calc(-50% + ${px}px), calc(-50% + ${py}px)) scale(${ps})`, "important");
+    const base = Math.min(window.innerWidth * 0.96, 1680);
+    pContent.style.setProperty("width", `${base * ps}px`, "important");
+    pContent.style.setProperty("transform", `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`, "important");
   }
 
   function pReset() {
@@ -416,13 +418,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function pHandleDouble(e) {
-    if (pIsCloseTarget(e)) return;
+    if (!pModal.classList.contains("is-open") || pIsCloseTarget(e)) return;
     e.preventDefault();
     pToggleZoom();
   }
 
   function pHandleTap(e) {
-    if (pIsCloseTarget(e)) return;
+    if (!pModal.classList.contains("is-open") || pIsCloseTarget(e)) return;
     const now = Date.now();
     const dist = Math.hypot(e.clientX - pLastTapX, e.clientY - pLastTapY);
     if ((now - pLastTap) < 360 && dist < 38) {

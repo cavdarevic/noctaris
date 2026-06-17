@@ -1372,10 +1372,4 @@
   text-rendering:geometricPrecision !important;
   -webkit-font-smoothing:antialiased !important;
 }
-/* NOCTARIS v1.0.24 — Mobile 4x zoom + desktop zoom toggle fix */
-
-/* NOCTARIS v1.0.26 — Restore Pedigree fullscreen click */
-#pedigree .v8-tree-button{
-  cursor:zoom-in !important;
-}
 

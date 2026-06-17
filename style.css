@@ -1373,3 +1373,96 @@
   -webkit-font-smoothing:antialiased !important;
 }
 
+/* NOCTARIS v1.0.27 — Navigation, Pedigree modal, Achievement center repair */
+
+/* Pedigree preview opens fullscreen reliably */
+#pedigree .v8-tree-button{
+  cursor:zoom-in !important;
+  pointer-events:auto !important;
+}
+#pedigree .v8-tree-button *{
+  pointer-events:none !important;
+}
+
+/* Pedigree fullscreen modal + crisp vector zoom */
+.pedigree-modal{
+  opacity:0;
+  transition:opacity .28s ease !important;
+}
+.pedigree-modal.is-open{
+  opacity:1;
+}
+.pedigree-stage,
+.pedigree-zoom-content,
+.pedigree-zoom-content *{
+  touch-action:none !important;
+  user-select:none !important;
+  -webkit-user-select:none !important;
+}
+.pedigree-zoom-content{
+  width:min(96vw,1680px) !important;
+  transform:translate(-50%,-50%) !important;
+  transform-origin:center center !important;
+  will-change:width,transform !important;
+  filter:none !important;
+  backface-visibility:hidden !important;
+  -webkit-font-smoothing:antialiased !important;
+  text-rendering:geometricPrecision !important;
+}
+.pedigree-zoom-content .v8-svg{
+  width:100% !important;
+  height:auto !important;
+  shape-rendering:geometricPrecision !important;
+}
+.pedigree-zoom-content .v8-line{
+  shape-rendering:geometricPrecision !important;
+}
+.pedigree-zoom-hint{
+  position:fixed;
+  left:50%;
+  bottom:34px;
+  transform:translateX(-50%);
+  z-index:4012;
+  color:rgba(255,255,255,.58);
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .55s ease;
+  white-space:nowrap;
+}
+.pedigree-zoom-hint.is-visible{opacity:1}
+.pedigree-zoom-hint.is-hiding{opacity:0}
+
+/* Achievement expanded card must become a centered editorial modal */
+.achievement-artifact.is-expanded{
+  position:fixed !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:min(90vw,640px) !important;
+  height:auto !important;
+  min-height:300px !important;
+  max-height:82vh !important;
+  overflow:auto !important;
+  z-index:4100 !important;
+}
+.achievement-wall.has-expanded .achievement-artifact:not(.is-expanded){
+  opacity:.32 !important;
+  filter:blur(1.6px) brightness(.55) !important;
+}
+
+@media(max-width:760px){
+  .pedigree-zoom-hint{
+    bottom:28px;
+    font-size:8.5px;
+    letter-spacing:.18em;
+  }
+  .achievement-artifact.is-expanded{
+    width:min(92vw,520px) !important;
+    min-height:260px !important;
+    max-height:78vh !important;
+  }
+}
+

@@ -97,7 +97,8 @@
         <p class="achievement-judge achievement-expand-content">Under: Giovanni Pentenero (IT)</p>
       </article>
     </div>
-</section>
+
+<div class="section-return section-return-after achievements-return-after"><a href="#top">↑ BACK TO TOP</a></div></section>
 
   <section class="pedigree-section editorial-section" id="pedigree" data-profile-section="pedigree">
     <p class="archive-label">Bloodline</p>
@@ -348,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close"), pHint = document.getElementById("pedigree-zoom-hint");
   let ps=1, px=0, py=0, pdrag=null, pLastTap=0, pLastTapX=0, pLastTapY=0, pHintTimer=null;
-  const PEDIGREE_ZOOM = 3.0;
+  const PEDIGREE_ZOOM = window.matchMedia("(max-width:760px)").matches ? 4.0 : 3.0;
 
   function pSet() {
     const base = Math.min(window.innerWidth * 0.96, 1680);
@@ -474,6 +475,8 @@ document.addEventListener("DOMContentLoaded", function () {
   pStage.addEventListener("dblclick", pHandleDouble);
   pContent.addEventListener("dblclick", pHandleDouble);
 
+  pStage.addEventListener("dblclick", pHandleDouble, true);
+  pContent.addEventListener("dblclick", pHandleDouble, true);
   pStage.addEventListener("wheel", e => {
     e.preventDefault();
   }, { passive:false });

@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close"), pHint = document.getElementById("pedigree-zoom-hint");
   let ps=1, px=0, py=0, pdrag=null, pLastTap=0, pLastTapX=0, pLastTapY=0, pHintTimer=null;
-  const PEDIGREE_ZOOM = window.matchMedia("(max-width:760px)").matches ? 4.5 : 3.0;
+  const PEDIGREE_ZOOM = window.matchMedia("(max-width:760px)").matches ? 5.0 : 3.0;
 
   function pSet() {
     const base = Math.min(window.innerWidth * 0.96, 1680);

@@ -1552,3 +1552,24 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
   pointer-events:auto !important;
 }
 
+/* NOCTARIS v1.0.35 — Atlas pedigree title typography polish */
+.v8-fo.featured .v8-titles{
+  color:rgba(184,184,184,.92) !important;
+  font-size:8.25px !important;
+  line-height:1.20 !important;
+  letter-spacing:.005em !important;
+  font-weight:500 !important;
+  white-space:normal !important;
+  overflow-wrap:normal !important;
+  word-break:keep-all !important;
+  hyphens:none !important;
+  text-align:center !important;
+}
+@media(max-width:760px){
+  .v8-fo.featured .v8-titles{
+    font-size:8.85px !important;
+    line-height:1.18 !important;
+    font-weight:500 !important;
+  }
+}
+

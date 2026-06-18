@@ -1536,3 +1536,19 @@
   }
 }
 
+/* NOCTARIS v1.0.32 — Achievement lock + mobile pedigree zoom support */
+html.achievement-modal-open,
+body.achievement-modal-open{
+  overflow:hidden !important;
+  overscroll-behavior:none !important;
+}
+body.achievement-modal-open .section-return,
+body.achievement-modal-open .back-to-top,
+body.achievement-modal-open .atlas-editorial-nav{
+  pointer-events:none !important;
+}
+body.achievement-modal-open .achievement-artifact.is-expanded,
+body.achievement-modal-open .achievement-artifact.is-expanded *{
+  pointer-events:auto !important;
+}
+

@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pModal = document.getElementById("pedigree-modal"), pStage = document.getElementById("pedigree-stage"), pContent = document.getElementById("pedigree-zoom-content"), pOpen = document.getElementById("open-pedigree-viewer"), pClose = document.getElementById("pedigree-close"), pHint = document.getElementById("pedigree-zoom-hint");
   let ps=1, px=0, py=0, pdrag=null, pLastTap=0, pLastTapX=0, pLastTapY=0, pHintTimer=null;
-  const PEDIGREE_ZOOM = window.matchMedia("(max-width:760px)").matches ? 4.0 : 3.0;
+  const PEDIGREE_ZOOM = window.matchMedia("(max-width:760px)").matches ? 4.5 : 3.0;
 
   function pSet() {
     const base = Math.min(window.innerWidth * 0.96, 1680);
@@ -551,6 +551,12 @@ document.addEventListener("DOMContentLoaded",function(){
     card.classList.remove("is-expanded");
     card.setAttribute("aria-expanded","false");
     if(wall) wall.classList.remove("has-expanded");
+    if(!cards.some(c=>c.classList.contains("is-expanded"))){
+      document.body.classList.remove("achievement-modal-open");
+      document.documentElement.classList.remove("achievement-modal-open");
+      document.body.style.overflow="";
+      document.documentElement.style.overflow="";
+    }
   }
 
   function openCard(card){
@@ -563,8 +569,34 @@ document.addEventListener("DOMContentLoaded",function(){
     card.classList.add("is-expanded");
     card.setAttribute("aria-expanded","true");
     if(wall) wall.classList.add("has-expanded");
+    document.body.classList.add("achievement-modal-open");
+    document.documentElement.classList.add("achievement-modal-open");
+    document.body.style.overflow="hidden";
+    document.documentElement.style.overflow="hidden";
     window.setTimeout(()=>card.scrollIntoView({behavior:"smooth",block:"center"}),120);
   }
+
+
+  document.addEventListener("click",function(e){
+    const expanded=document.querySelector(".achievement-artifact.is-expanded");
+    if(!expanded) return;
+    if(e.target.closest(".achievement-artifact.is-expanded")) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    closeCard(expanded);
+    const achievements=document.getElementById("achievements");
+    if(achievements) window.setTimeout(()=>achievements.scrollIntoView({behavior:"smooth",block:"start"}),40);
+  },true);
+
+  document.addEventListener("keydown",function(e){
+    if(e.key!=="Escape") return;
+    const expanded=document.querySelector(".achievement-artifact.is-expanded");
+    if(expanded){
+      e.preventDefault();
+      closeCard(expanded);
+    }
+  },true);
 
   cards.forEach(card=>{
     card.addEventListener("click",function(e){

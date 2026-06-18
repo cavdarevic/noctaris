@@ -1524,3 +1524,15 @@
   }
 }
 
+/* NOCTARIS v1.0.31 — Registry line breathing fix */
+.atlas-identity .registry-line{
+  margin-top:22px !important;
+  margin-bottom:10px !important;
+}
+@media(max-width:760px){
+  .atlas-identity .registry-line{
+    margin-top:18px !important;
+    margin-bottom:9px !important;
+  }
+}
+

@@ -11,9 +11,9 @@
 <nav class="top-nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <a href="/" class="nav-item">Home</a>
-    <div class="nav-group">
-      <button class="nav-item nav-button" aria-haspopup="true">Dogs</button>
-      <div class="nav-menu"><a href="/atlas/">Atlas</a></div>
+    <div class="nav-group is-current-section">
+      <button class="nav-item nav-button" type="button" aria-haspopup="true" aria-controls="dogs-menu" aria-expanded="false">Dogs</button>
+      <div class="nav-menu" id="dogs-menu"><a href="/atlas/" aria-current="page">Atlas</a></div>
     </div>
     <a href="/gallery/" class="nav-item">Gallery</a>
     <a href="/about/" class="nav-item">About</a>
@@ -778,5 +778,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script src="/nav.js" defer></script>
 </body>
 </html>

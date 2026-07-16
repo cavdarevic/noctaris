@@ -14,12 +14,12 @@ gtag('config', 'G-KXEVF44WP3');
   <div class="nav-inner">
     <a href="/" class="nav-item">Home</a>
     <div class="nav-group">
-      <button class="nav-item nav-button" aria-haspopup="true">Dogs</button>
-      <div class="nav-menu"><a href="/atlas/">Atlas</a></div>
+      <button class="nav-item nav-button" type="button" aria-haspopup="true" aria-controls="dogs-menu" aria-expanded="false">Dogs</button>
+      <div class="nav-menu" id="dogs-menu"><a href="/atlas/">Atlas</a></div>
     </div>
     <a href="/gallery/" class="nav-item">Gallery</a>
     <a href="/about/" class="nav-item">About</a>
-    <a href="/contact/" class="nav-item">Contact</a>
+    <a href="/contact/" class="nav-item" aria-current="page">Contact</a>
   </div>
 </nav>
 <main class="contact-screen">
@@ -33,4 +33,5 @@ gtag('config', 'G-KXEVF44WP3');
 </div>
 </section>
 </main>
+<script src="/nav.js" defer></script>
 </body></html>

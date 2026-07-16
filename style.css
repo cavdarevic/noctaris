@@ -579,13 +579,6 @@
 /* Title badge rules consolidated in NOCTARIS v2.1.2 below. */
 
 /* NOCTARIS v1.0.6 — Dynamic Achievement Wall */
-@media(max-width:760px){
-  .title-grid,.titles-grid{width:min(100%,91vw)!important}
-  .title-grid .title-badge,.titles-grid .title-badge,.title-badge{min-height:50px!important;padding-top:7px!important;padding-bottom:7px!important}
-}
-@media(max-width:390px){
-  .title-grid .title-badge,.titles-grid .title-badge,.title-badge{min-height:48px!important}
-}
 .achievement-wall{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:12px!important;width:min(100%,1000px)!important;margin:0 auto!important;align-items:stretch}
 .achievement-artifact{min-height:150px!important;padding:18px 14px 16px!important;transition:transform .34s ease,opacity .30s ease,filter .30s ease,border-color .30s ease,background .30s ease,box-shadow .30s ease,min-height .30s ease}
 .achievement-large{grid-column:span 3;grid-row:span 2;min-height:300px!important}
@@ -1325,18 +1318,6 @@
 }
 
 @media(max-width:760px){
-  .title-grid{
-    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
-    gap:8px 8px !important;
-    width:min(100%, 92vw) !important;
-  }
-  .title-grid .title-badge,
-  .title-badge{
-    min-height:30px !important;
-    padding:7px 4px !important;
-    font-size:clamp(6.2px, 1.85vw, 8.2px) !important;
-    letter-spacing:.08em !important;
-  }
   .v8-fo.featured .v8-titles{
     font-size:7.2px !important;
     line-height:1.12 !important;
@@ -1622,11 +1603,13 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
   }
   .title-grid .title-badge,
   .title-badge{
-    min-height:38px!important;
-    padding:8px 4px!important;
-    border-color:rgba(255,255,255,.17)!important;
+    min-height:34px!important;
+    padding:5px 3px 4px!important;
+    border-color:rgba(255,255,255,.13)!important;
     font-size:clamp(9.5px,2.65vw,11px)!important;
+    font-weight:500!important;
     letter-spacing:.035em!important;
-    line-height:1.05!important;
+    line-height:1!important;
+    transform:translateY(-.25px);
   }
 }

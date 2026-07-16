@@ -1613,3 +1613,23 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
     transform:translateY(-.25px);
   }
 }
+
+/* =========================
+   NOCTARIS V2.1.4 — Editorial Hero Polish
+   Mobile-only optical recomposition and final title readability pass.
+   ========================= */
+@media(max-width:760px){
+  /* Move the brand mark toward the hero title without changing document flow
+     or the overall hero height. */
+  .atlas-identity .atlas-brand{
+    transform:translateY(22px);
+  }
+
+  /* Final readability lift: brighter refined gold, unchanged size and box. */
+  .title-grid .title-badge,
+  .title-badge{
+    color:rgba(216,176,96,.98)!important;
+    font-weight:500!important;
+    letter-spacing:.033em!important;
+  }
+}

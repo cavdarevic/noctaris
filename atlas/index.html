@@ -21,10 +21,16 @@
   </div>
 </nav>
 
-  <section class="atlas-editorial-nav dog-explorer" aria-label="Explore Atlas">
+  <section class="atlas-editorial-nav" aria-label="Atlas profile contents">
     <div class="atlas-editorial-nav-inner">
-      <p class="profile-contents-label" id="dog-explorer-title">Explore Atlas</p>
-      <nav class="profile-contents-links" id="dog-explorer-links" aria-label="Atlas profile modules"></nav>
+      <p class="profile-contents-label">Profile Contents</p>
+      <div class="profile-contents-links">
+        <a href="#photos" data-section-link="photos">Photos</a><span>·</span>
+        <a href="#achievements" data-section-link="achievements">Achievements</a><span>·</span>
+        <a href="#" class="is-disabled" aria-disabled="true" data-section-link="titles">Titles<span class="desktop-only"> &amp; Honours</span></a><span>·</span>
+        <a href="#" class="is-disabled" aria-disabled="true" data-section-link="dna">DNA</a><span>·</span>
+        <a href="#pedigree" data-section-link="pedigree">Pedigree</a>
+      </div>
     </div>
   </section>
 
@@ -769,155 +775,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function (e) {
     if (modal.classList.contains("is-open") && e.key === "Escape") closePedigree(e);
   });
-});
-</script>
-
-<script id="noctaris-digital-profile-foundation">
-document.addEventListener("DOMContentLoaded", function () {
-  "use strict";
-
-  const explorerTitle = document.getElementById("dog-explorer-title");
-  const explorerLinks = document.getElementById("dog-explorer-links");
-  const page = document.querySelector(".atlas-page");
-  const footer = page && page.querySelector(".site-footer");
-  if (!explorerTitle || !explorerLinks || !page || !footer) return;
-
-  const identity = document.querySelector(".atlas-identity");
-  const identityCard = document.querySelector(".identity-card");
-  const achievements = document.getElementById("achievements");
-  const pedigree = document.getElementById("pedigree");
-  const photos = document.getElementById("photos");
-
-  const home = document.createElement("div");
-  home.className = "dog-profile-view dog-home-view";
-  home.dataset.view = "atlas";
-  if (identity) home.appendChild(identity);
-  if (identityCard) home.appendChild(identityCard);
-
-  const portrait = document.createElement("figure");
-  portrait.className = "dog-identity-portrait";
-  portrait.setAttribute("aria-label", "Atlas identity photograph");
-  portrait.innerHTML = '<img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas"><figcaption>Identity photograph</figcaption>';
-  home.appendChild(portrait);
-
-  function placeholder(id, kicker, title, text) {
-    const section = document.createElement("section");
-    section.id = id;
-    section.className = "editorial-section module-placeholder module-" + id;
-    section.dataset.profileSection = id;
-    section.innerHTML = '<p class="archive-label">' + kicker + '</p><h2>' + title + '</h2><p class="module-placeholder-copy">' + text + '</p>';
-    return section;
-  }
-
-  const trophy = placeholder("trophy-room", "Legacy", "Trophy Room", "The Trophy Room module is prepared within the new Digital Profile architecture.");
-  const dna = placeholder("dna", "Genetics", "DNA", "The DNA module is prepared within the new Digital Profile architecture.");
-
-  const views = {
-    atlas: home,
-    pedigree: pedigree,
-    photos: photos,
-    achievements: achievements,
-    "trophy-room": trophy,
-    dna: dna
-  };
-
-  Object.keys(views).forEach(function (key) {
-    const node = views[key];
-    if (!node) return;
-    node.classList.add("dog-profile-view");
-    node.dataset.view = key;
-    node.querySelectorAll(".section-return").forEach(function (el) { el.remove(); });
-  });
-
-  const stage = document.createElement("div");
-  stage.id = "dog-profile-stage";
-  stage.className = "dog-profile-stage is-ready";
-  stage.setAttribute("aria-live", "polite");
-  page.insertBefore(stage, footer);
-
-  const order = ["pedigree", "photos", "achievements", "trophy-room", "dna"];
-  const labels = {
-    atlas: "Atlas",
-    pedigree: "Pedigree",
-    photos: "Photos",
-    achievements: "Achievements",
-    "trophy-room": "Trophy Room",
-    dna: "DNA"
-  };
-  let active = "atlas";
-  let transitionTimer = null;
-
-  function renderNavigation() {
-    const moduleMode = active !== "atlas";
-    explorerTitle.textContent = moduleMode ? "Explore" : "Explore Atlas";
-    explorerLinks.innerHTML = "";
-    const items = moduleMode ? ["atlas"].concat(order) : order.slice();
-    items.forEach(function (key, index) {
-      if (index) {
-        const separator = document.createElement("span");
-        separator.setAttribute("aria-hidden", "true");
-        separator.textContent = "·";
-        explorerLinks.appendChild(separator);
-      }
-      if (key === active) {
-        const current = document.createElement("span");
-        current.className = "is-active";
-        current.setAttribute("aria-current", "page");
-        current.textContent = labels[key];
-        explorerLinks.appendChild(current);
-      } else {
-        const link = document.createElement("a");
-        link.href = key === "atlas" ? "#atlas" : "#" + key;
-        link.dataset.dogView = key;
-        link.textContent = labels[key];
-        explorerLinks.appendChild(link);
-      }
-    });
-  }
-
-  function setUrl(key) {
-    const hash = key === "atlas" ? "" : "#" + key;
-    history.replaceState(null, "", location.pathname + location.search + hash);
-  }
-
-  function showView(key, options) {
-    options = options || {};
-    if (!views[key]) key = "atlas";
-    if (key === active && stage.firstElementChild) return;
-    clearTimeout(transitionTimer);
-    stage.classList.add("is-leaving");
-    stage.classList.remove("is-entering");
-
-    transitionTimer = window.setTimeout(function () {
-      active = key;
-      stage.replaceChildren(views[key]);
-      document.body.dataset.activeDogModule = key;
-      renderNavigation();
-      if (!options.preserveUrl) setUrl(key);
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      requestAnimationFrame(function () {
-        stage.classList.remove("is-leaving");
-        stage.classList.add("is-entering");
-        window.setTimeout(function () { stage.classList.remove("is-entering"); }, 360);
-      });
-    }, stage.firstElementChild ? 170 : 0);
-  }
-
-  explorerLinks.addEventListener("click", function (event) {
-    const link = event.target.closest("[data-dog-view]");
-    if (!link) return;
-    event.preventDefault();
-    showView(link.dataset.dogView);
-  });
-
-  window.addEventListener("popstate", function () {
-    const key = location.hash.replace("#", "") || "atlas";
-    showView(key, { preserveUrl: true });
-  });
-
-  const initial = location.hash.replace("#", "") || "atlas";
-  active = "__initial__";
-  showView(views[initial] ? initial : "atlas", { preserveUrl: true });
 });
 </script>
 

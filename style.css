@@ -1633,3 +1633,113 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
     letter-spacing:.033em!important;
   }
 }
+
+/* NOCTARIS v2.2.0 — Digital Profile Foundation */
+.atlas-editorial-nav{
+  position:static !important;
+  top:auto !important;
+}
+.dog-explorer .atlas-editorial-nav-inner{
+  align-items:center;
+}
+.dog-explorer .profile-contents-label{
+  display:block;
+  margin:0 0 10px;
+  text-align:center;
+}
+.dog-explorer .profile-contents-links{
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.dog-explorer .profile-contents-links .is-active{
+  color:#fff;
+  opacity:1;
+  font-weight:500;
+  cursor:default;
+}
+.dog-profile-stage{
+  min-height:42vh;
+  opacity:1;
+  filter:blur(0);
+  transform:scale(1);
+  transform-origin:50% 8%;
+  transition:opacity .17s ease,filter .17s ease,transform .17s ease;
+}
+.dog-profile-stage.is-leaving{
+  opacity:0;
+  filter:blur(1.8px);
+  transform:scale(.998);
+}
+.dog-profile-stage.is-entering{
+  animation:noctarisModuleEnter .34s cubic-bezier(.22,.72,.2,1) both;
+}
+@keyframes noctarisModuleEnter{
+  from{opacity:0;filter:blur(2px);transform:scale(.998)}
+  to{opacity:1;filter:blur(0);transform:scale(1)}
+}
+.dog-profile-view{
+  width:100%;
+}
+.dog-home-view{
+  position:relative;
+}
+.dog-identity-portrait{
+  width:min(100%,420px);
+  margin:14px auto 8px;
+  padding:0;
+  border-top:1px solid var(--line);
+}
+.dog-identity-portrait img{
+  display:block;
+  width:100%;
+  max-height:460px;
+  object-fit:cover;
+  object-position:center 32%;
+  opacity:.88;
+  filter:saturate(.82) contrast(1.04);
+}
+.dog-identity-portrait figcaption{
+  margin-top:12px;
+  color:var(--muted);
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:8px;
+}
+.module-placeholder{
+  min-height:54vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+}
+.module-placeholder-copy{
+  width:min(100%,560px);
+  margin:24px auto 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+  letter-spacing:.04em;
+}
+body[data-active-dog-module="pedigree"] .dog-profile-stage{--module-atmosphere:rgba(184,156,105,.025)}
+body[data-active-dog-module="photos"] .dog-profile-stage{--module-atmosphere:rgba(255,255,255,.018)}
+body[data-active-dog-module="achievements"] .dog-profile-stage{--module-atmosphere:rgba(184,156,105,.04)}
+body[data-active-dog-module="trophy-room"] .dog-profile-stage{--module-atmosphere:rgba(160,128,72,.045)}
+body[data-active-dog-module="dna"] .dog-profile-stage{--module-atmosphere:rgba(180,198,202,.025)}
+body[data-active-dog-module]:not([data-active-dog-module="atlas"]) .dog-profile-stage{
+  background:linear-gradient(180deg,var(--module-atmosphere,transparent),transparent 230px);
+}
+.section-return,.back-to-top{display:none !important}
+@media(max-width:760px){
+  .dog-explorer .atlas-editorial-nav-inner{padding:13px 12px 12px}
+  .dog-explorer .profile-contents-label{font-size:8px;letter-spacing:.23em;margin-bottom:9px}
+  .dog-explorer .profile-contents-links{justify-content:center;gap:6px;row-gap:7px;padding:0}
+  .dog-explorer .profile-contents-links a,
+  .dog-explorer .profile-contents-links span{font-size:7.4px;letter-spacing:.105em}
+  .dog-identity-portrait{width:min(88vw,360px);margin-top:8px}
+  .dog-identity-portrait img{max-height:400px}
+}
+@media(prefers-reduced-motion:reduce){
+  .dog-profile-stage{transition:none}
+  .dog-profile-stage.is-entering{animation:none}
+}

@@ -1503,14 +1503,7 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
   padding:10px 16px 9px;
   text-align:center;
 }
-.profile-contents-label{
-  margin:0 0 6px;
-  color:rgba(195,153,73,.54);
-  text-transform:uppercase;
-  letter-spacing:.34em;
-  font-size:7px;
-  line-height:1;
-}
+.profile-contents-label{display:none;}
 .profile-contents-links{
   display:flex;
   justify-content:center;

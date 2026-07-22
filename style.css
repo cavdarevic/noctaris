@@ -1775,3 +1775,26 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
     font-size:7.5px;
   }
 }
+
+/* =========================
+   NOCTARIS V2.2.4 — Hero Vertical Rhythm Final
+   Second optical spacing pass only:
+   DOB → Parents and Parents → Breeder / Kennel / Owners
+   ========================= */
+.parents-block{
+  margin-top:clamp(30px,5.8vw,42px);
+}
+
+.identity-card{
+  margin-top:clamp(52px,6.5vw,66px);
+}
+
+@media(max-width:760px){
+  .parents-block{
+    margin-top:30px;
+  }
+
+  .identity-card{
+    margin-top:52px;
+  }
+}

@@ -1870,3 +1870,29 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
     transition:none;
   }
 }
+
+/* =========================
+   NOCTARIS — DOG Local Navigation v1.0.1
+   Approved section rhythm refinement only
+   HERO → PHOTOS and PHOTOS → PEDIGREE
+   ========================= */
+
+/* Desktop: approximately +65–70% compared with the previous combined gaps. */
+#photos.photo-section{
+  padding-top:74px;
+}
+
+#pedigree.pedigree-section{
+  padding-top:122px;
+}
+
+/* Mobile: approximately +35–40% compared with the previous combined gaps. */
+@media(max-width:760px){
+  #photos.photo-section{
+    padding-top:49px;
+  }
+
+  #pedigree.pedigree-section{
+    padding-top:92px;
+  }
+}

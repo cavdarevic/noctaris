@@ -1791,3 +1791,82 @@ body.achievement-modal-open .achievement-artifact.is-expanded *{
     margin-top:52px;
   }
 }
+
+/* =========================
+   NOCTARIS — DOG Local Navigation v1.0
+   Locked production implementation
+   ========================= */
+.profile-contents-links{
+  overflow-x:visible;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+  gap:clamp(4px,1.15vw,8px);
+}
+.profile-contents-links a,
+.profile-contents-links span{
+  flex:0 1 auto;
+}
+.profile-contents-links a{
+  font-size:clamp(7px,1.65vw,8px);
+  letter-spacing:clamp(.08em,.45vw,.14em);
+}
+.profile-contents-links span{
+  font-size:clamp(7px,1.65vw,8px);
+}
+.editorial-section{
+  scroll-margin-top:calc(56px + 45px + 18px);
+}
+.editorial-section.is-editorial-leaving{
+  opacity:.82;
+  transition:opacity 180ms ease;
+}
+.editorial-section.is-editorial-arriving{
+  opacity:.86;
+  transform:translateY(4px);
+  transition:opacity 320ms ease,transform 320ms ease;
+}
+.atlas-future-section{
+  min-height:34vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.atlas-future-section h2{
+  margin:0;
+}
+@media(max-width:420px){
+  .atlas-editorial-nav-inner{padding-left:8px;padding-right:8px}
+  .profile-contents-links{
+    gap:4px;
+  }
+  .profile-contents-links a,
+  .profile-contents-links span{
+    font-size:7px;
+    letter-spacing:.06em;
+  }
+}
+@media(max-width:350px){
+  .profile-contents-links{
+    flex-wrap:wrap;
+    row-gap:8px;
+    line-height:1.5;
+  }
+  .profile-contents-links span{
+    display:none;
+  }
+  .profile-contents-links a{
+    flex:0 0 calc(33.333% - 4px);
+    text-align:center;
+  }
+  .atlas-page{padding-top:112px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .editorial-section.is-editorial-leaving,
+  .editorial-section.is-editorial-arriving{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}

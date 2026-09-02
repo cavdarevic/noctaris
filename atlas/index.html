@@ -904,14 +904,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const preview = document.getElementById("dna-results-preview");
   const viewer = document.getElementById("dna-viewer");
   const closeBtn = document.getElementById("dna-viewer-close");
-  if (!preview || !viewer || !closeBtn) return;
+  const dnaSection = document.getElementById("dna");
+  if (!preview || !viewer || !closeBtn || !dnaSection) return;
+
+  /* Keep the modal as a direct body child so inert never disables its own close button. */
+  if (viewer.parentElement !== document.body) document.body.appendChild(viewer);
 
   let savedScrollY = 0;
   let previousFocus = null;
   let inerted = [];
 
   function mobileViewerEnabled() {
-    return window.matchMedia("(max-width: 760px)").matches;
+    return window.matchMedia("(max-width: 760px)").matches ||
+           window.matchMedia("(max-width: 980px) and (pointer: coarse)").matches;
+  }
+
+  function setPageInert(value) {
+    if (value) {
+      inerted = Array.from(document.body.children).filter(function (el) {
+        return el !== viewer && el.tagName !== "SCRIPT";
+      });
+      inerted.forEach(function (el) { el.inert = true; });
+    } else {
+      inerted.forEach(function (el) { el.inert = false; });
+      inerted = [];
+    }
   }
 
   function openViewer(e) {
@@ -919,46 +936,63 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e) e.preventDefault();
     savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
     previousFocus = document.activeElement;
-    inerted = Array.from(document.body.children).filter(function (el) { return el !== viewer && el.tagName !== "SCRIPT"; });
-    inerted.forEach(function (el) { el.inert = true; });
+
+    viewer.classList.add("is-open");
+    viewer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("dna-viewer-open");
     document.body.style.position = "fixed";
     document.body.style.top = `-${savedScrollY}px`;
     document.body.style.left = "0";
     document.body.style.right = "0";
     document.body.style.width = "100%";
-    document.body.classList.add("dna-viewer-open");
-    viewer.classList.add("is-open");
-    viewer.setAttribute("aria-hidden", "false");
-    closeBtn.focus({ preventScroll: true });
+    setPageInert(true);
+
+    requestAnimationFrame(function () {
+      closeBtn.focus({ preventScroll: true });
+    });
   }
 
   function closeViewer(e) {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (!viewer.classList.contains("is-open")) return;
+
     viewer.classList.remove("is-open");
     viewer.setAttribute("aria-hidden", "true");
+    setPageInert(false);
     document.body.classList.remove("dna-viewer-open");
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.left = "";
     document.body.style.right = "";
     document.body.style.width = "";
-    inerted.forEach(function (el) { el.inert = false; });
-    inerted = [];
-    window.scrollTo(0, savedScrollY);
-    if (previousFocus && previousFocus.focus) previousFocus.focus({ preventScroll: true });
+
+    /* Restore the exact DNA scroll position; never navigate history. */
+    window.scrollTo({ top: savedScrollY, left: 0, behavior: "auto" });
+    if (previousFocus && previousFocus.focus) {
+      try { previousFocus.focus({ preventScroll: true }); } catch (_) {}
+    }
   }
 
   preview.addEventListener("click", openViewer);
   preview.addEventListener("keydown", function (e) {
     if ((e.key === "Enter" || e.key === " ") && mobileViewerEnabled()) openViewer(e);
   });
+
   closeBtn.addEventListener("click", closeViewer);
+  closeBtn.addEventListener("touchend", closeViewer, { passive: false });
+
   document.addEventListener("keydown", function (e) {
     if (!viewer.classList.contains("is-open")) return;
     if (e.key === "Escape") closeViewer(e);
-    if (e.key === "Tab") { e.preventDefault(); closeBtn.focus({ preventScroll: true }); }
+    if (e.key === "Tab") {
+      e.preventDefault();
+      closeBtn.focus({ preventScroll: true });
+    }
   });
+
   viewer.addEventListener("touchmove", function (e) {
     if (viewer.classList.contains("is-open")) e.preventDefault();
   }, { passive: false });

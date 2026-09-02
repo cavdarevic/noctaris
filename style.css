@@ -3161,3 +3161,263 @@ body.gallery-viewer-open .atlas-editorial-nav{
   .dna-viewer-results article{padding-left:6px;padding-right:6px}
   .dna-viewer-results h3{font-size:6.8px}
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Final proportion + mobile landscape reader refinement — 2026-09-03
+   ========================= */
+@media(min-width:981px){
+  /* More restrained identity; create air between Atlas and LABOKLIN. */
+  .dna-primary h2{
+    font-size:clamp(19px,1.72vw,26px);
+    letter-spacing:.155em;
+  }
+  .dna-breed{
+    font-size:clamp(8px,.70vw,10px);
+    letter-spacing:.25em;
+  }
+  .dna-lab{margin-top:37px}
+  .dna-laboklin{width:clamp(190px,20vw,300px)}
+
+  /* Lower, tighter 4 × 2 result matrix. */
+  .dna-results{margin-top:25px}
+  .dna-result{
+    min-height:94px;
+    padding:11px clamp(14px,1.45vw,20px) 10px;
+  }
+  .dna-index{margin-bottom:6px;font-size:6.5px}
+  .dna-result h3{
+    min-height:23px;
+    font-size:clamp(9.5px,.76vw,11px);
+    line-height:1.18;
+  }
+  .dna-gene{margin-top:5px;font-size:6px}
+  .dna-genotype{
+    margin-top:6px;
+    padding-top:7px;
+    font-size:clamp(9.5px,.78vw,11px);
+  }
+}
+
+@media(max-width:760px){
+  /* Main mobile dossier: larger micro-type without wrapping or spill. */
+  .dna-result{
+    min-height:76px;
+    padding:8px 5px 7px;
+  }
+  .dna-result h3{
+    min-height:16px;
+    font-size:7.15px;
+    line-height:1.08;
+    letter-spacing:.035em;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:clip;
+    overflow-wrap:normal;
+  }
+  .dna-index{font-size:5.8px}
+  .dna-gene{font-size:5.45px;letter-spacing:.035em}
+  .dna-genotype{font-size:8.2px;letter-spacing:.07em}
+
+  /* CTA is a deliberate final action, not a ninth data tile. */
+  .dna-report-cta{
+    min-height:68px;
+    margin-top:12px;
+    padding:14px 16px;
+  }
+  .dna-cta-copy strong{
+    font-size:10.5px;
+    letter-spacing:.145em;
+  }
+  .dna-cta-copy small{
+    font-size:7.7px;
+    letter-spacing:.115em;
+  }
+  .dna-cta-arrow{font-size:22px}
+}
+
+/* Fullscreen reader is styled independently so rotation does not break it. */
+.dna-viewer.is-open{
+  display:flex;
+  position:fixed;
+  inset:0;
+  z-index:2147483000;
+  align-items:center;
+  justify-content:center;
+  width:100vw;
+  height:100dvh;
+  padding:0;
+  background:#050607;
+  color:#f2f2f0;
+  overflow:hidden;
+  overscroll-behavior:none;
+  touch-action:none;
+  pointer-events:auto;
+}
+body.dna-viewer-open{
+  overflow:hidden !important;
+  overscroll-behavior:none;
+  touch-action:none;
+}
+
+/* Portrait phone: the dossier itself is physically rotated into landscape. */
+@media (orientation:portrait) and (max-width:760px){
+  .dna-viewer-shell{
+    position:relative;
+    box-sizing:border-box;
+    width:calc(100dvh - 22px);
+    height:calc(100vw - 18px);
+    max-width:none;
+    max-height:none;
+    padding:15px 18px 14px;
+    transform:rotate(90deg);
+    transform-origin:center center;
+  }
+  .dna-viewer-close{
+    position:absolute;
+    top:8px;
+    right:12px;
+    z-index:5;
+    width:34px;
+    height:34px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:rgba(255,255,255,.84);
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:27px;
+    font-weight:200;
+    line-height:1;
+    cursor:pointer;
+    touch-action:manipulation;
+    pointer-events:auto;
+  }
+  .dna-viewer-heading{
+    margin:0 48px 11px 0;
+    font-family:Arial,Helvetica,sans-serif;
+    text-transform:uppercase;
+  }
+  .dna-viewer-heading p{
+    margin:0 0 5px;
+    color:#c39949;
+    font-size:7px;
+    line-height:1;
+    letter-spacing:.18em;
+  }
+  .dna-viewer-heading h2{
+    margin:0;
+    color:rgba(255,255,255,.94);
+    font-size:17px;
+    font-weight:300;
+    line-height:1.05;
+    letter-spacing:.14em;
+  }
+  .dna-viewer-heading small{
+    display:block;
+    margin-top:5px;
+    color:rgba(255,255,255,.45);
+    font-size:6.5px;
+    line-height:1;
+    letter-spacing:.10em;
+  }
+  .dna-viewer-results{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    width:100%;
+    height:calc(100% - 60px);
+    border:1px solid rgba(255,255,255,.18);
+  }
+  .dna-viewer-results article{
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    min-height:0;
+    padding:10px 11px 9px;
+    border-right:1px solid rgba(255,255,255,.13);
+    border-bottom:1px solid rgba(255,255,255,.13);
+    font-family:Arial,Helvetica,sans-serif;
+    overflow:hidden;
+  }
+  .dna-viewer-results article:nth-child(4n){border-right:0}
+  .dna-viewer-results article:nth-child(n+5){border-bottom:0}
+  .dna-viewer-results article>span{
+    display:block;
+    margin-bottom:7px;
+    color:#c39949;
+    font-size:6.7px;
+    letter-spacing:.12em;
+  }
+  .dna-viewer-results h3{
+    min-height:25px;
+    margin:0;
+    color:rgba(255,255,255,.92);
+    font-size:clamp(8px,1.55dvh,11px);
+    font-weight:400;
+    line-height:1.16;
+    letter-spacing:.045em;
+    text-transform:uppercase;
+    overflow-wrap:normal;
+  }
+  .dna-viewer-results p{
+    margin:auto 0 0;
+    color:rgba(255,255,255,.42);
+    font-size:6.5px;
+    line-height:1;
+    letter-spacing:.065em;
+    text-transform:uppercase;
+  }
+  .dna-viewer-results strong{
+    position:relative;
+    display:block;
+    margin-top:8px;
+    padding-top:8px;
+    color:rgba(255,255,255,.90);
+    font-size:11px;
+    font-weight:300;
+    line-height:1;
+    letter-spacing:.09em;
+    white-space:nowrap;
+  }
+  .dna-viewer-results strong::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:9px;
+    height:1px;
+    background:rgba(195,153,73,.86);
+  }
+}
+
+/* If the phone is already landscape, use the viewport directly. */
+@media (orientation:landscape) and (max-width:980px) and (pointer:coarse){
+  .dna-viewer-shell{
+    position:relative;
+    box-sizing:border-box;
+    width:calc(100vw - 28px);
+    height:calc(100dvh - 20px);
+    max-width:none;
+    max-height:none;
+    padding:14px 18px 12px;
+    transform:none;
+  }
+  .dna-viewer-close{top:7px;right:10px;z-index:5;pointer-events:auto;touch-action:manipulation}
+  .dna-viewer-heading{margin:0 48px 9px 0}
+  .dna-viewer-heading p{font-size:7px;margin-bottom:4px}
+  .dna-viewer-heading h2{font-size:16px}
+  .dna-viewer-heading small{font-size:6.4px;margin-top:4px}
+  .dna-viewer-results{height:calc(100% - 55px)}
+  .dna-viewer-results article{min-height:0;padding:9px 11px 8px}
+  .dna-viewer-results article>span{margin-bottom:6px;font-size:6.5px}
+  .dna-viewer-results h3{min-height:22px;font-size:9.5px;line-height:1.12}
+  .dna-viewer-results p{margin:auto 0 0;font-size:6.3px}
+  .dna-viewer-results strong{margin-top:7px;padding-top:7px;font-size:10.5px}
+}
+
+@media(max-width:380px){
+  .dna-result h3{font-size:6.6px}
+  .dna-gene{font-size:5.1px}
+  .dna-genotype{font-size:7.7px}
+  .dna-cta-copy strong{font-size:9.7px}
+  .dna-cta-copy small{font-size:7.1px}
+}

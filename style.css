@@ -3339,3 +3339,13 @@ body.gallery-viewer-open .atlas-editorial-nav{
     top:-4px;
   }
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Mobile tested-by optical settle — 2026-09-02
+   ========================= */
+@media(max-width:760px){
+  .dna-tested-by{
+    top:3px;
+  }
+}

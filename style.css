@@ -3084,3 +3084,30 @@ body.gallery-viewer-open .atlas-editorial-nav{
   .dna-cta-copy strong{font-size:9.7px}
   .dna-cta-copy small{font-size:7.1px}
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Mobile DNA watermark refinement — 2026-09-03
+   ========================= */
+@media(max-width:760px){
+  /* Keep NOCTARIS · DOSSIER 01 as the foreground label, then let DNA sit
+     quietly in the open space above the content hierarchy. */
+  .dna-dossier-head{position:relative}
+  .dna-ghost{
+    top:34px;
+    right:8px;
+    z-index:0;
+    font-size:clamp(38px,12.5vw,50px);
+    gap:5px;
+    opacity:.22;
+    -webkit-text-stroke:1px rgba(255,255,255,.20);
+    pointer-events:none;
+  }
+  .dna-ghost span:last-child{font-size:.50em}
+  .dna-dossier-label{position:relative;z-index:2}
+  .dna-primary{
+    position:relative;
+    z-index:1;
+    margin-top:46px;
+  }
+}

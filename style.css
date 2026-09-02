@@ -2287,3 +2287,366 @@ body.gallery-viewer-open .atlas-editorial-nav{
     transform:none;
   }
 }
+
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Landscape laboratory dossier
+   ========================= */
+.dna-section{
+  position:relative;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:clamp(82px,9vw,142px) clamp(18px,3vw,48px) clamp(88px,9vw,138px);
+  overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.055);
+  border-bottom:1px solid rgba(255,255,255,.055);
+  background:
+    radial-gradient(circle at 66% 38%,rgba(255,255,255,.018),transparent 34%),
+    linear-gradient(180deg,#070809 0%,#090a0b 48%,#070809 100%);
+  color:#f2f2f0;
+  text-align:left;
+}
+.dna-dossier{
+  position:relative;
+  width:min(100%,1360px);
+  min-height:clamp(760px,63vw,980px);
+  margin:0 auto;
+  padding-left:clamp(0px,18vw,260px);
+}
+.dna-ghost{
+  position:absolute;
+  left:0;
+  top:3px;
+  width:clamp(150px,16vw,230px);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  color:transparent;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(82px,10.8vw,160px);
+  font-weight:300;
+  line-height:.92;
+  letter-spacing:-.055em;
+  -webkit-text-stroke:1px rgba(255,255,255,.16);
+  opacity:.8;
+  pointer-events:none;
+  user-select:none;
+}
+.dna-dossier-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:40px;
+  min-height:92px;
+}
+.dna-dossier-label,
+.dna-kicker,
+.dna-tested-by,
+.dna-lab-caption,
+.dna-principles span,
+.dna-index,
+.dna-gene,
+.dna-meta-item span,
+.dna-report-cta{
+  font-family:Arial,Helvetica,sans-serif;
+  text-transform:uppercase;
+}
+.dna-dossier-label{
+  margin:0;
+  color:#c39949;
+  font-size:10px;
+  line-height:1;
+  letter-spacing:.28em;
+}
+.dna-dossier-label span{color:rgba(195,153,73,.62)}
+.dna-principles{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  padding:2px 26px 0 25px;
+  border-left:1px solid rgba(195,153,73,.48);
+}
+.dna-principles span{
+  color:rgba(255,255,255,.50);
+  font-size:8px;
+  line-height:1;
+  letter-spacing:.24em;
+}
+.dna-primary{
+  margin-top:clamp(34px,4vw,62px);
+  max-width:780px;
+}
+.dna-kicker{
+  margin:0 0 15px;
+  color:#c39949;
+  font-size:10px;
+  letter-spacing:.28em;
+}
+.dna-primary h2{
+  margin:0;
+  color:rgba(255,255,255,.94);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(24px,2.35vw,36px);
+  font-weight:300;
+  line-height:1.08;
+  letter-spacing:.23em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.dna-breed{
+  margin:14px 0 0;
+  color:rgba(255,255,255,.48);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(10px,.9vw,13px);
+  line-height:1;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+}
+.dna-lab{
+  margin-top:clamp(52px,6vw,86px);
+  margin-left:clamp(0px,3vw,42px);
+  width:min(100%,610px);
+}
+.dna-tested-by{
+  margin:0 0 13px;
+  color:rgba(255,255,255,.62);
+  font-size:9px;
+  letter-spacing:.20em;
+  text-transform:none;
+}
+.dna-laboklin{
+  display:block;
+  width:clamp(220px,27vw,390px);
+  height:auto;
+  margin:0;
+}
+.dna-lab-caption{
+  margin:8px 0 0;
+  color:rgba(255,255,255,.65);
+  font-size:8px;
+  line-height:1.4;
+  letter-spacing:.16em;
+}
+.dna-lab-caption span{color:#c39949;margin:0 7px}
+.dna-results{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  width:100%;
+  margin-top:clamp(54px,6vw,86px);
+  border:1px solid rgba(255,255,255,.13);
+}
+.dna-result{
+  position:relative;
+  min-height:176px;
+  padding:25px clamp(20px,2.3vw,34px) 23px;
+  border-right:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.dna-result:nth-child(4n){border-right:0}
+.dna-result:nth-child(n+5){border-bottom:0}
+.dna-index{
+  display:block;
+  margin-bottom:18px;
+  color:#c39949;
+  font-size:9px;
+  letter-spacing:.17em;
+}
+.dna-result h3{
+  min-height:42px;
+  margin:0;
+  color:rgba(255,255,255,.90);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(12px,1.15vw,16px);
+  font-weight:400;
+  line-height:1.38;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.dna-result h3 small{font:inherit}
+.dna-gene{
+  margin:17px 0 0;
+  color:rgba(255,255,255,.40);
+  font-size:8px;
+  line-height:1.2;
+  letter-spacing:.17em;
+}
+.dna-genotype{
+  position:relative;
+  margin:18px 0 0;
+  padding-top:14px;
+  color:rgba(255,255,255,.88);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(13px,1.3vw,18px);
+  font-weight:300;
+  line-height:1;
+  letter-spacing:.22em;
+}
+.dna-genotype::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:12px;
+  height:1px;
+  background:rgba(195,153,73,.82);
+}
+.dna-meta{
+  display:grid;
+  grid-template-columns:.78fr 1.15fr .92fr 1.72fr;
+  border:1px solid rgba(255,255,255,.13);
+  border-top:0;
+}
+.dna-meta-item{
+  min-height:88px;
+  padding:20px clamp(18px,2vw,28px);
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.dna-meta-item span{
+  display:block;
+  margin-bottom:12px;
+  color:#c39949;
+  font-size:7px;
+  letter-spacing:.20em;
+}
+.dna-meta-item strong{
+  display:block;
+  color:rgba(255,255,255,.84);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(11px,1.05vw,15px);
+  font-weight:300;
+  line-height:1.2;
+  letter-spacing:.17em;
+}
+.dna-report-cta{
+  min-height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  margin:12px;
+  padding:14px 22px;
+  border:1px solid rgba(195,153,73,.78);
+  color:#c39949;
+  text-decoration:none;
+  transition:border-color .25s ease,background .25s ease,color .25s ease;
+}
+.dna-report-cta:hover,
+.dna-report-cta:focus-visible{
+  border-color:#d6ad62;
+  background:rgba(195,153,73,.055);
+  color:#d6ad62;
+}
+.dna-cta-copy{display:flex;flex-direction:column;gap:7px}
+.dna-cta-copy strong{
+  font-size:10px;
+  font-weight:400;
+  line-height:1;
+  letter-spacing:.22em;
+}
+.dna-cta-copy small{
+  color:rgba(255,255,255,.48);
+  font-size:7px;
+  line-height:1;
+  letter-spacing:.18em;
+}
+.dna-cta-arrow{
+  font-size:27px;
+  font-weight:200;
+  line-height:1;
+}
+
+@media(max-width:980px){
+  .dna-dossier{padding-left:clamp(0px,13vw,118px)}
+  .dna-ghost{font-size:clamp(72px,11vw,108px);width:120px;opacity:.55}
+  .dna-primary h2{font-size:clamp(21px,3vw,30px);letter-spacing:.18em}
+  .dna-results{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dna-result:nth-child(4n){border-right:1px solid rgba(255,255,255,.12)}
+  .dna-result:nth-child(2n){border-right:0}
+  .dna-result:nth-child(n+5){border-bottom:1px solid rgba(255,255,255,.12)}
+  .dna-result:nth-child(n+7){border-bottom:0}
+  .dna-meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dna-meta-item:nth-child(3){border-right:0}
+  .dna-report-cta{grid-column:1/-1;margin:12px;min-height:76px}
+}
+
+@media(max-width:760px){
+  .dna-section{
+    padding:70px 18px 76px;
+  }
+  .dna-dossier{
+    min-height:0;
+    padding-left:0;
+  }
+  .dna-ghost{
+    position:absolute;
+    left:auto;
+    right:-12px;
+    top:68px;
+    width:auto;
+    font-size:72px;
+    opacity:.26;
+    pointer-events:none;
+  }
+  .dna-dossier-head{min-height:74px}
+  .dna-dossier-label{font-size:8px;letter-spacing:.22em}
+  .dna-principles{display:none}
+  .dna-primary{margin-top:22px;max-width:100%}
+  .dna-kicker{font-size:8px;margin-bottom:13px}
+  .dna-primary h2{
+    max-width:84%;
+    font-size:clamp(18px,5.7vw,25px);
+    letter-spacing:.14em;
+    white-space:normal;
+  }
+  .dna-breed{font-size:8px;letter-spacing:.24em;margin-top:11px}
+  .dna-lab{
+    width:100%;
+    margin:62px 0 0;
+  }
+  .dna-tested-by{font-size:8px;letter-spacing:.16em}
+  .dna-laboklin{width:min(72vw,290px)}
+  .dna-lab-caption{max-width:92%;font-size:6.8px;letter-spacing:.10em}
+  .dna-results{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin-top:58px;
+  }
+  .dna-result{
+    min-height:148px;
+    padding:20px 16px 18px;
+  }
+  .dna-index{font-size:7px;margin-bottom:14px}
+  .dna-result h3{min-height:37px;font-size:10px;letter-spacing:.13em}
+  .dna-gene{font-size:6.8px;margin-top:13px;letter-spacing:.12em}
+  .dna-genotype{font-size:12px;margin-top:15px;padding-top:12px;letter-spacing:.18em}
+  .dna-meta{grid-template-columns:1fr}
+  .dna-meta-item{
+    min-height:auto;
+    padding:17px 18px;
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .dna-meta-item span{font-size:6.8px;margin-bottom:8px}
+  .dna-meta-item strong{font-size:11px}
+  .dna-report-cta{
+    grid-column:auto;
+    min-height:74px;
+    margin:12px;
+    padding:15px 17px;
+  }
+  .dna-cta-copy strong{font-size:8px}
+  .dna-cta-copy small{font-size:6.6px}
+}
+
+@media(max-width:420px){
+  .dna-section{padding-left:14px;padding-right:14px}
+  .dna-result{padding-left:13px;padding-right:12px}
+  .dna-result h3{font-size:9.2px;letter-spacing:.105em}
+  .dna-gene{font-size:6.4px}
+  .dna-genotype{font-size:11px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .dna-report-cta{transition:none}
+}

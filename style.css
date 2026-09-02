@@ -3269,3 +3269,49 @@ body.gallery-viewer-open .atlas-editorial-nav{
     letter-spacing:.10em;
   }
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Mobile laboratory signature balance — 2026-09-03
+   ========================= */
+@media(max-width:760px){
+  /* Give the laboratory signature more breathing room above, while keeping
+     the lead-in visually attached to the LABOKLIN wordmark. */
+  .dna-lab{
+    margin-top:30px;
+  }
+  .dna-tested-by{
+    margin:0 0 2px;
+  }
+
+  /* The principles are an independent NOCTARIS statement, not a LABOKLIN
+     tagline: more distance, more presence, same optical baseline. */
+  .dna-lab-brand-row{
+    gap:30px;
+    align-items:flex-end;
+  }
+  .dna-principles-mobile{
+    gap:7px;
+    margin:0;
+    padding:0 0 0 13px;
+    align-self:flex-end;
+  }
+  .dna-principles-mobile span{
+    font-size:10.4px;
+    line-height:1;
+    letter-spacing:.095em;
+  }
+}
+
+@media(max-width:380px){
+  .dna-lab-brand-row{gap:24px}
+  .dna-laboklin{width:min(40vw,145px)}
+  .dna-principles-mobile{
+    gap:6px;
+    padding-left:11px;
+  }
+  .dna-principles-mobile span{
+    font-size:9.2px;
+    letter-spacing:.08em;
+  }
+}

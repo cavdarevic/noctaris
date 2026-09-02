@@ -4,7 +4,8 @@
   const photos = [
     { src: '/assets/atlas/atlas-01.webp', alt: 'Made In Spain Atlas — photograph 1', width: 2048, height: 1365 },
     { src: '/assets/atlas/atlas-02.webp', alt: 'Made In Spain Atlas — photograph 2', width: 2504, height: 1814 },
-    { src: '/assets/atlas/atlas-03.webp', alt: 'Made In Spain Atlas — photograph 3', width: 3505, height: 2414 }
+    { src: '/assets/atlas/atlas-04.webp', alt: 'Made In Spain Atlas — photograph 3', width: 2048, height: 1365 },
+    { src: '/assets/atlas/atlas-03.webp', alt: 'Made In Spain Atlas — photograph 4', width: 3505, height: 2414 }
   ];
 
   document.addEventListener('DOMContentLoaded', () => {

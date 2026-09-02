@@ -3131,3 +3131,27 @@ body.gallery-viewer-open .atlas-editorial-nav{
   .dna-ghost span:last-child{font-size:.50em}
   .dna-primary{margin-top:48px}
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Mobile editorial DNA stamp — final refinement — 2026-09-03
+   ========================= */
+@media(max-width:760px){
+  /* DNA is a deliberate section stamp: larger, slightly higher and more present.
+     Horizontal position stays anchored; the added scale fills the open space naturally. */
+  .dna-ghost{
+    top:-18px;
+    left:43%;
+    right:auto;
+    font-size:clamp(62px,19.5vw,80px);
+    gap:6px;
+    opacity:.42;
+    -webkit-text-stroke:1px rgba(255,255,255,.36);
+  }
+  .dna-ghost span:last-child{
+    font-size:.42em;
+  }
+  .dna-primary{
+    margin-top:56px;
+  }
+}

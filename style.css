@@ -3349,3 +3349,18 @@ body.gallery-viewer-open .atlas-editorial-nav{
     top:3px;
   }
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Mobile tested-by desktop-ratio optical lock — 2026-09-03
+   ========================= */
+@media(max-width:760px){
+  /* Match the desktop lockup proportion instead of offsetting the label
+     independently: one controlled gap between the lead-in and LABOKLIN. */
+  .dna-tested-by{
+    position:static;
+    top:auto;
+    margin:0 0 10px;
+    line-height:1;
+  }
+}

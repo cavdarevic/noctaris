@@ -3155,3 +3155,73 @@ body.gallery-viewer-open .atlas-editorial-nav{
     margin-top:56px;
   }
 }
+
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   LABOKLIN hierarchy + mobile principles calibration — 2026-09-03
+   ========================= */
+.dna-principles-mobile{display:none}
+
+@media(min-width:981px){
+  /* LABOKLIN remains authoritative, but no longer dominates the dossier. */
+  .dna-tested-by{
+    font-size:9.6px;
+  }
+  .dna-laboklin{
+    width:clamp(171px,18vw,270px);
+  }
+}
+
+@media(max-width:760px){
+  /* Strengthen the semantic lead-in, then use the existing space beside
+     the wordmark for the three NOCTARIS principles without adding height. */
+  .dna-tested-by{
+    font-size:7.8px;
+    letter-spacing:.13em;
+  }
+  .dna-lab-brand-row{
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-start;
+    gap:14px;
+    width:100%;
+  }
+  .dna-laboklin{
+    flex:0 0 auto;
+    width:min(43.2vw,158px);
+  }
+  .dna-principles-mobile{
+    display:flex;
+    flex:0 0 auto;
+    flex-direction:column;
+    justify-content:flex-end;
+    gap:5px;
+    margin:0 0 1px;
+    padding:0 0 0 10px;
+    border-left:1px solid rgba(195,153,73,.62);
+  }
+  .dna-principles-mobile span{
+    color:rgba(255,255,255,.60);
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:5.8px;
+    font-weight:400;
+    line-height:1;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+}
+
+@media(max-width:380px){
+  .dna-lab-brand-row{gap:10px}
+  .dna-laboklin{width:min(42vw,150px)}
+  .dna-principles-mobile{
+    gap:4px;
+    padding-left:8px;
+  }
+  .dna-principles-mobile span{
+    font-size:5.25px;
+    letter-spacing:.11em;
+  }
+}

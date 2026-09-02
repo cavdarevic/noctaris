@@ -211,16 +211,17 @@ gtag('config', 'G-KXEVF44WP3');
 <img alt="LABOKLIN" class="dna-laboklin" decoding="async" height="61" loading="lazy" src="/assets/laboklin-wordmark.png" width="290"/>
 <p class="dna-lab-caption">GMBH &amp; CO. KG <span>·</span> LABORATORY FOR CLINICAL DIAGNOSTICS</p>
 </div>
-<div aria-label="Selected genetic test results" class="dna-results">
-<article class="dna-result"><span class="dna-index">01</span><h3>PRA Type B1 <small>· HIVEP3</small></h3><p class="dna-gene">HIVEP3</p><p class="dna-genotype">N / N</p></article>
+<div aria-label="Selected genetic test results. Tap to open detailed fullscreen view on mobile." class="dna-results" id="dna-results-preview" role="button" tabindex="0">
+<article class="dna-result"><span class="dna-index">01</span><h3><span class="dna-title-full">PRA Type B1 <small>· HIVEP3</small></span><span class="dna-title-short">PRA B1</span></h3><p class="dna-gene">HIVEP3</p><p class="dna-genotype">N / N</p></article>
 <article class="dna-result"><span class="dna-index">02</span><h3>MAC</h3><p class="dna-gene">CARD9</p><p class="dna-genotype">N / N</p></article>
-<article class="dna-result"><span class="dna-index">03</span><h3>Myotonia Congenita</h3><p class="dna-gene">CLCN1</p><p class="dna-genotype">N / N</p></article>
+<article class="dna-result"><span class="dna-index">03</span><h3><span class="dna-title-full">Myotonia Congenita</span><span class="dna-title-short">MYOTONIA</span></h3><p class="dna-gene">CLCN1</p><p class="dna-genotype">N / N</p></article>
 <article class="dna-result"><span class="dna-index">04</span><h3>CMT</h3><p class="dna-gene">SBF2</p><p class="dna-genotype">N / N</p></article>
 <article class="dna-result"><span class="dna-index">05</span><h3>PMDS</h3><p class="dna-gene">AMHR2</p><p class="dna-genotype">N / N</p></article>
-<article class="dna-result"><span class="dna-index">06</span><h3>Spondylocostal Dysostosis</h3><p class="dna-gene">HES7</p><p class="dna-genotype">N / N</p></article>
+<article class="dna-result"><span class="dna-index">06</span><h3><span class="dna-title-full">Spondylocostal Dysostosis</span><span class="dna-title-short">COMMA DEFECT</span></h3><p class="dna-gene">HES7</p><p class="dna-genotype">N / N</p></article>
 <article class="dna-result"><span class="dna-index">07</span><h3>CDDY</h3><p class="dna-gene">FGF4 · CFA12</p><p class="dna-genotype">N / CDDY</p></article>
 <article class="dna-result"><span class="dna-index">08</span><h3>CDPA</h3><p class="dna-gene">FGF4 · CFA18</p><p class="dna-genotype">N / N</p></article>
 </div>
+<p class="dna-expand-hint" aria-hidden="true">Tap results to expand <span>↗</span></p>
 <div class="dna-meta">
 <div class="dna-meta-item"><span>Sample type</span><strong>eNat</strong></div>
 <div class="dna-meta-item"><span>Report no.</span><strong>2606-W-222872</strong></div>
@@ -230,7 +231,28 @@ gtag('config', 'G-KXEVF44WP3');
 </a>
 </div>
 </div>
-</section><section class="achievements-section editorial-section" data-profile-section="achievements" id="achievements">
+</section>
+<div aria-hidden="true" aria-labelledby="dna-viewer-title" class="dna-viewer" id="dna-viewer" role="dialog" aria-modal="true">
+  <div class="dna-viewer-shell">
+    <button aria-label="Close DNA results" class="dna-viewer-close" id="dna-viewer-close" type="button">×</button>
+    <div class="dna-viewer-heading">
+      <p>NOCTARIS <span>·</span> DOSSIER 01</p>
+      <h2 id="dna-viewer-title">Genetic Results</h2>
+      <small>Made In Spain Atlas · Miniature Schnauzer</small>
+    </div>
+    <div class="dna-viewer-results">
+      <article><span>01</span><h3>PRA Type B1 · HIVEP3</h3><p>HIVEP3</p><strong>N / N</strong></article>
+      <article><span>02</span><h3>MAC</h3><p>CARD9</p><strong>N / N</strong></article>
+      <article><span>03</span><h3>Myotonia Congenita</h3><p>CLCN1</p><strong>N / N</strong></article>
+      <article><span>04</span><h3>CMT</h3><p>SBF2</p><strong>N / N</strong></article>
+      <article><span>05</span><h3>PMDS</h3><p>AMHR2</p><strong>N / N</strong></article>
+      <article><span>06</span><h3>Spondylocostal Dysostosis</h3><p>HES7</p><strong>N / N</strong></article>
+      <article><span>07</span><h3>CDDY</h3><p>FGF4 · CFA12</p><strong>N / CDDY</strong></article>
+      <article><span>08</span><h3>CDPA</h3><p>FGF4 · CFA18</p><strong>N / N</strong></article>
+    </div>
+  </div>
+</div>
+<section class="achievements-section editorial-section" data-profile-section="achievements" id="achievements">
 <p class="archive-label">Achievements</p>
 <h2>Achievement Wall</h2>
 <div class="achievement-wall">
@@ -876,6 +898,71 @@ document.addEventListener("DOMContentLoaded", function () {
     if (modal.classList.contains("is-open") && e.key === "Escape") closePedigree(e);
   });
 });
+</script>
+<script id="noctaris-dna-viewer-controller">
+(function () {
+  const preview = document.getElementById("dna-results-preview");
+  const viewer = document.getElementById("dna-viewer");
+  const closeBtn = document.getElementById("dna-viewer-close");
+  if (!preview || !viewer || !closeBtn) return;
+
+  let savedScrollY = 0;
+  let previousFocus = null;
+  let inerted = [];
+
+  function mobileViewerEnabled() {
+    return window.matchMedia("(max-width: 760px)").matches;
+  }
+
+  function openViewer(e) {
+    if (!mobileViewerEnabled()) return;
+    if (e) e.preventDefault();
+    savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    previousFocus = document.activeElement;
+    inerted = Array.from(document.body.children).filter(function (el) { return el !== viewer && el.tagName !== "SCRIPT"; });
+    inerted.forEach(function (el) { el.inert = true; });
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.classList.add("dna-viewer-open");
+    viewer.classList.add("is-open");
+    viewer.setAttribute("aria-hidden", "false");
+    closeBtn.focus({ preventScroll: true });
+  }
+
+  function closeViewer(e) {
+    if (e) e.preventDefault();
+    if (!viewer.classList.contains("is-open")) return;
+    viewer.classList.remove("is-open");
+    viewer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("dna-viewer-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    inerted.forEach(function (el) { el.inert = false; });
+    inerted = [];
+    window.scrollTo(0, savedScrollY);
+    if (previousFocus && previousFocus.focus) previousFocus.focus({ preventScroll: true });
+  }
+
+  preview.addEventListener("click", openViewer);
+  preview.addEventListener("keydown", function (e) {
+    if ((e.key === "Enter" || e.key === " ") && mobileViewerEnabled()) openViewer(e);
+  });
+  closeBtn.addEventListener("click", closeViewer);
+  document.addEventListener("keydown", function (e) {
+    if (!viewer.classList.contains("is-open")) return;
+    if (e.key === "Escape") closeViewer(e);
+    if (e.key === "Tab") { e.preventDefault(); closeBtn.focus({ preventScroll: true }); }
+  });
+  viewer.addEventListener("touchmove", function (e) {
+    if (viewer.classList.contains("is-open")) e.preventDefault();
+  }, { passive: false });
+})();
 </script>
 <script defer="" src="/nav.js"></script>
 </body>

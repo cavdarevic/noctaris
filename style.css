@@ -3315,3 +3315,17 @@ body.gallery-viewer-open .atlas-editorial-nav{
     letter-spacing:.08em;
   }
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Mobile tested-by lockup correction — 2026-09-03
+   ========================= */
+@media(max-width:760px){
+  /* Pull the semantic lead-in down so it reads as one signature with LABOKLIN,
+     while preserving the breathing room above the laboratory block. */
+  .dna-tested-by{
+    position:relative;
+    top:6px;
+    margin-bottom:0;
+  }
+}

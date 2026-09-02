@@ -3329,3 +3329,13 @@ body.gallery-viewer-open .atlas-editorial-nav{
     margin-bottom:0;
   }
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Mobile tested-by final optical lift — 2026-09-02
+   ========================= */
+@media(max-width:760px){
+  .dna-tested-by{
+    top:-4px;
+  }
+}

@@ -3225,3 +3225,47 @@ body.gallery-viewer-open .atlas-editorial-nav{
     letter-spacing:.11em;
   }
 }
+
+/* =========================
+   NOCTARIS — DNA / DOSSIER 01
+   Final LABOKLIN / principles hierarchy refinement — 2026-09-03
+   ========================= */
+@media(min-width:981px){
+  .dna-tested-by{
+    font-size:11.5px;
+  }
+}
+
+@media(max-width:760px){
+  .dna-tested-by{
+    font-size:9.4px;
+    letter-spacing:.13em;
+  }
+  .dna-lab-brand-row{
+    gap:22px;
+    align-items:flex-end;
+  }
+  .dna-principles-mobile{
+    gap:7px;
+    margin:0;
+    padding:0 0 0 12px;
+    align-self:flex-end;
+  }
+  .dna-principles-mobile span{
+    font-size:8.8px;
+    line-height:1;
+    letter-spacing:.12em;
+  }
+}
+
+@media(max-width:380px){
+  .dna-lab-brand-row{gap:18px}
+  .dna-principles-mobile{
+    gap:6px;
+    padding-left:10px;
+  }
+  .dna-principles-mobile span{
+    font-size:8px;
+    letter-spacing:.10em;
+  }
+}

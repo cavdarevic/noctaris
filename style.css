@@ -3364,3 +3364,83 @@ body.gallery-viewer-open .atlas-editorial-nav{
     line-height:1;
   }
 }
+
+/* =========================
+   NOCTARIS — ABOUT Manifesto
+   Same editorial language on desktop and mobile
+   ========================= */
+.about-screen{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:clamp(96px,13vh,138px) clamp(24px,6vw,72px) clamp(54px,8vh,84px);
+}
+.about-manifesto{
+  position:relative;
+  width:min(100%,900px);
+  min-height:clamp(430px,62vh,610px);
+  display:flex;
+  align-items:center;
+  padding:clamp(24px,4vw,42px) clamp(70px,10vw,118px) clamp(24px,4vw,42px) clamp(8px,2vw,22px);
+}
+.about-copy{
+  width:min(100%,650px);
+}
+.about-copy p{
+  margin:0 0 clamp(27px,4.2vh,42px);
+  color:rgba(242,242,242,.78);
+  font-size:clamp(16px,1.45vw,18px);
+  font-weight:300;
+  line-height:1.68;
+  letter-spacing:.035em;
+}
+.about-copy p:last-child{margin-bottom:0}
+.about-signature{
+  padding-top:clamp(8px,1.4vh,14px);
+  color:rgba(248,248,248,.94)!important;
+  font-weight:400!important;
+  letter-spacing:.045em!important;
+}
+.about-gold-line{
+  position:absolute;
+  top:12%;
+  right:clamp(18px,3vw,36px);
+  bottom:12%;
+  width:1px;
+  background:var(--gold);
+}
+@media(max-width:760px){
+  .about-screen{
+    place-items:center;
+    padding:82px 24px 38px;
+  }
+  .about-manifesto{
+    width:100%;
+    min-height:calc(100svh - 120px);
+    padding:30px 34px 30px 0;
+  }
+  .about-copy{
+    width:100%;
+    max-width:520px;
+  }
+  .about-copy p{
+    margin-bottom:30px;
+    font-size:16px;
+    line-height:1.66;
+    letter-spacing:.025em;
+  }
+  .about-signature{
+    padding-top:8px;
+  }
+  .about-gold-line{
+    top:11%;
+    right:3px;
+    bottom:11%;
+  }
+  .about-desktop-break{display:none}
+}
+@media(max-width:390px){
+  .about-screen{padding-left:22px;padding-right:22px}
+  .about-manifesto{padding-right:28px}
+  .about-copy p{font-size:15.5px;line-height:1.64;margin-bottom:27px}
+}

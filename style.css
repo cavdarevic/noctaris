@@ -3598,3 +3598,51 @@ body.gallery-viewer-open .atlas-editorial-nav{
     letter-spacing:.085em!important;
   }
 }
+
+/* =========================
+   NOCTARIS — ABOUT Manifesto v4
+   Typography + composition refinement — 2026-09-04
+   ABOUT ONLY: no global/home/navigation changes.
+   ========================= */
+@media(min-width:1100px){
+  /* Keep line, diamond and copy as one composition; move the complete unit right. */
+  .about-manifesto{
+    transform:translateX(clamp(130px,14vw,220px));
+  }
+
+  /* HOME typographic language (Inter/sans), refined for long-form manifesto copy. */
+  .about-copy p:not(.about-signature),
+  .about-copy .about-lead{
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    font-size:clamp(15px,1.28vw,16.5px);
+    font-weight:300;
+    line-height:1.72;
+    letter-spacing:.018em;
+  }
+}
+
+@media(min-width:761px) and (max-width:1099px){
+  /* Gentler shift on compact desktop/tablet landscape to preserve breathing room. */
+  .about-manifesto{
+    transform:translateX(6vw);
+  }
+
+  .about-copy p:not(.about-signature),
+  .about-copy .about-lead{
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    font-size:15.5px;
+    font-weight:300;
+    line-height:1.7;
+    letter-spacing:.016em;
+  }
+}
+
+@media(max-width:760px){
+  /* Mobile composition intentionally stays in place; typography only. */
+  .about-copy p:not(.about-signature),
+  .about-copy .about-lead{
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    font-weight:300;
+    line-height:1.66;
+  }
+}

@@ -1,5 +1,5 @@
 /* =========================================================
-   NOCTARIS GALLERY v1.2
+   NOCTARIS GALLERY v1.3 — POLISH
    BLACK. SPACE. PHOTOGRAPHY. RHYTHM.
 
    HARD RULE: Gallery assets are isolated from DOG / PHOTOS assets.
@@ -14,9 +14,9 @@
 .gallery-dog-page.is-active{display:flex;flex-direction:column;animation:galleryPageIn .32s ease both;}
 
 /* Identity stays quiet. Photography owns the viewport. */
-.gallery-page-header{flex:0 0 clamp(88px,12.5vh,108px);padding:clamp(13px,2vh,20px) 20px 5px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.gallery-page-header{flex:0 0 clamp(82px,11.5vh,100px);padding:clamp(12px,1.7vh,17px) 20px 4px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center;}
 .gallery-page-count{margin:0;color:rgba(255,255,255,.66);font-size:clamp(9px,.7vw,11px);line-height:1;letter-spacing:.18em;font-variant-numeric:tabular-nums;}
-.gallery-page-header h1{margin:clamp(18px,2.6vh,26px) 0 0;color:rgba(255,255,255,.94);font-family:Georgia,"Times New Roman",serif;font-size:clamp(17px,1.55vw,24px);line-height:1;font-weight:400;letter-spacing:.18em;text-indent:.18em;text-transform:uppercase;}
+.gallery-page-header h1{margin:clamp(16px,2.2vh,22px) 0 0;color:rgba(255,255,255,.94);font-family:Georgia,"Times New Roman",serif;font-size:clamp(17px,1.55vw,24px);line-height:1;font-weight:400;letter-spacing:.18em;text-indent:.18em;text-transform:uppercase;}
 .gallery-manifesto{margin:5px 0 0;color:rgba(255,255,255,.43);font-family:Georgia,"Times New Roman",serif;font-size:clamp(9px,.78vw,12px);line-height:1;font-style:italic;letter-spacing:.08em;}
 
 /* ATLAS — art-directed puzzle, never algorithmic masonry. */
@@ -49,7 +49,7 @@
 .gallery-artwork-18{grid-column:10 / 13;grid-row:11 / 13;}
 
 /* Crop direction is art direction, not a generic center crop. */
-.gallery-artwork-01 img{object-position:50% 52%;}.gallery-artwork-02 img{object-position:52% 52%;}.gallery-artwork-03 img{object-position:50% 52%;}.gallery-artwork-04 img{object-position:50% 45%;}.gallery-artwork-05 img{object-position:50% 55%;}.gallery-artwork-06 img{object-position:50% 44%;}.gallery-artwork-07 img{object-position:52% 48%;}.gallery-artwork-08 img{object-position:48% 58%;}.gallery-artwork-09 img{object-position:50% 50%;}.gallery-artwork-10 img{object-position:50% 45%;}.gallery-artwork-11 img{object-position:52% 52%;}.gallery-artwork-12 img{object-position:50% 48%;}.gallery-artwork-13 img{object-position:50% 50%;}.gallery-artwork-14 img{object-position:50% 55%;}.gallery-artwork-15 img{object-position:50% 48%;}.gallery-artwork-16 img{object-position:50% 52%;}.gallery-artwork-17 img{object-position:50% 52%;}.gallery-artwork-18 img{object-position:50% 48%;}
+.gallery-artwork-01 img{object-position:50% 52%;}.gallery-artwork-02 img{object-position:52% 52%;}.gallery-artwork-03 img{object-position:50% 52%;}.gallery-artwork-04 img{object-position:50% 42%;}.gallery-artwork-05 img{object-position:50% 55%;}.gallery-artwork-06 img{object-position:50% 44%;}.gallery-artwork-07 img{object-position:52% 48%;}.gallery-artwork-08 img{object-position:48% 58%;}.gallery-artwork-09 img{object-position:50% 50%;}.gallery-artwork-10 img{object-position:50% 48%;}.gallery-artwork-11 img{object-position:52% 52%;}.gallery-artwork-12 img{object-position:50% 48%;}.gallery-artwork-13 img{object-position:50% 50%;}.gallery-artwork-14 img{object-position:50% 55%;}.gallery-artwork-15 img{object-position:50% 48%;}.gallery-artwork-16 img{object-position:50% 52%;}.gallery-artwork-17 img{object-position:50% 52%;}.gallery-artwork-18 img{object-position:50% 44%;}
 
 .gallery-page-nav{position:absolute;z-index:20;inset:50% clamp(10px,2vw,32px) auto;transform:translateY(-50%);margin:0;padding:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;pointer-events:none;}
 .gallery-page-arrow{appearance:none;border:0;background:transparent;color:rgba(255,255,255,.46);font-size:27px;line-height:1;padding:12px;cursor:pointer;transition:color .18s ease,opacity .18s ease;pointer-events:auto;}.gallery-page-prev{justify-self:start}.gallery-page-next{justify-self:end}.gallery-page-arrow:hover:not(:disabled),.gallery-page-arrow:focus-visible:not(:disabled){color:rgba(255,255,255,.9)}.gallery-page-arrow:disabled{opacity:0;pointer-events:none}.gallery-page-nav-count{display:none;}
@@ -60,12 +60,12 @@
 
 /* MOBILE: still a composed puzzle, never a vertical photo feed. */
 @media(max-width:760px){
-  .gallery-page-header{flex-basis:clamp(86px,11.5vh,100px);padding:14px 12px 5px;}
+  .gallery-page-header{flex-basis:clamp(80px,10.5vh,94px);padding:13px 12px 4px;}
   .gallery-page-count{font-size:9px;letter-spacing:.16em;}
-  .gallery-page-header h1{margin-top:20px;font-size:18px;letter-spacing:.17em;text-indent:.17em;}
+  .gallery-page-header h1{margin-top:17px;font-size:18px;letter-spacing:.17em;text-indent:.17em;}
   .gallery-manifesto{margin-top:5px;font-size:9.5px;}
   .atlas-gallery-composition{width:calc(100% - 14px);margin:0 auto 8px;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(16,minmax(0,1fr));gap:3px;}
   .gallery-artwork-01{grid-column:1 / 4;grid-row:1 / 6}.gallery-artwork-02{grid-column:4 / 6;grid-row:1 / 5}.gallery-artwork-03{grid-column:6 / 9;grid-row:1 / 3}.gallery-artwork-04{grid-column:6 / 9;grid-row:3 / 6}.gallery-artwork-05{grid-column:1 / 3;grid-row:6 / 10}.gallery-artwork-06{grid-column:3 / 6;grid-row:5 / 8}.gallery-artwork-07{grid-column:6 / 9;grid-row:6 / 10}.gallery-artwork-08{grid-column:3 / 5;grid-row:8 / 11}.gallery-artwork-09{grid-column:5 / 6;grid-row:8 / 12}.gallery-artwork-10{grid-column:1 / 3;grid-row:10 / 13}.gallery-artwork-11{grid-column:6 / 9;grid-row:10 / 13}.gallery-artwork-12{grid-column:3 / 5;grid-row:11 / 15}.gallery-artwork-13{grid-column:5 / 7;grid-row:12 / 15}.gallery-artwork-14{grid-column:7 / 9;grid-row:13 / 16}.gallery-artwork-15{grid-column:1 / 3;grid-row:13 / 17}.gallery-artwork-16{grid-column:3 / 5;grid-row:15 / 17}.gallery-artwork-17{grid-column:5 / 7;grid-row:15 / 17}.gallery-artwork-18{grid-column:7 / 9;grid-row:16 / 17}
   .gallery-page-nav{inset:52% 0 auto}.gallery-page-arrow{font-size:22px;padding:10px 7px}.noctaris-gallery-modal .gallery-image{max-width:100vw;max-height:92svh;}
 }
-@media(max-height:700px) and (min-width:761px){.gallery-page-header{flex-basis:82px;padding-top:11px}.gallery-page-header h1{margin-top:16px}.atlas-gallery-composition{margin-bottom:7px}}
+@media(max-height:700px) and (min-width:761px){.gallery-page-header{flex-basis:78px;padding-top:10px}.gallery-page-header h1{margin-top:14px}.atlas-gallery-composition{margin-bottom:7px}}

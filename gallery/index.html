@@ -9,7 +9,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-KXEVF44WP3');
 </script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>NOCTARIS — Coming Soon</title><link rel="stylesheet" href="/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOCTARIS — Gallery</title>
+<meta name="description" content="NOCTARIS Gallery — visual portraits beyond the ring.">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/gallery/gallery.css">
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
@@ -18,7 +23,9 @@ gtag('config', 'G-KXEVF44WP3');
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "xsw6drqyhn");
 </script>
-</head><body><nav class="top-nav" aria-label="Primary navigation">
+</head>
+<body class="gallery-body">
+<nav class="top-nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <a href="/" class="nav-item">Home</a>
     <div class="nav-group">
@@ -29,5 +36,62 @@ gtag('config', 'G-KXEVF44WP3');
     <a href="/about/" class="nav-item">About</a>
     <a href="/contact/" class="nav-item">Contact</a>
   </div>
-</nav><main class="home-screen"><section class="home-mark"><h1>NOCTARIS</h1><p class="line-one">Coming Soon</p><p class="line-two">This section is being prepared</p></section></main><script src="/nav.js" defer></script>
-</body></html>
+</nav>
+
+<main class="noctaris-gallery" id="gallery-root">
+  <!--
+    NOCTARIS GALLERY POSTULATE
+    One dog. One page. One visual identity.
+    The dog determines the page; the page does not determine the dog.
+
+    The four current Atlas production photographs are temporary development
+    material only. Final Gallery imagery and the final art direction will be
+    replaced after the curated "Beyond the ring" selection is supplied.
+  -->
+  <section class="gallery-dog-page is-active" data-dog="atlas" aria-labelledby="gallery-atlas-title">
+    <header class="gallery-page-header">
+      <p class="gallery-page-count" aria-label="Gallery page 1 of 1"><span data-page-current>1</span> / <span data-page-total>1</span></p>
+      <h1 id="gallery-atlas-title">Atlas</h1>
+      <p class="gallery-manifesto">Beyond the ring.</p>
+    </header>
+
+    <div class="atlas-gallery-composition" aria-label="Selected photographs of Atlas">
+      <button class="gallery-artwork gallery-artwork-a" type="button" data-gallery-photo data-src="/assets/atlas/atlas-01.webp" data-alt="Made In Spain Atlas — Gallery photograph 1">
+        <img src="/assets/atlas/atlas-01.webp" alt="Made In Spain Atlas — Gallery photograph 1" width="2048" height="1365" decoding="async" fetchpriority="high">
+      </button>
+
+      <button class="gallery-artwork gallery-artwork-b" type="button" data-gallery-photo data-src="/assets/atlas/atlas-02.webp" data-alt="Made In Spain Atlas — Gallery photograph 2">
+        <img src="/assets/atlas/atlas-02.webp" alt="Made In Spain Atlas — Gallery photograph 2" width="2504" height="1814" decoding="async" loading="lazy">
+      </button>
+
+      <button class="gallery-artwork gallery-artwork-c" type="button" data-gallery-photo data-src="/assets/atlas/atlas-04.webp" data-alt="Made In Spain Atlas — Gallery photograph 3">
+        <img src="/assets/atlas/atlas-04.webp" alt="Made In Spain Atlas — Gallery photograph 3" width="2048" height="1365" decoding="async" loading="lazy">
+      </button>
+
+      <button class="gallery-artwork gallery-artwork-d" type="button" data-gallery-photo data-src="/assets/atlas/atlas-03.webp" data-alt="Made In Spain Atlas — Gallery photograph 4">
+        <img src="/assets/atlas/atlas-03.webp" alt="Made In Spain Atlas — Gallery photograph 4" width="3505" height="2414" decoding="async" loading="lazy">
+      </button>
+    </div>
+
+    <nav class="gallery-page-nav" aria-label="Gallery dog navigation">
+      <button class="gallery-page-arrow gallery-page-prev" type="button" aria-label="Previous dog" data-gallery-page-prev disabled>←</button>
+      <span class="gallery-page-nav-count"><span data-page-current>1</span> / <span data-page-total>1</span></span>
+      <button class="gallery-page-arrow gallery-page-next" type="button" aria-label="Next dog" data-gallery-page-next disabled>→</button>
+    </nav>
+  </section>
+</main>
+
+<div aria-hidden="true" aria-label="NOCTARIS Gallery photo viewer" aria-modal="true" class="gallery-modal noctaris-gallery-modal" id="gallery-modal" role="dialog">
+  <div class="gallery-stage" id="gallery-stage">
+    <button aria-label="Close fullscreen viewer" class="gallery-close" id="gallery-close" type="button">×</button>
+    <button aria-label="Previous photo" class="gallery-arrow gallery-prev" id="gallery-prev" type="button">←</button>
+    <img alt="" class="gallery-image" id="gallery-full">
+    <button aria-label="Next photo" class="gallery-arrow gallery-next" id="gallery-next" type="button">→</button>
+    <p aria-live="polite" class="gallery-counter" id="gallery-counter">01 / 04</p>
+  </div>
+</div>
+
+<script src="/nav.js" defer></script>
+<script src="/gallery/gallery.js" defer></script>
+</body>
+</html>

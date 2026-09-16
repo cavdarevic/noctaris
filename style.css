@@ -3669,3 +3669,24 @@ body.gallery-viewer-open .atlas-editorial-nav{
   font-weight:600;
   letter-spacing:.02em;
 }
+
+/* =========================
+   NOCTARIS — ABOUT Manifesto v5.1
+   Desktop body size + mobile Barlow enforcement — 2026-09-16
+   STRICT SCOPE: ABOUT body copy only. Brand word, signature and all other pages untouched.
+   ========================= */
+@media(min-width:1100px){
+  .about-copy p:not(.about-signature),
+  .about-copy .about-lead{
+    font-size:clamp(16.2px,1.38vw,17.8px);
+  }
+}
+
+@media(max-width:760px){
+  .about-copy p:not(.about-signature),
+  .about-copy .about-lead{
+    font-family:"Barlow Condensed",Inter,Arial,Helvetica,sans-serif !important;
+    font-weight:300 !important;
+    letter-spacing:.022em;
+  }
+}

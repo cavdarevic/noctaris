@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap");
+
 /* NOCTARIS - pedigree fine tuning v4 */
 :root{--bg:#000;--text:#f2f2f2;--muted:#8a8a8a;--soft:#b7b7b7;--line:rgba(255,255,255,.12);--line-strong:rgba(255,255,255,.22);--gold:rgba(195,153,73,.78);--gold-soft:rgba(195,153,73,.44);--nav-bg:rgba(0,0,0,.38)}
 *{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.45;overflow-x:hidden}
@@ -3645,4 +3647,25 @@ body.gallery-viewer-open .atlas-editorial-nav{
     font-weight:300;
     line-height:1.66;
   }
+}
+
+
+/* =========================
+   NOCTARIS — ABOUT Manifesto v5
+   Body typography only — 2026-09-16
+   Scope lock: ABOUT body copy only. Signature and all other pages untouched.
+   ========================= */
+.about-copy p:not(.about-signature),
+.about-copy .about-lead{
+  font-family:"Barlow Condensed",Inter,Arial,Helvetica,sans-serif;
+  font-weight:300;
+  letter-spacing:.022em;
+}
+
+/* Keep the NOCTARIS word in its existing typeface; only a restrained +4% emphasis. */
+.about-brand-word{
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  font-size:1.04em;
+  font-weight:600;
+  letter-spacing:.02em;
 }

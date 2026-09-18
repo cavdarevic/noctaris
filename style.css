@@ -3711,7 +3711,7 @@ body.gallery-viewer-open .atlas-editorial-nav{
   margin:8px 0 0;
   color:rgba(255,255,255,.52);
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(14px,1.65vw,18px);
+  font-size:clamp(16px,1.9vw,21px);
   font-style:italic;
   font-weight:400;
   line-height:1.05;
@@ -3719,7 +3719,7 @@ body.gallery-viewer-open .atlas-editorial-nav{
   text-align:center;
 }
 .shelby-identity .atlas-breed{
-  margin-top:15px;
+  margin-top:22px;
 }
 .shelby-title-grid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
@@ -3732,10 +3732,10 @@ body.gallery-viewer-open .atlas-editorial-nav{
   }
   .shelby-aka{
     margin-top:7px;
-    font-size:clamp(13px,4vw,16px);
+    font-size:clamp(15px,4.7vw,19px);
   }
   .shelby-identity .atlas-breed{
-    margin-top:14px;
+    margin-top:20px;
   }
   .shelby-title-grid{
     grid-template-columns:repeat(2,minmax(0,1fr))!important;

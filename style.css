@@ -3744,3 +3744,24 @@ body.gallery-viewer-open .atlas-editorial-nav{
   }
 }
 
+
+/* =========================
+   NOCTARIS — Shelby HERO vertical rhythm fine-tune — 2026-09-18
+   Scope: Shelby only. Preserve canonical Atlas component styling.
+   Adds controlled breathing room from breed → registry → championships.
+   ========================= */
+.shelby-identity .registry-line{
+  margin-top:31px !important;
+}
+.shelby-identity .shelby-title-grid{
+  margin-top:40px !important;
+}
+
+@media(max-width:760px){
+  .shelby-identity .registry-line{
+    margin-top:25px !important;
+  }
+  .shelby-identity .shelby-title-grid{
+    margin-top:36px !important;
+  }
+}

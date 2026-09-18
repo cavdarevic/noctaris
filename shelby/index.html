@@ -36,6 +36,12 @@ gtag('config', 'G-KXEVF44WP3');
 <a class="nav-item" href="/contact/">Contact</a>
 </div>
 </nav>
+<section aria-label="Shelby profile contents" class="atlas-editorial-nav">
+<div class="atlas-editorial-nav-inner">
+<p class="profile-contents-label">Profile Contents</p>
+<div class="profile-contents-links"><a data-section-link="photos" href="#photos">Photos</a></div>
+</div>
+</section>
 <main class="atlas-page shelby-page" id="top">
 <section class="atlas-identity shelby-identity">
 <h1 class="atlas-brand">NOCTARIS</h1>
@@ -62,7 +68,66 @@ gtag('config', 'G-KXEVF44WP3');
 <div class="identity-item"><span>Owners</span><strong>Denis &amp; Anna Cavdarevic</strong><small>Belgrade, Serbia</small></div>
 </div>
 </section>
+<section aria-labelledby="photos-title" class="photo-section editorial-section" data-profile-section="photos" id="photos">
+<div class="photos-shell">
+<header class="photos-header">
+<h2 id="photos-title">Photos</h2>
+<p>Form. Presence. Character.</p>
+</header>
+<div aria-label="Selected photographs of Shelby" aria-roledescription="carousel" class="photos-carousel" id="photos-carousel" role="region">
+<button aria-label="Previous photo" class="photos-nav photos-prev" id="photos-prev" type="button"><svg aria-hidden="true" class="photos-nav-icon" focusable="false" viewbox="0 0 24 40"><path d="M18.5 3.5 5 20l13.5 16.5"></path></svg></button>
+<div aria-live="polite" class="photos-viewport" id="photos-viewport" tabindex="0">
+<button aria-label="Open photo 1 of 5 in fullscreen" class="photos-photo-button" id="photos-open" type="button">
+<img alt="Clifford ZYA-N&amp;J aka Shelby — photograph 1" class="photos-image" decoding="async" fetchpriority="high" height="1800" id="photos-image" src="/assets/shelby/shelby-01.webp" width="1200"/>
+</button>
+</div>
+<button aria-label="Next photo" class="photos-nav photos-next" id="photos-next" type="button"><svg aria-hidden="true" class="photos-nav-icon" focusable="false" viewbox="0 0 24 40"><path d="M5.5 3.5 19 20 5.5 36.5"></path></svg></button>
+</div>
+<p aria-live="polite" class="photos-counter" id="photos-counter">01 / 05</p>
+</div>
+</section>
 </main>
+<div aria-hidden="true" aria-label="Shelby photo viewer" aria-modal="true" class="gallery-modal" id="gallery-modal" role="dialog">
+<div class="gallery-stage" id="gallery-stage">
+<button aria-label="Close fullscreen viewer" class="gallery-close" id="gallery-close" type="button">×</button>
+<button aria-label="Previous photo" class="gallery-arrow gallery-prev" id="gallery-prev" type="button">←</button>
+<img alt="" class="gallery-image" id="gallery-full"/>
+<button aria-label="Next photo" class="gallery-arrow gallery-next" id="gallery-next" type="button">→</button>
+<p aria-live="polite" class="gallery-counter" id="gallery-counter">01 / 05</p>
+</div>
+</div>
+<script defer src="/shelby/photos.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  const nav=document.querySelector(".atlas-editorial-nav");
+  const globalNav=document.querySelector(".top-nav");
+  const link=document.querySelector('[data-section-link="photos"]');
+  const section=document.getElementById("photos");
+  const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
+  if(!nav||!link||!section)return;
+  function offset(){return (globalNav?globalNav.getBoundingClientRect().height:0)+nav.getBoundingClientRect().height+18;}
+  function update(){
+    const r=section.getBoundingClientRect(), top=offset(), bottom=window.innerHeight;
+    const visible=Math.max(0,Math.min(r.bottom,bottom)-Math.max(r.top,top));
+    const hero=document.querySelector(".atlas-identity");
+    const hr=hero?hero.getBoundingClientRect():null;
+    const heroVisible=hr?Math.max(0,Math.min(hr.bottom,bottom)-Math.max(hr.top,top)):0;
+    const active=visible>0&&visible>=heroVisible;
+    link.classList.toggle("is-active",active);
+    if(active)link.setAttribute("aria-current","location");else link.removeAttribute("aria-current");
+  }
+  link.addEventListener("click",function(e){
+    e.preventDefault();
+    window.scrollTo({top:Math.max(0,section.getBoundingClientRect().top+window.scrollY-offset()),behavior:reduceMotion.matches?"auto":"smooth"});
+  });
+  let ticking=false;
+  function track(){if(ticking)return;ticking=true;requestAnimationFrame(()=>{ticking=false;update();});}
+  window.addEventListener("scroll",track,{passive:true});
+  window.addEventListener("resize",track);
+  window.addEventListener("orientationchange",track);
+  update();
+});
+</script>
 <script defer src="/nav.js"></script>
 </body>
 </html>

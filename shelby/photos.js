@@ -2,11 +2,10 @@
   'use strict';
 
   const photos = [
-    { src: '/assets/shelby/shelby-01.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 1', width: 1200, height: 1800 },
-    { src: '/assets/shelby/shelby-02.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 2', width: 1748, height: 2480 },
-    { src: '/assets/shelby/shelby-03.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 3', width: 2000, height: 2999 },
-    { src: '/assets/shelby/shelby-04.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 4', width: 1333, height: 2000 },
-    { src: '/assets/shelby/shelby-05.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 5', width: 5328, height: 3552 }
+    { src: '/assets/shelby/shelby-01.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 1', width: 1700, height: 772 },
+    { src: '/assets/shelby/shelby-02.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 2', width: 2000, height: 2999 },
+    { src: '/assets/shelby/shelby-03.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 3', width: 2862, height: 1872 },
+    { src: '/assets/shelby/shelby-04.webp', alt: 'Clifford ZYA-N&J aka Shelby — photograph 4', width: 1748, height: 2436 }
   ];
 
   document.addEventListener('DOMContentLoaded', () => {

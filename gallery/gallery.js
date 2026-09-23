@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  const tr = (key, vars = {}) => window.NOCTARIS_LANGUAGE?.t?.(key, vars) || key;
 
   document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('gallery-root');
@@ -52,7 +53,7 @@
         page.querySelectorAll('[data-page-current]').forEach(node => { node.textContent = String(index + 1); });
         page.querySelectorAll('[data-page-total]').forEach(node => { node.textContent = String(pages.length); });
         const headerCount = page.querySelector('.gallery-page-count');
-        if (headerCount) headerCount.setAttribute('aria-label', `Gallery page ${index + 1} of ${pages.length}`);
+        if (headerCount) headerCount.setAttribute('aria-label', tr('a11y.galleryPage', { current: index + 1, total: pages.length }));
         const prev = page.querySelector('[data-gallery-page-prev]');
         const next = page.querySelector('[data-gallery-page-next]');
         if (prev) prev.disabled = index === 0;
@@ -131,7 +132,7 @@
       if (reset) resetZoom();
       const photo = activePhotos[photoIndex];
       full.src = photo.src;
-      full.alt = `${photo.alt}. Fullscreen view.`;
+      full.alt = `${photo.alt}. ${tr('a11y.fullscreenView')}`;
       updateViewerControls();
       preload(photoIndex - 1);
       preload(photoIndex + 1);

@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  const tr = (key, vars = {}) => window.NOCTARIS_LANGUAGE?.t?.(key, vars) || key;
 
   const photos = [
     { src: '/assets/atlas/atlas-01.webp', alt: 'Made In Spain Atlas — photograph 1', width: 2048, height: 1365 },
@@ -92,8 +93,8 @@
       const value = label();
       counter.textContent = value;
       modalCounter.textContent = value;
-      openButton.setAttribute('aria-label', `Open photo ${index + 1} of ${photos.length} in fullscreen`);
-      viewport.setAttribute('aria-label', `Photo ${index + 1} of ${photos.length}`);
+      openButton.setAttribute('aria-label', tr('a11y.openPhotoFullscreen', { current: index + 1, total: photos.length }));
+      viewport.setAttribute('aria-label', tr('a11y.photoPosition', { current: index + 1, total: photos.length }));
     }
 
     function applyCarouselPhoto(i, { animate = true } = {}) {
@@ -151,7 +152,7 @@
       if (reset) resetZoom();
       const photo = photos[index];
       full.src = photo.src;
-      full.alt = `${photo.alt}. Fullscreen view.`;
+      full.alt = `${photo.alt}. ${tr('a11y.fullscreenView')}`;
       full.width = photo.width;
       full.height = photo.height;
       updateControls();

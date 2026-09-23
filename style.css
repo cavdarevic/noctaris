@@ -3765,3 +3765,46 @@ body.gallery-viewer-open .atlas-editorial-nav{
     margin-top:36px !important;
   }
 }
+
+
+/* NOCTARIS multilingual language selector — shared global control */
+.language-switcher{margin-left:14px;}
+.language-button{min-width:30px;text-align:center;}
+.language-menu{left:auto;right:0;transform:none;min-width:64px;text-align:center;}
+.language-menu a{justify-content:center;text-align:center;}
+@media(max-width:760px){.language-switcher{margin-left:7px;}}
+@media(max-width:520px){.language-switcher{margin-left:3px}.language-button{min-width:25px;padding-left:3px!important;padding-right:3px!important}.language-menu{min-width:56px;}}
+/* Language selector affordance: language code stays the label; chevron is presentation only. */
+.language-button::after{content:"⌄";display:inline-block;margin-left:4px;font-size:.85em;line-height:1;transform:translateY(-1px);opacity:.72;}
+@media(max-width:520px){.language-button::after{margin-left:2px;font-size:.8em;}}
+
+/* NOCTARIS multilingual selector — stability correction.
+   Keep the language menu right-aligned in every state and, on compact
+   screens, remove it from the five-item navigation flow. */
+.language-switcher .language-menu,
+.language-switcher:hover .language-menu,
+.language-switcher:focus-within .language-menu,
+.language-switcher.is-open .language-menu{
+  left:auto;
+  right:0;
+  transform:none;
+}
+@media(max-width:520px){
+  .nav-inner{
+    position:relative;
+    padding-left:10px;
+    padding-right:48px;
+  }
+  .language-switcher{
+    position:absolute;
+    right:10px;
+    top:0;
+    height:56px;
+    margin-left:0;
+    display:flex;
+    align-items:center;
+  }
+  .language-switcher .language-menu{
+    top:46px;
+  }
+}

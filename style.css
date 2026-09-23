@@ -3816,11 +3816,7 @@ body.gallery-viewer-open .atlas-editorial-nav{
 .home-mark{position:relative}
 .home-registration{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:max-content;text-align:center;padding-top:24px}
 .fci-number{margin:0;color:rgba(255,255,255,.62);font-family:"Barlow Condensed",Arial,sans-serif;font-size:14px;font-weight:300;line-height:1;letter-spacing:.30em;text-indent:.30em;text-transform:uppercase;white-space:nowrap}
-.fci-seals{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
-.fci-seals img{display:block;width:50px;height:50px;object-fit:contain;opacity:1;filter:brightness(.62) contrast(1.12) drop-shadow(0 -1px 0 rgba(255,255,255,.16)) drop-shadow(0 1px 1px rgba(0,0,0,.92))}
 @media(max-width:520px){
   .home-registration{padding-top:21px}
   .fci-number{font-size:12px;letter-spacing:.27em;text-indent:.27em}
-  .fci-seals{gap:13px;margin-top:15px}
-  .fci-seals img{width:42px;height:42px}
 }

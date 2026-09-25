@@ -81,7 +81,7 @@ window.NOCTARIS_I18N.sr = {
   "pedigree.bloodline": "Krvna linija",
   "pedigree.dam": "MAJKA",
   "pedigree.doubleTap": "Dodirnite dvaput za pregled rodovnika",
-  "pedigree.openFull": "Otvori ceo rodovnik",
+  "pedigree.openFull": "PDF Rodovnik",
   "pedigree.sire": "OTAC",
   "photos.tagline": "Forma. Prisustvo. Karakter.",
   "profile.akaShelby": "aka Shelby",

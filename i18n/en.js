@@ -81,7 +81,7 @@ window.NOCTARIS_I18N.en = {
   "pedigree.bloodline": "Bloodline",
   "pedigree.dam": "DAM",
   "pedigree.doubleTap": "Double tap to inspect pedigree",
-  "pedigree.openFull": "Open Full Pedigree",
+  "pedigree.openFull": "Pedigree PDF",
   "pedigree.sire": "SIRE",
   "photos.tagline": "Form. Presence. Character.",
   "profile.akaShelby": "aka Shelby",

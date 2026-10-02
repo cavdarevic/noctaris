@@ -3833,3 +3833,19 @@ body.gallery-viewer-open .atlas-editorial-nav{
 @media(min-width:1100px){.about-geometric-signature{transform:translateX(clamp(130px,14vw,220px))}}
 @media(max-width:760px){.about-screen{height:100svh;min-height:0;padding:62px 14px 10px;justify-content:center}.about-manifesto{min-height:0;padding-top:4px;padding-bottom:4px}.about-copy p{margin-bottom:clamp(22px,3.2vh,30px)}.about-signature{padding-top:2px}.about-geometric-signature{width:min(56vw,220px);margin:clamp(4px,1vh,8px) 0 0;opacity:.78}.about-geometric-signature img{max-height:clamp(145px,24vh,205px)}.about-gold-line{top:10%;bottom:10%}}
 @media(max-width:390px){.about-screen{padding-top:58px;padding-bottom:8px}.about-copy p{margin-bottom:clamp(18px,2.7vh,24px)}.about-geometric-signature{width:min(54vw,200px)}.about-geometric-signature img{max-height:180px}}
+
+/* =========================
+   NOCTARIS — ABOUT v7.1 positioning fine-tune
+   Desktop: move SIGNATURE right only; size unchanged.
+   Mobile: move SIGNATURE slightly lower only; size/x unchanged.
+   ========================= */
+@media(min-width:1100px){
+  .about-geometric-signature{
+    transform:translateX(clamp(210px,19vw,300px));
+  }
+}
+@media(max-width:760px){
+  .about-geometric-signature{
+    transform:translateY(12px);
+  }
+}

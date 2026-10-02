@@ -3849,3 +3849,19 @@ body.gallery-viewer-open .atlas-editorial-nav{
     transform:translateY(12px);
   }
 }
+
+/* =========================
+   NOCTARIS — ABOUT v7.2 desktop Y-centering only
+   Desktop: SIGNATURE center is locked to 50% of the ABOUT viewport.
+   Mobile: untouched; v7.1 mobile rule remains authoritative.
+   ========================= */
+@media(min-width:1100px){
+  .about-screen{position:relative;}
+  .about-geometric-signature{
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:0;
+    transform:translate(clamp(210px,19vw,300px), -50%);
+  }
+}

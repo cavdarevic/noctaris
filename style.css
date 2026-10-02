@@ -3865,3 +3865,18 @@ body.gallery-viewer-open .atlas-editorial-nav{
     transform:translate(clamp(210px,19vw,300px), -50%);
   }
 }
+
+/* =========================
+   NOCTARIS — ABOUT v7.3 desktop placement correction
+   Desktop only: SIGNATURE returns to document flow BELOW manifesto text,
+   centered on the same ABOUT content axis. Mobile remains v7.1 unchanged.
+   ========================= */
+@media(min-width:1100px){
+  .about-geometric-signature{
+    position:static;
+    top:auto;
+    left:auto;
+    margin:clamp(8px,1.2vh,14px) 0 0;
+    transform:translateX(clamp(72px,6vw,110px));
+  }
+}

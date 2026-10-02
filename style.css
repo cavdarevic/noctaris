@@ -3880,3 +3880,15 @@ body.gallery-viewer-open .atlas-editorial-nav{
     transform:translateX(clamp(72px,6vw,110px));
   }
 }
+
+/* =========================
+   NOCTARIS — ABOUT v7.4 desktop X-axis correction
+   Desktop only: SIGNATURE stays below the manifesto and its center is aligned
+   with the ABOUT text/content axis. Remove the v7.3 rightward offset.
+   Mobile remains untouched and authoritative from v7.1.
+   ========================= */
+@media(min-width:1100px){
+  .about-geometric-signature{
+    transform:none;
+  }
+}

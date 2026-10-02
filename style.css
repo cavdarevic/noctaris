@@ -3821,75 +3821,15 @@ body.gallery-viewer-open .atlas-editorial-nav{
   .fci-number{font-size:12px;letter-spacing:.27em;text-indent:.27em}
 }
 
+
 /* =========================
-   NOCTARIS — ABOUT Signature composition v6
-   2026-10-02
-   Scope: ABOUT only. Existing copy, gold line and background N remain unchanged.
-   Adds the locked GEOMETRIC SCHNAUZER SIGNATURE below the manifesto and lifts
-   the manifesto/signature composition optically upward.
+   NOCTARIS — ABOUT Manifesto v7
+   GEOMETRIC SCHNAUZER SIGNATURE integration
    ========================= */
-.about-screen{
-  grid-template-rows:auto auto;
-  align-content:center;
-  row-gap:clamp(24px,3.6vh,40px);
-}
-.about-manifesto{
-  /* v4 owns the horizontal transform on desktop; vertical lift is applied separately
-     to children so that existing horizontal composition remains untouched. */
-  margin-top:clamp(-92px,-9vh,-58px);
-}
-.about-geometric-signature{
-  position:relative;
-  width:min(32vw,330px);
-  margin:clamp(-54px,-5.2vh,-34px) auto 0;
-  opacity:.72;
-  line-height:0;
-  pointer-events:none;
-  user-select:none;
-}
-.about-geometric-signature img{
-  display:block;
-  width:100%;
-  height:auto;
-  color:#fff;
-}
-
-@media(min-width:1100px){
-  .about-geometric-signature{
-    /* Counterbalance the manifesto's intentional v4 right shift; signature belongs
-       to the page axis, not to the copy column. */
-    transform:none;
-  }
-}
-
-@media(min-width:761px) and (max-width:1099px){
-  .about-manifesto{margin-top:clamp(-74px,-7vh,-48px)}
-  .about-geometric-signature{
-    width:min(38vw,300px);
-    margin-top:clamp(-46px,-4.5vh,-28px);
-  }
-}
-
-@media(max-width:760px){
-  .about-screen{
-    align-content:center;
-    row-gap:18px;
-    overflow-x:hidden;
-    overflow-y:auto;
-  }
-  .about-manifesto{
-    min-height:auto;
-    margin-top:clamp(-54px,-6vh,-34px);
-    padding-top:22px;
-    padding-bottom:22px;
-  }
-  .about-geometric-signature{
-    width:min(62vw,245px);
-    margin:clamp(-18px,-2vh,-10px) auto 0;
-    opacity:.70;
-  }
-}
-
-@media(max-width:390px){
-  .about-geometric-signature{width:min(66vw,230px)}
-}
+.about-screen{height:100svh;min-height:0;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;padding-top:clamp(62px,8vh,78px);padding-bottom:clamp(12px,2vh,20px)}
+.about-manifesto{flex:0 0 auto;min-height:0;padding-top:clamp(10px,1.8vh,18px);padding-bottom:clamp(8px,1.4vh,14px)}
+.about-geometric-signature{flex:0 0 auto;width:min(30vw,300px);margin:clamp(-2px,.3vh,4px) 0 0;padding:0;line-height:0;opacity:.78}
+.about-geometric-signature img{display:block;width:100%;height:auto;max-height:clamp(170px,27vh,250px);object-fit:contain}
+@media(min-width:1100px){.about-geometric-signature{transform:translateX(clamp(130px,14vw,220px))}}
+@media(max-width:760px){.about-screen{height:100svh;min-height:0;padding:62px 14px 10px;justify-content:center}.about-manifesto{min-height:0;padding-top:4px;padding-bottom:4px}.about-copy p{margin-bottom:clamp(22px,3.2vh,30px)}.about-signature{padding-top:2px}.about-geometric-signature{width:min(56vw,220px);margin:clamp(4px,1vh,8px) 0 0;opacity:.78}.about-geometric-signature img{max-height:clamp(145px,24vh,205px)}.about-gold-line{top:10%;bottom:10%}}
+@media(max-width:390px){.about-screen{padding-top:58px;padding-bottom:8px}.about-copy p{margin-bottom:clamp(18px,2.7vh,24px)}.about-geometric-signature{width:min(54vw,200px)}.about-geometric-signature img{max-height:180px}}

@@ -71,3 +71,8 @@
   .gallery-page-nav{inset:52% 0 auto}.gallery-page-arrow{font-size:22px;padding:10px 7px}.noctaris-gallery-modal .gallery-image{max-width:100vw;max-height:92svh;}
 }
 @media(max-height:700px) and (min-width:761px){.gallery-page-header{flex-basis:78px;padding-top:10px}.atlas-gallery-composition{margin-bottom:7px}}
+
+
+/* FOOTER V1.1 — reserve a real footer zone within the one-screen Gallery. */
+.gallery-body .noctaris-gallery{height:calc(100dvh - var(--noctaris-footer-screen-height));min-height:0}
+.gallery-body .gallery-dog-page{height:calc(100dvh - 56px - var(--noctaris-footer-screen-height));min-height:0}

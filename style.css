@@ -14,11 +14,11 @@
 .identity-card{padding:48px 0 34px;display:grid;grid-template-columns:1fr;gap:34px}.identity-column{display:grid;gap:18px}.identity-column>div{border-bottom:1px solid var(--line);padding-bottom:13px}.identity-card span{display:block;margin-bottom:5px;color:var(--muted);text-transform:uppercase;letter-spacing:.24em;font-size:10px}.identity-card strong{display:block;color:#f6f6f6;font-size:16px;font-weight:400}
 .pedigree-section{padding:52px 0 42px;text-align:center}.archive-label{margin:0 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:.32em;font-size:10px;text-align:center}.pedigree-section h2{margin:0 0 30px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,7vw,56px);font-weight:400;letter-spacing:.08em}.pedigree-ornament{width:128px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:-14px auto 28px;position:relative}.pedigree-ornament:after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg)}
 .bloodline-stage{width:100%;padding:0;overflow:visible}.bloodline-button{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}.bloodline-svg{display:block;width:100%;height:auto;margin:0 auto;border:1px solid rgba(195,153,73,.32);background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.035),transparent 40%),linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.008));box-shadow:0 0 0 1px rgba(255,255,255,.04) inset}.bl-box{fill:rgba(0,0,0,.36);stroke:rgba(195,153,73,.56);stroke-width:1.2}.bl-box.featured{stroke:rgba(195,153,73,.82);stroke-width:1.4}.bl-line{stroke:rgba(195,153,73,.58);stroke-width:1.25;fill:none}.bl-role{fill:rgba(195,153,73,.72);font-size:10px;letter-spacing:4px}.bl-name{fill:#f7f7f7;font-size:15px;font-weight:700}.bl-name-small{fill:#f7f7f7;font-size:11px;font-weight:700}.bl-meta{fill:#b8b8b8;font-size:10px}.bl-title{fill:#858585;font-size:8.8px}.primary-cta{margin-top:28px}
-.photo-section{display:none;padding:26px 0 54px;text-align:center}.photo-section.has-images{display:block}.photo-grid{margin-top:26px;display:grid;grid-template-columns:1fr;gap:18px}.photo-item{display:none;border:1px solid var(--line);background:#050505;padding:0;cursor:pointer}.photo-item.is-visible{display:block}.photo-item img{display:block;width:100%;height:auto}.bottom-actions{text-align:center;padding:18px 0 48px}.site-footer{border-top:1px solid var(--line);padding:22px 0 0;display:flex;justify-content:space-between;gap:18px;color:var(--muted);font-size:12px}.site-footer a{color:var(--soft);text-decoration:none}
+.photo-section{display:none;padding:26px 0 54px;text-align:center}.photo-section.has-images{display:block}.photo-grid{margin-top:26px;display:grid;grid-template-columns:1fr;gap:18px}.photo-item{display:none;border:1px solid var(--line);background:#050505;padding:0;cursor:pointer}.photo-item.is-visible{display:block}.photo-item img{display:block;width:100%;height:auto}.bottom-actions{text-align:center;padding:18px 0 48px}
 .gallery-modal,.pedigree-modal{position:fixed;inset:0;display:none;background:rgba(0,0,0,.975);z-index:4000;overflow:hidden;touch-action:none;overscroll-behavior:contain}.gallery-modal.is-open,.pedigree-modal.is-open{display:block}.gallery-stage,.pedigree-stage{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab}.gallery-stage.is-dragging,.pedigree-stage.is-dragging{cursor:grabbing}.gallery-image{position:absolute;left:50%;top:50%;max-width:100%;max-height:92svh;object-fit:contain;transform:translate(-50%,-50%) scale(1);transform-origin:center center;will-change:transform;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;touch-action:none}.pedigree-zoom-content{position:absolute;left:50%;top:50%;width:min(96vw,1180px);transform:translate(-50%,-50%) scale(1);transform-origin:center center;will-change:transform}.gallery-close,.pedigree-close{position:fixed;top:20px;right:22px;background:transparent;border:0;color:#fff;text-transform:uppercase;letter-spacing:.22em;font-size:11px;opacity:.82;z-index:4010;cursor:pointer}.gallery-arrow{position:fixed;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:44px;opacity:.18;z-index:4010;cursor:pointer}.gallery-arrow:hover{opacity:.55}.gallery-prev{left:8px}.gallery-next{right:8px}
 @media(max-width:760px){.gallery-arrow{display:none}.bloodline-svg{border-color:rgba(195,153,73,.26)}.bl-role{font-size:11px}.bl-name{font-size:16px}.bl-name-small{font-size:12px}.bl-meta{font-size:10.5px}.bl-title{font-size:9.5px}}
 @media(min-width:760px){.identity-card{grid-template-columns:repeat(2,1fr);gap:42px}.identity-column{gap:24px}.title-grid{grid-template-columns:repeat(4,1fr)}.photo-grid{grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}}
-@media(max-width:520px){.nav-inner{gap:11px;padding:0 10px}.nav-item{font-size:8.5px;letter-spacing:.13em}.atlas-brand,.contact-card .contact-brand{font-size:15px;letter-spacing:.26em;text-indent:.26em}.atlas-page{padding-left:14px;padding-right:14px}.site-footer{flex-direction:column;align-items:center;text-align:center}}
+@media(max-width:520px){.nav-inner{gap:11px;padding:0 10px}.nav-item{font-size:8.5px;letter-spacing:.13em}.atlas-brand,.contact-card .contact-brand{font-size:15px;letter-spacing:.26em;text-indent:.26em}.atlas-page{padding-left:14px;padding-right:14px}}
 
 
 
@@ -3891,4 +3891,44 @@ body.gallery-viewer-open .atlas-editorial-nav{
   .about-geometric-signature{
     transform:none;
   }
+}
+
+/* NOCTARIS UNIVERSAL FOOTER V1 — never localized; HOME excluded. */
+.noctaris-universal-footer{background:#000;color:#b8b8b8;padding:52px 15px 28px;font-family:Inter,Arial,Helvetica,sans-serif;font-size:10px;line-height:1.4;font-weight:400}
+.noctaris-footer-inner{width:100%;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.noctaris-footer-copyright{white-space:nowrap}
+.noctaris-footer-wordmark{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+.noctaris-footer-right{display:flex;align-items:center;gap:18px;white-space:nowrap}
+.noctaris-footer-icon{display:inline-flex;align-items:center;justify-content:center;width:17px;height:18px;color:#b8b8b8}
+.noctaris-footer-privacy{margin-left:14px}
+@media(max-width:580px){.noctaris-universal-footer{padding:42px 14px 24px;font-size:10px}.noctaris-footer-inner{flex-wrap:wrap;justify-content:center;gap:14px 24px}.noctaris-footer-right{gap:18px}.noctaris-footer-privacy{margin-left:8px}}
+
+
+/* FOOTER V1.1 — single-viewport pages. Preserve DOGS natural document flow. */
+:root{--noctaris-footer-screen-height:80px}
+body.noctaris-about-body,body.noctaris-contact-body{height:100svh;min-height:0;overflow:hidden}
+.noctaris-about-body .about-screen{height:calc(100svh - var(--noctaris-footer-screen-height));min-height:0}
+.noctaris-contact-body .contact-screen{height:calc(100svh - var(--noctaris-footer-screen-height));min-height:0;padding-bottom:16px}
+.noctaris-about-body .noctaris-universal-footer,
+.noctaris-contact-body .noctaris-universal-footer,
+.gallery-body .noctaris-universal-footer{position:fixed;bottom:0;left:0;right:0;z-index:30;height:var(--noctaris-footer-screen-height);padding:52px 15px 14px;box-sizing:border-box}
+@media(max-width:580px){
+ :root{--noctaris-footer-screen-height:92px}
+ .noctaris-about-body .noctaris-universal-footer,
+ .noctaris-contact-body .noctaris-universal-footer,
+ .gallery-body .noctaris-universal-footer{padding:35px 14px 12px}
+ .noctaris-about-body .about-screen{padding-top:58px;padding-bottom:0}
+ .noctaris-contact-body .contact-screen{padding-top:60px;padding-bottom:6px}
+ .noctaris-contact-body .contact-card .contact-brand{margin-bottom:clamp(12px,3vh,28px)}
+ .noctaris-contact-body .contact-card h1{margin-bottom:clamp(12px,3vh,28px)}
+ .noctaris-contact-body .contact-lines{gap:clamp(8px,1.8vh,18px)}
+ .noctaris-contact-body .contact-lines div{padding-top:clamp(8px,1.8vh,18px)}
+}
+@media(max-height:680px){
+ .noctaris-about-body .about-copy p{margin-bottom:clamp(10px,2vh,18px)}
+ .noctaris-about-body .about-geometric-signature img{max-height:clamp(90px,18vh,155px)}
+ .noctaris-contact-body .contact-card .contact-brand{margin-bottom:12px}
+ .noctaris-contact-body .contact-card h1{margin-bottom:12px;font-size:clamp(38px,8vh,70px)}
+ .noctaris-contact-body .contact-lines{gap:8px}
+ .noctaris-contact-body .contact-lines div{padding-top:8px}
 }

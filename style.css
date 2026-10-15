@@ -3932,3 +3932,14 @@ body.noctaris-about-body,body.noctaris-contact-body{height:100svh;min-height:0;o
  .noctaris-contact-body .contact-lines{gap:8px}
  .noctaris-contact-body .contact-lines div{padding-top:8px}
 }
+
+/* CONTACT V1.1 — isolated messenger links and usable tap targets. */
+.noctaris-contact-body .contact-lines .contact-phone .contact-messengers{display:flex;align-items:center;justify-content:center;gap:12px;border:0;padding:4px 0 0;margin:0}
+.noctaris-contact-body .contact-lines .contact-phone .contact-messenger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:8px;opacity:.83;transition:opacity .15s ease,background-color .15s ease}
+.noctaris-contact-body .contact-messenger img{display:block;width:34px;height:34px}
+.noctaris-contact-body .contact-messenger:hover,.noctaris-contact-body .contact-messenger:focus-visible{opacity:1;background:rgba(255,255,255,.07)}
+.noctaris-contact-body .contact-messenger:focus-visible{outline:2px solid #eee;outline-offset:2px}
+/* Short viewports / zoom: preserve access to content instead of clipping it. */
+@media(max-height:760px){body.noctaris-contact-body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}.noctaris-contact-body .contact-screen{height:auto;min-height:calc(100svh - var(--noctaris-footer-screen-height));padding-bottom:110px}.noctaris-contact-body .noctaris-universal-footer{position:relative;height:auto;padding-top:24px}}
+@media(max-width:580px) and (max-height:850px){body.noctaris-contact-body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}.noctaris-contact-body .contact-screen{height:auto;min-height:calc(100svh - var(--noctaris-footer-screen-height));padding-bottom:110px}.noctaris-contact-body .noctaris-universal-footer{position:relative;height:auto;padding-top:24px}}
+@media(prefers-reduced-motion:reduce){.noctaris-contact-body .contact-messenger{transition:none}}

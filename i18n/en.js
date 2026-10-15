@@ -54,6 +54,7 @@ window.NOCTARIS_I18N.en = {
   "contact.location": "Location",
   "contact.locationValue": "BELGRADE, SERBIA",
   "contact.whatsapp": "WhatsApp",
+  "contact.phone": "Phone",
   "dna.availableOnRequest": "Available on request",
   "dna.finalReport": "Final report",
   "dna.fullReport": "Full Genetic Report",
